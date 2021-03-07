@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Canton;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CantonController extends Controller
 {
@@ -12,9 +13,10 @@ class CantonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function index($cod_province)
     {
-        //
+        $a= Canton::where('cod_province',$cod_province)->get();
+        return $a;
     }
 
     /**
@@ -44,9 +46,9 @@ class CantonController extends Controller
      * @param  \App\Models\Canton  $canton
      * @return \Illuminate\Http\Response
      */
-    public function show(Canton $canton)
+    public function show()
     {
-        //
+        return Canton::query();
     }
 
     /**

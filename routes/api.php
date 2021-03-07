@@ -1,17 +1,16 @@
 <?php
 
+use App\Http\Controllers\CantonController;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\CountryController;
-//Route::get('/countries/{search}',[CountryController::class,'show']);
+use \App\Http\Controllers\ProvinceController;
 
 Route::prefix('v1')->group(function () {
-  //  Route::get('/country',[CountryController::class,'index']);
-   // Route::apiResource('/countries',CountryController::class);
+    Route::get('/countries/{country}',[CountryController::class,'search']);
     Route::get('/countries',[CountryController::class,'index']);
-    Route::get('/countries/{country}',[CountryController::class,'show']);
-    //Route::get('/countries/{country}/{}',[CountryController::class,'show']);
-
 });
 

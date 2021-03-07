@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Parroquia extends Model
 {
     use HasFactory;
-    private $fillable=[
+    protected $fillable=[
         "name",
         "type",
         "cod_canton"
+    ];
+
+    protected $hidden=[
+        'updated_at',
+        'created_at'
     ];
 
     public function canton(){
