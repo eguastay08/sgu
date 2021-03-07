@@ -26,14 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.swp" beforeDir="false" afterPath="$PROJECT_DIR$/.swp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CantonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CantonController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CountryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProvinceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProvinceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Canton.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Canton.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Parroquia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Parroquia.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +184,7 @@
       <workItem from="1614790145712" duration="2183000" />
       <workItem from="1614792685276" duration="30872000" />
       <workItem from="1614868235659" duration="2144000" />
-      <workItem from="1615087348294" duration="3843000" />
+      <workItem from="1615087348294" duration="4160000" />
     </task>
     <servers />
   </component>

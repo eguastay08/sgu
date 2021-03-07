@@ -72,8 +72,8 @@ class CountryController extends Controller
         if (isset($request->province) && isset($request->canton) && isset($request->parroquia)) {
             $parroquia=Parroquia::where('cod_parroquia',$request->parroquia)->firstOrFail();
             $data=[
-                'name'=>$parroquia->name,
-                "type"=>$parroquia->type
+                'cod_parroquia'=>$parroquia->cod_parroquia,
+                'name'=>$parroquia->name
             ];
             return response()->json([
                 'errors' => false,
