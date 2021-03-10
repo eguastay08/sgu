@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Log_user_access_plataform;
-use App\Models\User;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\DB;
-use App\Models\Plataform;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Http\RedirectResponse;
 
-class PlataformController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +15,7 @@ class PlataformController extends Controller
      */
     public function index()
     {
-        $data=Plataform::where('deleted','!=','1')->get();
+        $data=Category::where('deleted','!=','1')->get();
 
         return response()->json([
             'errors' => false,
@@ -31,7 +26,6 @@ class PlataformController extends Controller
     }
 
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -40,9 +34,16 @@ class PlataformController extends Controller
      */
     public function store(Request $request)
     {
-        $errors= Plataform::verifyRequired($request);
+        $errors=array();
+
+        if(!isset($request->name)){
+            $errors[]=[
+                "field"=>"name",
+                "msj"=>"El campo name es requerido"
+            ];
+        }
         if($errors==null) {
-            $category = Plataform::create($request->all());
+            $category = Category::create($request->all());
             return response()->json([
                 'errors' => false,
                 'code' => Response::HTTP_CREATED,
@@ -57,17 +58,18 @@ class PlataformController extends Controller
                 'data' => $errors
             ], Response::HTTP_BAD_REQUEST, Controller::$headers);
         }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Plataform  $plataform
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
     {
-        $category= Plataform::where('deleted','!=','1')->where('cod_plataform',$request->cod_plataform)->firstOrFail();
+        $category= Category::where('deleted','!=','1')->where('cod_category',$request->cod_category)->firstOrFail();
         return response()->json([
             'errors' => false,
             'code' => Response::HTTP_OK,
@@ -77,37 +79,35 @@ class PlataformController extends Controller
     }
 
 
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Plataform  $plataform
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Plataform $plataform,Request $request)
+    public function update(Request $request)
     {
-        $plataform=Plataform::where('cod_plataform',$request->cod_plataform)->where('deleted',0)->firstOrFail();
-         /*DB::listen(function ($query) {
-             echo $query->sql ;
-         });*/
-         $plataform->update($request->all());
+        $category=Category::where('cod_category',$request->cod_category)->where('deleted',0)->firstOrFail();
+        $category->update($request->all());
         return response()->json([
             'errors' => false,
             'code' => Response::HTTP_OK,
             'status'=>'200 OK',
-            'data'=>$plataform
+            'data'=>$category
         ], Response::HTTP_OK, Controller::$headers);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Plataform  $plataform
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
-        $category=Plataform::where('cod_plataform',$request->cod_plataform)->where('deleted',0)->firstOrFail();
+        $category=Category::where('cod_category',$request->cod_category)->where('deleted',0)->firstOrFail();
         $category->update(["deleted"=>"1"]);
         $messages=[
             "Se elimino correctamente"
@@ -120,19 +120,5 @@ class PlataformController extends Controller
                 'msj'=>$messages
             ],
         ], Response::HTTP_OK, Controller::$headers);
-    }
-
-    public function redirect(Request $request){
-        $url=$request->url;
-        $plataform=Plataform::where('url',$url)->where('deleted',0)->firstOrFail();
-        $user=User::where('cedula','0250366515')->where('deleted',0)->firstOrFail();
-        $log=[
-            "user_agent"=>$_SERVER['HTTP_USER_AGENT'],
-            "ip"=>$_SERVER['REMOTE_ADDR'],
-            "cedula"=>$user->cedula,
-            "cod_plataform"=>$plataform->cod_plataform
-        ];
-        Log_user_access_plataform::create($log);
-        return redirect($plataform->url);
     }
 }

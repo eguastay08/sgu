@@ -26,7 +26,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CountryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategorieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogRoleAccessPlataformController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogUserAccessPlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogUserAccessPlataformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlataformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Log_user_access_plataform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_user_access_plataform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Plataform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Plataform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041613_create_plataforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041613_create_plataforms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041753_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041753_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +198,13 @@
       <workItem from="1614790145712" duration="2183000" />
       <workItem from="1614792685276" duration="30872000" />
       <workItem from="1614868235659" duration="2144000" />
-      <workItem from="1615087348294" duration="4160000" />
+      <workItem from="1615087348294" duration="4804000" />
+      <workItem from="1615148184853" duration="38665000" />
+      <workItem from="1615230911842" duration="6522000" />
+      <workItem from="1615298831469" duration="2095000" />
+      <workItem from="1615302578849" duration="7022000" />
+      <workItem from="1615315536287" duration="697000" />
+      <workItem from="1615384319770" duration="11827000" />
     </task>
     <servers />
   </component>
@@ -220,13 +240,39 @@
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1366.737@0.31.1366.737" timestamp="1614820821391" />
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614834837910">
+    <state x="830" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615213997940">
+      <screen x="0" y="31" width="2726" height="737" />
+    </state>
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1615183518105" />
+    <state x="830" y="160" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.2726.737@0.31.2726.737" timestamp="1615213997940" />
+    <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl" timestamp="1615315640044">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1614834837910" />
-    <state x="342" y="177" key="run.anything.popup" timestamp="1614739231454">
+    <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl/0.31.1366.737@0.31.1366.737" timestamp="1615315640044" />
+    <state x="466" y="160" width="434" height="487" key="FileChooserDialogImpl/0.31.2726.737@0.31.2726.737" timestamp="1615210612140" />
+    <state x="329" y="73" width="708" height="661" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1615309598195">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="342" y="177" key="run.anything.popup/0.31.1366.737@0.31.1366.737" timestamp="1614739231454" />
+    <state x="329" y="73" width="708" height="661" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.31.1366.737/1366.0.1360.768@0.31.1366.737" timestamp="1615309598195" />
+    <state x="0" y="31" width="620" height="737" key="find.popup" timestamp="1615151008814">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="0" y="31" width="620" height="737" key="find.popup/0.31.1366.737@0.31.1366.737" timestamp="1615151008814" />
+    <state x="342" y="177" key="run.anything.popup" timestamp="1615399637475">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="342" y="177" key="run.anything.popup/0.31.1366.737/1366.0.1360.768@0.31.1366.737" timestamp="1615399637475" />
+    <state x="342" y="177" key="run.anything.popup/0.31.1366.737@0.31.1366.737" timestamp="1615155526733" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/PlataformController.php</url>
+          <line>3</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

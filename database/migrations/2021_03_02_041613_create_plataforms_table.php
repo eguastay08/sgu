@@ -15,11 +15,12 @@ class CreatePlataformsTable extends Migration
     {
         Schema::create('plataforms', function (Blueprint $table) {
             $table->bigIncrements('cod_plataform')->comment('Código unico interno en la tabla');
-            $table->string('name')->unique()->comment('Nombre de la plataforma');
+            $table->string('name')->comment('Nombre de la plataforma');
             $table->string('image')->comment('Url de la imagen de la plataforma');
-            $table->string('url')->comment('Url de ingreso a la plataforma');
+            $table->string('url')->unique()->comment('Url de ingreso a la plataforma');
             $table->boolean('session_required')->default(true)->comment('Si la plataforma requiere que exista una session');
             $table->text('detail')->nullable()->comment('Detalle y/o comentario de la plataforma');
+            $table->boolean('deleted')->default(false)->comment('En el caso de que se elimine el campo cambiara a true');
             $table->timestamps();
             $table->unsignedBigInteger('cod_category')->comment('Código de la categoria a la que pertenece la plataforma');
             $table->foreign('cod_category')

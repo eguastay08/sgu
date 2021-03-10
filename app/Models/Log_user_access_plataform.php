@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Log_user_access_plataform extends Model
 {
-    //use HasFactory;
+    protected $fillable= [
+        'user_agent',
+        'ip',
+        'cedula',
+        'cod_plataform'
+    ];
+
 }

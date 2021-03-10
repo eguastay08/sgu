@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->string('email_inst')->unique()->comment('Correo electronico institucional del usuario')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            $table->boolean('deleted')->default(false)->comment('En el caso de que se elimine el campo cambiara a true');
             $table->timestamps();
             /*Claves foraneas*/
             $table->string('cedula_father',10)->nullable()->comment('Número de cedula del padre');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Log_user_access_plataform;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LogUserAccessPlataformController extends Controller
@@ -22,9 +23,9 @@ class LogUserAccessPlataformController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public static function create(User $user)
     {
-        //
+        return $user;
     }
 
     /**

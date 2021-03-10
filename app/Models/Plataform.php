@@ -8,12 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Plataform extends Model
 {
     use HasFactory;
-    private $fillable=[
+    protected $primaryKey='cod_plataform';
+
+    protected $fillable=[
         "name",
         "image",
         "url",
         "session_required",
+        "cod_category",
+        "detail",
+        "deleted"
+    ];
+
+    protected $required=[
+        "name",
+        "image",
+        "url",
         "cod_category"
+    ];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted',
+        'cod_category'
     ];
     public function category(){
         return $this->belongsTo("App\Models\Category","cod_category");

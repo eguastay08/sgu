@@ -15,8 +15,9 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('cod_category')->comment('Código interno de la categoria');
-            $table->string('name')->unique()->comment('Nombre de la categoria');
+            $table->string('name')->comment('Nombre de la categoria');
             $table->text('detail')->nullable()->comment('Detalle de la categoria');
+            $table->boolean('delete')->default(false);
             $table->timestamps();
         });
     }
