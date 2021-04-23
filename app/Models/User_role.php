@@ -8,12 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class User_role extends Model
 {
     use HasFactory;
+
+
     protected $fillable=[
         "cod_rol",
-        "cedula"
+        "id"
     ];
+
+    protected $hidden=[
+        "created_at",
+        "updated_at"
+    ];
+
     public function User(){
-        return $this->belongsTo("App\Models\User","cedula");
+        return $this->belongsTo("App\Models\User","id");
     }
     public function Rol(){
         return $this->belongsTo("App\Models\Rol","cod_rol");

@@ -7,11 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Access extends Model
 {
-    #use HasFactory;
-    /*protected $fillable=[
+
+    protected $primaryKey='cod_access';
+    protected $table='access';
+
+    protected $fillable=[
         "name",
         "endpoint",
         "method",
         "detail"
-    ];*/
+    ];
+
+    protected $hidden=[
+        "created_at",
+        "updated_at"
+    ];
 }

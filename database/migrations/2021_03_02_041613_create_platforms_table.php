@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlataformsTable extends Migration
+class CreatePlatformsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreatePlataformsTable extends Migration
      */
     public function up()
     {
-        Schema::create('plataforms', function (Blueprint $table) {
-            $table->bigIncrements('cod_plataform')->comment('Código unico interno en la tabla');
+        Schema::create('platforms', function (Blueprint $table) {
+            $table->bigIncrements('cod_platform')->comment('Código unico interno en la tabla');
             $table->string('name')->comment('Nombre de la plataforma');
             $table->string('image')->comment('Url de la imagen de la plataforma');
             $table->string('url')->unique()->comment('Url de ingreso a la plataforma');
             $table->boolean('session_required')->default(true)->comment('Si la plataforma requiere que exista una session');
             $table->text('detail')->nullable()->comment('Detalle y/o comentario de la plataforma');
+            $table->bigInteger('order')->comment('Orden en el el que se mostraran los datos');
             $table->boolean('deleted')->default(false)->comment('En el caso de que se elimine el campo cambiara a true');
             $table->timestamps();
             $table->unsignedBigInteger('cod_category')->comment('Código de la categoria a la que pertenece la plataforma');

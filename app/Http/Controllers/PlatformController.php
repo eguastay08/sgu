@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Log_user_access_plataform;
+use App\Models\Log_user_access_platform;
+use App\Models\Platform;
 use App\Models\User;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 
-class PlataformController extends Controller
+class PlatformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -123,16 +124,16 @@ class PlataformController extends Controller
     }
 
     public function redirect(Request $request){
+        $id_user= $request->user()->id;
         $url=$request->url;
-        $plataform=Plataform::where('url',$url)->where('deleted',0)->firstOrFail();
-        $user=User::where('cedula','0250366515')->where('deleted',0)->firstOrFail();
+        $plataform=Platform::where('url',$url)->where('deleted',0)->firstOrFail();
         $log=[
             "user_agent"=>$_SERVER['HTTP_USER_AGENT'],
             "ip"=>$_SERVER['REMOTE_ADDR'],
-            "cedula"=>$user->cedula,
-            "cod_plataform"=>$plataform->cod_plataform
+            "id_user"=>$id_user,
+            "cod_platform"=>$plataform->cod_platform
         ];
-        Log_user_access_plataform::create($log);
+        Log_user_access_platform::create($log);
         return redirect($plataform->url);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAccessPlataformsTable extends Migration
+class CreateLogUserAccessPlatformsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateUserAccessPlataformsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_access_plataforms', function (Blueprint $table) {
+        Schema::create('log_user_access_platforms', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('');
             $table->string('user_agent')->comment('User Agent de la petición');
             $table->string('ip')->comment('Direccón ip de la petición');
             $table->timestamps();
-            $table->string('cedula')->comment('Número de cedula del usuario');
-            $table->unsignedBigInteger('cod_plataform')->comment('Código de la plataforma');
-            $table->foreign('cedula')
-                ->references('cedula')
+            $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
+            $table->unsignedBigInteger('cod_platform')->comment('Código de la plataforma');
+            $table->foreign('id_user')
+                ->references('id')
                 ->on('users')->cascadeOnUpdate();
-            $table->foreign('cod_plataform')
-                ->references('cod_plataform')
-                ->on('plataforms')->cascadeOnUpdate();
+            $table->foreign('cod_platform')
+                ->references('cod_platform')
+                ->on('platforms')->cascadeOnUpdate();
         });
     }
 
@@ -36,6 +36,6 @@ class CreateUserAccessPlataformsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_access_plataforms');
+        Schema::dropIfExists('log_user_access_platforms');
     }
 }

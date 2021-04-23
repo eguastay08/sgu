@@ -26,21 +26,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/apiueb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/apiueb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategorieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogRoleAccessPlataformController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogUserAccessPlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogUserAccessPlataformController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlataformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CountryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CountryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogUserAccessPlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogUserAccessPlatformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlatformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserAccessPlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserAccessPlatformController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Log_user_access_plataform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_user_access_plataform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Plataform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Plataform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserFavoritePlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserFavoritePlatformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserPlataformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserPlatformController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Access.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Access.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Log_user_access_plataform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_user_access_platform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Parroquia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Parroquia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Plataform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Platform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role_access.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role_access.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role_plataform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role_platform.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User2.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User_live_parroquia.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User_live_parroquia.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User_role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User_role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041408_create_access_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041408_create_access_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041613_create_plataforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041613_create_plataforms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041613_create_plataforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041613_create_platforms_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041753_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041753_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041755_create_user_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041755_create_user_roles_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041815_create_role_access_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041815_create_role_access_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041859_create_user_favorite_plataforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041859_create_user_favorite_platforms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041916_create_user_access_plataforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041916_create_user_access_platforms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_042139_create_user_live_parroquias_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_042139_create_user_live_parroquias_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_044612_create_role_plataforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_044612_create_role_platforms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_051524_create_log_user_access_plataforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_051524_create_log_user_access_platforms_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,6 +188,21 @@
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/nyholm/psr7" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/laraveles/spanish" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pBT3u0k6yIii76xoXXUrnUOaAt" />
@@ -172,17 +213,29 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mariadb&#10;postgresql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Database Script.console_1.sql">
+    <configuration name="console_1.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$APPLICATION_CONFIG_DIR$/consoles/db/4bbdb658-e42c-4c64-8c9a-56f90d0c4e99/console_1.sql" />
+      <script-mode>FILE</script-mode>
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Database Script.console_1.sql" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -204,7 +257,35 @@
       <workItem from="1615298831469" duration="2095000" />
       <workItem from="1615302578849" duration="7022000" />
       <workItem from="1615315536287" duration="697000" />
-      <workItem from="1615384319770" duration="11827000" />
+      <workItem from="1615384319770" duration="12885000" />
+      <workItem from="1616516078086" duration="2200000" />
+      <workItem from="1616594657858" duration="10557000" />
+      <workItem from="1616690934172" duration="2844000" />
+      <workItem from="1616721501136" duration="600000" />
+      <workItem from="1616991344010" duration="609000" />
+      <workItem from="1617000744613" duration="6323000" />
+      <workItem from="1617026619040" duration="8286000" />
+      <workItem from="1617072017116" duration="4521000" />
+      <workItem from="1617115194550" duration="3680000" />
+      <workItem from="1617198444952" duration="8851000" />
+      <workItem from="1617479416946" duration="2413000" />
+      <workItem from="1617503319357" duration="3673000" />
+      <workItem from="1617592931698" duration="5486000" />
+      <workItem from="1617632358205" duration="791000" />
+      <workItem from="1617759578692" duration="11833000" />
+      <workItem from="1617829203535" duration="3708000" />
+      <workItem from="1617902916612" duration="1040000" />
+      <workItem from="1617904945054" duration="3404000" />
+      <workItem from="1618277221857" duration="13439000" />
+      <workItem from="1618354493111" duration="3718000" />
+      <workItem from="1618432415737" duration="6941000" />
+      <workItem from="1618454141341" duration="656000" />
+      <workItem from="1618607886779" duration="2643000" />
+      <workItem from="1618821565910" duration="37000" />
+      <workItem from="1618821690719" duration="10000" />
+      <workItem from="1618821794829" duration="82000" />
+      <workItem from="1619067954283" duration="3571000" />
+      <workItem from="1619132508131" duration="1696000" />
     </task>
     <servers />
   </component>
@@ -236,39 +317,84 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1614820821391">
+    <state x="312" y="83" width="742" height="640" key="#Inspections" timestamp="1618293048640">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1366.737@0.31.1366.737" timestamp="1614820821391" />
-    <state x="830" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615213997940">
-      <screen x="0" y="31" width="2726" height="737" />
+    <state x="312" y="83" width="742" height="640" key="#Inspections/0.31.1366.737@0.31.1366.737" timestamp="1618293048640" />
+    <state x="278" y="63" width="810" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618354914486">
+      <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1615183518105" />
+    <state x="278" y="63" width="810" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.1366.737@0.31.1366.737" timestamp="1618354914486" />
+    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1618287079458">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1366.737@0.31.1366.737" timestamp="1618287079458" />
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617481576705">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1617481576705" />
     <state x="830" y="160" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.2726.737@0.31.2726.737" timestamp="1615213997940" />
     <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl" timestamp="1615315640044">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl/0.31.1366.737@0.31.1366.737" timestamp="1615315640044" />
     <state x="466" y="160" width="434" height="487" key="FileChooserDialogImpl/0.31.2726.737@0.31.2726.737" timestamp="1615210612140" />
-    <state x="329" y="73" width="708" height="661" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1615309598195">
+    <state width="0" height="0" key="GridCell.Tab.0.bottom" timestamp="1618821572454">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state width="0" height="0" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1618821572454" />
+    <state width="0" height="0" key="GridCell.Tab.0.center" timestamp="1618821572453">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state width="0" height="0" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1618821572453" />
+    <state width="0" height="0" key="GridCell.Tab.0.left" timestamp="1618821572451">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state width="0" height="0" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1618821572451" />
+    <state width="0" height="0" key="GridCell.Tab.0.right" timestamp="1618821572453">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state width="0" height="0" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1618821572453" />
+    <state width="257" height="520" key="HiddenNamespacesPopup" timestamp="1618354942338">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state width="257" height="520" key="HiddenNamespacesPopup/0.31.1366.737@0.31.1366.737" timestamp="1618354942338" />
+    <state x="474" y="118" width="417" height="571" key="NewPhpClassDialog" timestamp="1617004328872">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="474" y="118" width="417" height="571" key="NewPhpClassDialog/0.31.1366.737@0.31.1366.737" timestamp="1617004328872" />
+    <state x="172" y="35" width="1022" height="733" key="SettingsEditor" timestamp="1618609458732">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="172" y="35" width="1022" height="733" key="SettingsEditor/0.31.1366.737@0.31.1366.737" timestamp="1618609458732" />
+    <state x="329" y="44" width="548" height="724" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1618609708572">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="329" y="73" width="708" height="661" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.31.1366.737/1366.0.1360.768@0.31.1366.737" timestamp="1615309598195" />
+    <state x="329" y="44" width="548" height="724" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.31.1366.737@0.31.1366.737" timestamp="1618609708572" />
     <state x="0" y="31" width="620" height="737" key="find.popup" timestamp="1615151008814">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="0" y="31" width="620" height="737" key="find.popup/0.31.1366.737@0.31.1366.737" timestamp="1615151008814" />
-    <state x="342" y="177" key="run.anything.popup" timestamp="1615399637475">
+    <state x="342" y="177" key="run.anything.popup" timestamp="1618293276414">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="342" y="177" key="run.anything.popup/0.31.1366.737/1366.0.1360.768@0.31.1366.737" timestamp="1615399637475" />
-    <state x="342" y="177" key="run.anything.popup/0.31.1366.737@0.31.1366.737" timestamp="1615155526733" />
+    <state x="342" y="177" key="run.anything.popup/0.31.1366.737@0.31.1366.737" timestamp="1618293276414" />
+    <state x="478" y="265" width="410" height="280" key="scopes" timestamp="1617116399329">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="478" y="265" width="410" height="280" key="scopes/0.31.1366.737@0.31.1366.737" timestamp="1617116399329" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1618608899629">
+      <screen x="0" y="31" width="1366" height="737" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1366.737@0.31.1366.737" timestamp="1618608899629" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/PlataformController.php</url>
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/PlatformController.php</url>
           <line>3</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Log_user_access_plataform;
-use App\Models\User;
+use App\Models\User_favorite_plataform;
 use Illuminate\Http\Request;
 
-class LogUserAccessPlataformController extends Controller
+class UserFavoritePlatformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +22,9 @@ class LogUserAccessPlataformController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public static function create(User $user)
+    public function create()
     {
-        return $user;
+        //
     }
 
     /**
@@ -42,10 +41,10 @@ class LogUserAccessPlataformController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Log_user_access_plataform  $log_user_access_plataform
+     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
      * @return \Illuminate\Http\Response
      */
-    public function show(Log_user_access_plataform $log_user_access_plataform)
+    public function show(User_favorite_plataform $user_favorite_plataform)
     {
         //
     }
@@ -53,10 +52,10 @@ class LogUserAccessPlataformController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Log_user_access_plataform  $log_user_access_plataform
+     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
      * @return \Illuminate\Http\Response
      */
-    public function edit(Log_user_access_plataform $log_user_access_plataform)
+    public function edit(User_favorite_plataform $user_favorite_plataform)
     {
         //
     }
@@ -65,10 +64,10 @@ class LogUserAccessPlataformController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Log_user_access_plataform  $log_user_access_plataform
+     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Log_user_access_plataform $log_user_access_plataform)
+    public function update(Request $request, User_favorite_plataform $user_favorite_plataform)
     {
         //
     }
@@ -76,10 +75,10 @@ class LogUserAccessPlataformController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Log_user_access_plataform  $log_user_access_plataform
+     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Log_user_access_plataform $log_user_access_plataform)
+    public function destroy(User_favorite_plataform $user_favorite_plataform)
     {
         //
     }

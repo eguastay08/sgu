@@ -17,6 +17,7 @@ class CreateRoleAccessTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('cod_rol')->comment('Código del rol');
             $table->unsignedBigInteger('cod_access')->comment('Código del acceso');
+            $table->boolean('active')->default(false)->comment('Verifica si se encuentra activo el permiso');
             $table->primary(['cod_rol','cod_access']);
             $table->foreign('cod_rol')
                 ->references('cod_rol')

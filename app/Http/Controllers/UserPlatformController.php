@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User_plataform;
 use Illuminate\Http\Request;
 
-class UserPlataformController extends Controller
+class UserPlatformController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Parroquia extends Model
 {
     use HasFactory;
+
+    protected $primaryKey='cod_parroquia';
+
     protected $fillable=[
         "name",
         "type",

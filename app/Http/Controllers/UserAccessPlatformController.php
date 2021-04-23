@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User_favorite_plataform;
+use App\Models\User_access_plataform;
 use Illuminate\Http\Request;
 
-class UserFavoritePlataformController extends Controller
+class UserAccessPlatformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class UserFavoritePlataformController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
+     * @param  \App\Models\User_access_plataform  $user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function show(User_favorite_plataform $user_favorite_plataform)
+    public function show(User_access_plataform $user_access_plataform)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserFavoritePlataformController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
+     * @param  \App\Models\User_access_plataform  $user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function edit(User_favorite_plataform $user_favorite_plataform)
+    public function edit(User_access_plataform $user_access_plataform)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserFavoritePlataformController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
+     * @param  \App\Models\User_access_plataform  $user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User_favorite_plataform $user_favorite_plataform)
+    public function update(Request $request, User_access_plataform $user_access_plataform)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserFavoritePlataformController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User_favorite_plataform  $user_favorite_plataform
+     * @param  \App\Models\User_access_plataform  $user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User_favorite_plataform $user_favorite_plataform)
+    public function destroy(User_access_plataform $user_access_plataform)
     {
         //
     }

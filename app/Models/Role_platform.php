@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class role_plataform extends Model
+class Role_platform extends Model
 {
     use HasFactory;
     private $fillable=[

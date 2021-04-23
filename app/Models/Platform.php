@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Plataform extends Model
+class Platform extends Model
 {
     use HasFactory;
-    protected $primaryKey='cod_plataform';
+    protected $primaryKey='cod_platform';
 
     protected $fillable=[
         "name",

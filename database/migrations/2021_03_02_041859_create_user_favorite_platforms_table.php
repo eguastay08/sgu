@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserFavoritePlataformsTable extends Migration
+class CreateUserFavoritePlatformsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateUserFavoritePlataformsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_favorite_plataforms', function (Blueprint $table) {
+        Schema::create('user_favorite_platforms', function (Blueprint $table) {
             $table->unsignedInteger('orden')->comment('Orden de las plataformas favoritas del usuario');
             $table->timestamps();
-            $table->string('cedula','10')->comment('Número de cedula del usuario');
-            $table->unsignedBigInteger('cod_plataform')->comment('Código de la plataforma');
-            $table->primary(['cedula','cod_plataform']);
-            $table->foreign('cedula')
-                ->references('cedula')
+            $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
+            $table->unsignedBigInteger('cod_platform')->comment('Código de la plataforma');
+            $table->primary(['id_user','cod_platform']);
+            $table->foreign('id_user')
+                ->references('id')
                 ->on('users')->cascadeOnUpdate();
 
-            $table->foreign('cod_plataform')
-                ->references('cod_plataform')
-                ->on('plataforms')->cascadeOnUpdate();
+            $table->foreign('cod_platform')
+                ->references('cod_platform')
+                ->on('platforms')->cascadeOnUpdate();
         });
     }
 

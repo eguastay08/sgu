@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User_access_plataform;
+use App\Models\Log_user_access_platform;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserAccessPlataformController extends Controller
+class LogUserAccessPlatformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +23,9 @@ class UserAccessPlataformController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public static function create(User $user)
     {
-        //
+        return $user;
     }
 
     /**
@@ -41,10 +42,10 @@ class UserAccessPlataformController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User_access_plataform  $user_access_plataform
+     * @param  \App\Models\Log_user_access_platform  $log_user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function show(User_access_plataform $user_access_plataform)
+    public function show(Log_user_access_platform $log_user_access_plataform)
     {
         //
     }
@@ -52,10 +53,10 @@ class UserAccessPlataformController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User_access_plataform  $user_access_plataform
+     * @param  \App\Models\Log_user_access_platform  $log_user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function edit(User_access_plataform $user_access_plataform)
+    public function edit(Log_user_access_platform $log_user_access_plataform)
     {
         //
     }
@@ -64,10 +65,10 @@ class UserAccessPlataformController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User_access_plataform  $user_access_plataform
+     * @param  \App\Models\Log_user_access_platform  $log_user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User_access_plataform $user_access_plataform)
+    public function update(Request $request, Log_user_access_platform $log_user_access_plataform)
     {
         //
     }
@@ -75,10 +76,10 @@ class UserAccessPlataformController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User_access_plataform  $user_access_plataform
+     * @param  \App\Models\Log_user_access_platform  $log_user_access_plataform
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User_access_plataform $user_access_plataform)
+    public function destroy(Log_user_access_platform $log_user_access_plataform)
     {
         //
     }

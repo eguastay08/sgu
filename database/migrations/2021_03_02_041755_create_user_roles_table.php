@@ -16,10 +16,10 @@ class CreateUserRolesTable extends Migration
         Schema::create('user_roles', function (Blueprint $table) {
             $table->timestamps();
             $table->unsignedBigInteger('cod_rol')->comment('Código del rol');
-            $table->string('cedula')->comment('Número de cedula del usuario');
-            $table->primary(['cedula','cod_rol']);
-            $table->foreign('cedula')
-                ->references('cedula')
+            $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
+            $table->primary(['id_user','cod_rol']);
+            $table->foreign('id_user')
+                ->references('id')
                 ->on('users')->cascadeOnUpdate();
             $table->foreign('cod_rol')
                 ->references('cod_rol')

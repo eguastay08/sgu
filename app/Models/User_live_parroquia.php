@@ -18,6 +18,11 @@ class User_live_parroquia extends Model
         "cedula",
         "cod_parroquia"
     ];
+
+    protected $hidden=[
+        "start_date",
+        "end_date",
+    ];
     public function User(){
         return $this->belongsTo("App\Models\User","cedula");
     }

@@ -21,12 +21,12 @@ class CreateUserLiveParroquiasTable extends Migration
             $table->string('secondary_street')->nullable()->comment('Calle secundaria, puede ir nulo');
             $table->string('house_number')->nullable()->comment('Número de casa');
             $table->timestamps();
-            $table->string('cedula',10)->comment('Número de cedula del usuario');
+            $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
             $table->unsignedBigInteger('cod_parroquia')->comment('codigo de la parroquia');
 
-            $table->primary(['cedula','cod_parroquia','start_date']);
-            $table->foreign('cedula')
-                ->references('cedula')
+            $table->primary(['id_user','cod_parroquia','start_date']);
+            $table->foreign('id_user')
+                ->references('id')
                 ->on('users')->cascadeOnUpdate();
 
             $table->foreign('cod_parroquia')

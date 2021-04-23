@@ -6,6 +6,69 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
+    /*
+     INSERT INTO `user_live_parroquias` (`start_date`, `end_date`, `references_place`, `main_street`, `secondary_street`, `house_number`, `created_at`, `updated_at`, `id_user`, `cod_parroquia`) VALUES ('2021-04-06', NULL, 's/r', 'SOFIA PESANTEZ', 'CAMINO REAL', 's/n', NULL, NULL, '1', '20150');
+    INSERT INTO `categories` (`cod_category`, `name`, `detail`, `order`, `delete`, `created_at`, `updated_at`) VALUES
+(1, 'Entornos Virtuales de Enseñanza y Aprendizaje', NULL, 1, 0, NULL, NULL),
+(2, 'Sistema Académico en Red', NULL, 2, 0, NULL, NULL),
+(3, 'Bibliotecas Virtuales', NULL, 3, 0, NULL, NULL),
+(4, 'Servicios Institucionales', NULL, 4, 0, NULL, NULL),
+(5, 'Bibliotecas Virtuales Libres', NULL, 5, 0, NULL, NULL),
+(6, 'Repositorios', NULL, 6, 0, NULL, NULL);
+
+    INSERT INTO `platforms` (`cod_platform`, `name`, `image`, `url`, `session_required`, `detail`, `order`, `deleted`, `created_at`, `updated_at`, `cod_category`) VALUES
+(1, 'EVEA | Pregrado 2020-2021', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_P.png', 'https://elearning.ueb.edu.ec/', 1, NULL, 1, 0, NULL, NULL, 1),
+(2, 'EVEA | Nivelación 2020-2021', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_N.png', 'https://nivelacion.ueb.edu.ec/', 1, NULL, 2, 0, NULL, NULL, 1),
+(3, 'EVEA | Posgrado 2020-2021', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_G.png', 'https://postgrado.ueb.edu.ec/', 1, NULL, 3, 0, NULL, NULL, 1),
+(4, 'Examen Complexivo de Fin de Carrera', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_C.png', 'https://examencomplexivo.ueb.edu.ec/', 1, NULL, 4, 0, NULL, NULL, 1),
+(5, 'Sistema de Matriculación Estudiantil', 'https://www.ueb.edu.ec/images/logo_externos/sme1.png', 'https://www.sianet.ueb.edu.ec/sme/', 1, NULL, 1, 0, NULL, NULL, 2),
+(6, 'Control de Asistencia Estudiantil y Docente', 'https://www.ueb.edu.ec/images/logo_externos/CAED1.png', 'https://www.sianet.ueb.edu.ec/aade', 1, NULL, 2, 0, NULL, NULL, 2),
+(7, 'Prácticas Pre-Profesionales', 'https://www.ueb.edu.ec/images/logo_externos/ppp1.png', 'https://www.sianet.ueb.edu.ec/sme/principal.php', 1, NULL, 3, 0, NULL, NULL, 2),
+(8, 'Sistemas de Distributivo Académico', 'https://www.ueb.edu.ec/images/logo_externos/sdd11.png', 'https://www.sianet.ueb.edu.ec/sdd', 1, NULL, 4, 0, NULL, NULL, 2),
+(9, 'Email UEB', 'https://www.ueb.edu.ec/images/logo_externos/correo.png', 'https://mail.google.com/a/ueb.edu.ec', 0, NULL, 1, 0, NULL, NULL, 4),
+(10, 'Email Estudiantes', 'https://www.ueb.edu.ec/images/logo_externos/correo2.png', 'https://mail.google.com/a/mailes.ueb.edu.ec', 0, NULL, 2, 0, NULL, NULL, 4),
+(11, 'Catálogo de Libros', 'https://www.ueb.edu.ec/images/logo_externos/logolibro.png', 'http://biblioteca.ueb.edu.ec/', 0, NULL, 3, 0, NULL, NULL, 4),
+(12, 'Repositorio Digital', 'https://www.ueb.edu.ec/images/logo_externos/Repositorio.png', 'https://rdigital.ueb.edu.ec/', 0, NULL, 4, 0, NULL, NULL, 4),
+(13, 'Repositorio Tesis', 'https://www.ueb.edu.ec/images/logo_externos/tesis.jpeg', 'http://dspace.ueb.edu.ec/', 0, NULL, 5, 0, NULL, NULL, 4),
+(14, 'Evaluación Docente', 'https://www.ueb.edu.ec/images/logo_externos/EvaluacionD.png', 'https://evdocente.ueb.edu.ec/', 0, NULL, 6, 0, NULL, NULL, 4),
+(15, 'Pearson - UEB', 'https://www.ueb.edu.ec/images/logo_externos/pearson_UEB.png', 'https://www.biblionline.pearson.com/AuthURLEzProxyNew.aspx?i=LdA3JLbHf00OGRP%2bqWjeSA%3d%3d', 1, NULL, 1, 0, NULL, NULL, 3),
+(16, 'eLibro', 'https://www.ueb.edu.ec/images/logo_externos/elibro.png', 'https://elibro.net/es/lc/bibliotecaueb/inicio', 1, NULL, 2, 0, NULL, NULL, 3),
+(17, 'Documentaved', 'https://www.ueb.edu.ec/images/logo_externos/documenta.png', 'https://www.documentavet.com/', 1, NULL, 3, 0, NULL, NULL, 3),
+(18, 'Ebooks7-24', 'https://www.ueb.edu.ec/images/logo_externos/ebooks.png', 'https://www.ebooks7-24.com/?ed=256', 1, NULL, 4, 0, NULL, NULL, 3),
+(19, 'Pearson', 'https://www.ueb.edu.ec/images/logo_externos/pearson.png', 'https://www.ebooks7-24.com/?ed=273', 1, NULL, 5, 0, NULL, NULL, 3),
+(20, 'Lexis Finder', 'https://www.ueb.edu.ec/images/logo_externos/lexis.png', 'https://lexis.ueb.edu.ec/', 1, NULL, 6, 0, NULL, NULL, 3),
+(21, 'OvidEspañol', 'https://www.ueb.edu.ec/images/logo_externos/ovit.png', 'https://access.ovid.com/custom/unesbo/', 1, NULL, 7, 0, NULL, NULL, 3),
+(22, 'Global Knowledge', 'https://www.ueb.edu.ec/images/logo_externos/global.png', 'https://gkacademics.com/es/revistas/', 1, NULL, 8, 0, NULL, NULL, 3),
+(23, 'Dialnet', 'https://www.ueb.edu.ec/images/logo_externos/dialnet.png', 'https://dialnet.unirioja.es/', 1, NULL, 9, 0, NULL, NULL, 3),
+(24, 'ALFAOMEGA', 'https://www.ueb.edu.ec/images/logo_externos/alfaomega.png', 'https://demourl.bibliotecasdigitales.com/home?category=3', 1, NULL, 10, 0, NULL, NULL, 3),
+(38, 'Association for Computing Machinery', 'https://www.ueb.edu.ec/images/logo_externos/afcm.png', 'https://www.acm.org/', 1, NULL, 1, 0, NULL, NULL, 5),
+(39, 'Academic Resource ResearchBib', 'https://www.ueb.edu.ec/images/logo_externos/ari.png', 'http://paper.researchbib.com/', 1, NULL, 2, 0, NULL, NULL, 5),
+(40, 'Directory of Open Access Journals', 'https://www.ueb.edu.ec/images/logo_externos/doaj.png', 'https://doaj.org/', 1, NULL, 3, 0, NULL, NULL, 5),
+(41, 'Open Libra', 'https://www.ueb.edu.ec/images/logo_externos/openlibra.png', 'https://openlibra.com/', 1, NULL, 4, 0, NULL, NULL, 5),
+(42, 'Aprendiendo EC', 'https://www.ueb.edu.ec/images/logo_externos/aprendiendo.png', 'https://aprendiendo.ec/', 1, NULL, 5, 0, NULL, NULL, 5),
+(43, 'Gale', 'https://www.ueb.edu.ec/images/logo_externos/logogale.png', 'https://sac.ueb.edu.ec/latinoamerica.cengage.com', 1, NULL, 6, 0, NULL, NULL, 5),
+(44, 'scielo', 'https://www.ueb.edu.ec/images/logo_externos/scielo.png', 'https://scielo.org/', 1, NULL, 7, 0, NULL, NULL, 5),
+(45, 'Medlineplus', 'https://www.ueb.edu.ec/images/logo_externos/medline.png', 'https://medlineplus.gov/spanish/', 1, NULL, 8, 0, NULL, NULL, 5),
+(46, 'Oxford Journal', 'https://www.ueb.edu.ec/images/logo_externos/oxford.png', 'https://academic.oup.com/journals/', 1, NULL, 9, 0, NULL, NULL, 5),
+(47, 'Springer Open', 'https://www.ueb.edu.ec/images/logo_externos/springer.png', 'https://www.springeropen.com/', 1, NULL, 10, 0, NULL, NULL, 5),
+(48, 'EVEA | Extraordinario 2020-2020', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_E.png', 'https://extraordinario.ueb.edu.ec/', 1, NULL, 1, 0, NULL, NULL, 6),
+(49, 'EVEA | Pregrado 2020-2020', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_P.png', 'https://evea2020.ueb.edu.ec/', 1, NULL, 2, 0, NULL, NULL, 6),
+(50, 'EVEA | Nivelación 2020-2020', 'https://nivelacion2020.ueb.edu.ec/', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_N.png', 1, NULL, 3, 0, NULL, NULL, 6);
+
+INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `created_at`, `updated_at`) VALUES (NULL, 'Administrador', NULL, NULL, NULL);
+
+INSERT INTO `item_menu` (`cod_item_menu`, `name`, `uri`, `icon`) VALUES (NULL, 'Ver Mi Perfil', '/profile', 'user');
+
+INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ver Perfil', '/users/userinfo', 'GET', NULL, '1', NULL, NULL);
+INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`) VALUES (NULL, NULL, '1', '1');
+
+INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Datos del Perfil', '/users/userinfo', 'PUT', NULL, '1', NULL, NULL);
+INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '2', '1');
+
+INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALUES (NULL, NULL, '1', '1');
+
+
+    */
     /**
      * Seed the application's database.
      *
@@ -13,7 +76,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User2::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
        /* DB::table('users')->insert([
             'name' => Str::random(10),
@@ -9255,6 +9318,54 @@ class DatabaseSeeder extends Seeder
             'cod_parroquia'=>'900451',
             'name'=>'EL PIEDRERO',
             'cod_canton'=>'9004'
+        ]);
+
+        /**DATOS DEL MENU DE NAVEGACIÓN**/
+
+        DB::table('menu')->insert([
+            'name'=>'Mi Perfil',
+            'order'=>1,
+            'icon'=>'user'
+        ]);
+
+        DB::table('menu')->insert([
+            'name'=>'Sistemas Virtuales',
+            'order'=>2,
+            'icon'=>'home'
+        ]);
+
+        DB::table('menu')->insert([
+            'name'=>'Administración',
+            'order'=>3,
+            'icon'=>'home'
+        ]);
+
+        DB::table('menu')->insert([
+            'name'=>'Reportes',
+            'order'=>4,
+            'icon'=>'home'
+        ]);
+
+        DB::table('users')->insert([
+            'cedula'=>'0250366515',
+            'f_name'=>'Mesias',
+            's_name'=>'Eduardo',
+            'f_surname'=>'Bonilla',
+            's_surname'=>'Guastay',
+            'gender'=>'masculino',
+            'mobile'=>'0980150689',
+            'phone'=>'022777658',
+            'photography'=>'https://secure.gravatar.com/avatar/6a3b84bfed31d33e1cc33eccee585451?s=35&d=mm',
+            'date_of_birth'=>'1999-04-08',
+            'ethnicity'=>'Mestizo/a',
+            'civil_status'=>'Soltero/a',
+            'type_auth'=>'manual',
+            'password'=>password_hash('12345',PASSWORD_DEFAULT),
+            'email'=>'eduardoguastay1999@gmail.com',
+            'email_inst'=>'eguastay@ueb.edu.ec',
+            'email_verified_at'=>'2021-03-29 07:03:20',
+            'created_at'=>'2021-03-29 07:03:20',
+            'updated_at'=>'2021-03-29 07:03:20'
         ]);
     }
 }
