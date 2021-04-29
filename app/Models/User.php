@@ -39,6 +39,10 @@ class User extends Authenticatable
         'cedula_mother',
         'cedula_emergency_contact',
         'cod_parroquia',
+        'confirmation_code',
+        'remember_token',
+        'remember_toke_valid_time'
+
     ];
 
     protected $required=[
@@ -70,15 +74,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'remember_toke_valid_time',
         'deleted',
-        'email_verified_at',
         'created_at',
         'updated_at',
         'id_father',
         'id_mother',
         'id_emergency_contact',
         'cod_parroquia',
-        'id'
+        'id',
+        'confirmation_code'
     ];
 
     /**

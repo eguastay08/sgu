@@ -34,8 +34,10 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable()->comment('Password del usuario, en el caso de requerir ingreso manual');
             $table->string('email')->unique()->comment('Correo electronico personal del usuario')->nullable();
             $table->string('email_inst')->unique()->comment('Correo electronico institucional del usuario')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable()->comment('Fecha de verificacion email');
+            $table->string('confirmation_code')->nullable()->comment('Codigo de confirmacion de email');
             $table->rememberToken();
+            $table->timestamp('remember_toke_valid_time')->nullable()->comment('Tiempo de validez del token para resetear password');
             $table->boolean('deleted')->default(false)->comment('En el caso de que se elimine el campo cambiara a true');
             $table->boolean('update_password')->default(true)->comment("Si el usuario esta obligado a actualizar el password");
             $table->timestamps();

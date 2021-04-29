@@ -9,13 +9,16 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $id='id_file';
+    protected $primaryKey='id_file';
     protected $fillable=[
         'path',
         'name',
         'extension',
         'type',
-        'cod_plataform',
-        'cedula'
+        'id_user'
+    ];
+    protected $hidden=[
+        'created_at',
+        'updated_at'
     ];
 }

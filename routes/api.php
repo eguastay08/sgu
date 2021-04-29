@@ -14,21 +14,31 @@ Route::prefix('v1')->group(function () {
     //Rutas Libres
     Route::get('/countries', [CountryController::class, 'index']);
     Route::get('/countries/{country}', [CountryController::class, 'search']);
-
+    Route::get('/demo', [UserController::class, 'generateVerifyEmail']);
     //rutas con el prefijo /auth
     Route::group(['prefix' => 'auth'], function () {
         Route::post('/login', [AuthController::class, 'login']);
-
         //Rutas que requieren estar autenticado
         Route::middleware('auth:api')->group(function () {
             Route::get('userloggedin', [UserController::class, 'userLoggedIn']);
+            Route::get('/logout', [AuthController::class, 'logout']);
         });
     });
+    //Rutas con el prefijo password
+    Route::group(['prefix' => 'password'], function () {
+        Route::post('/recoverpassword', [UserController::class, 'recoverPassword']);
+        Route::post('/reset/{token}', [UserController::class, 'restPassword']);
+    });
 
+
+    Route::get('/image/{img}',[FileController::class,'viewImage']);
     //rutas que requieren estar autenticado
     Route::middleware('auth:api')->group(function () {
         Route::get('/users/userinfo',[UserController::class,'userInfo']);
+        Route::post('/users/avatar',[UserController::class,'uploadAvatar']);
         Route::put('/users/userinfo',[UserController::class,'userInfoUpdate']);
+        Route::post('/users/verifyemail',[UserController::class,'sendVerifyEmail']);
+        Route::post('/users/confirmemail',[UserController::class,'ConfirmEmail']);
         Route::get('/platforms/redirect', [PlatformController::class, 'redirect']);
     });
 
@@ -37,7 +47,6 @@ Route::prefix('v1')->group(function () {
 /*
 Route::middleware('auth:api')->group(function () {
     Route::group(['prefix' => 'auth'], function () {
-        Route::get('/logout', [AuthController::class, 'logout']);
         Route::get('refresh-token', [AuthController::class,'refresh']);
     });
 

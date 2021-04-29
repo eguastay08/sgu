@@ -65,9 +65,11 @@ INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`) 
 INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Datos del Perfil', '/users/userinfo', 'PUT', NULL, '1', NULL, NULL);
 INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '2', '1');
 
+INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Foto del Perfil', '/users/avatar', 'POST', NULL, '1', NULL, NULL);
+INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '3', '1');
+
+
 INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALUES (NULL, NULL, '1', '1');
-
-
     */
     /**
      * Seed the application's database.

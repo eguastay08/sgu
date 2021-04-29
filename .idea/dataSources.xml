@@ -13,5 +13,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://sianet.ueb.edu.ec:5432/sianet</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="local" uuid="b29f2fd7-bbd5-4a0a-be8d-45d4e5e3ceb1">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/sianet</jdbc-url>
+    </data-source>
   </component>
 </project>

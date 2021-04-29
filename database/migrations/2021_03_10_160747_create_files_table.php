@@ -18,10 +18,12 @@ class CreateFilesTable extends Migration
             $table->string('path')->comment('Ruta local donde se encuentra el archivo');
             $table->string('name',100)->comment("nombre del archivo");
             $table->string('extension',5)->comment('Extension del archivo');
-            $table->enum('type',['avatar_user','avatar_plataform']);
-            $table->bigInteger('cod_plataform')->nullable()->comment('Id de la plataforma a la que pertenese el archivo');
-            $table->bigInteger('cedula')->comment('Cedula del usuario que subio el archivo a la plataforma');
+            $table->string('type');
+            $table->unsignedBigInteger('id_user')->comment('Id del usuario que subio el archivo al sistema');
             $table->timestamps();
+            $table->foreign('id_user')
+                ->references('id')
+                ->on('users')->cascadeOnUpdate();
         });
     }
 
