@@ -13,12 +13,12 @@ class ItemMenu extends Migration
      */
     public function up()
     {
-        Schema::create('item_menu', function (Blueprint $table) {
+        /*Schema::create('item_menu', function (Blueprint $table) {
             $table->bigIncrements('cod_item_menu')->comment('Código interno del item menu');
             $table->string('name')->comment('Nombre del item menu');
             $table->string('uri')->comment('uri del enlace en el fronent');
             $table->string('icon')->comment('Icono del menu de font awesome. Ejem: home');
-        });
+        });*/
     }
 
     /**

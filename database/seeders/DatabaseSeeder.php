@@ -57,7 +57,6 @@ class DatabaseSeeder extends Seeder
 
 INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `created_at`, `updated_at`) VALUES (NULL, 'Administrador', NULL, NULL, NULL);
 
-INSERT INTO `item_menu` (`cod_item_menu`, `name`, `uri`, `icon`) VALUES (NULL, 'Ver Mi Perfil', '/profile', 'user');
 
 INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ver Perfil', '/users/userinfo', 'GET', NULL, '1', NULL, NULL);
 INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`) VALUES (NULL, NULL, '1', '1');
@@ -9327,7 +9326,8 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
         DB::table('menu')->insert([
             'name'=>'Mi Perfil',
             'order'=>1,
-            'icon'=>'user'
+            'icon'=>'user',
+            'path'=>'/profile'
         ]);
 
         DB::table('menu')->insert([
@@ -9357,7 +9357,7 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
             'gender'=>'masculino',
             'mobile'=>'0980150689',
             'phone'=>'022777658',
-            'photography'=>'https://secure.gravatar.com/avatar/6a3b84bfed31d33e1cc33eccee585451?s=35&d=mm',
+            'photography'=>'',
             'date_of_birth'=>'1999-04-08',
             'ethnicity'=>'Mestizo/a',
             'civil_status'=>'Soltero/a',

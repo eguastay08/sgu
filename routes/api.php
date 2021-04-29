@@ -9,6 +9,7 @@ use \App\Http\Controllers\PlatformController;
 use \App\Http\Controllers\FileController;
 use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\MenuController;
 
 Route::prefix('v1')->group(function () {
     //Rutas Libres
@@ -38,7 +39,9 @@ Route::prefix('v1')->group(function () {
         Route::post('/users/avatar',[UserController::class,'uploadAvatar']);
         Route::put('/users/userinfo',[UserController::class,'userInfoUpdate']);
         Route::post('/users/verifyemail',[UserController::class,'sendVerifyEmail']);
-        Route::post('/users/confirmemail',[UserController::class,'ConfirmEmail']);
+        Route::post('/users/confirmemail',[UserController::class,'confirmEmail']);
+        Route::get('/users/navigation',[MenuController::class,'getNavigation']);
+
         Route::get('/platforms/redirect', [PlatformController::class, 'redirect']);
     });
 

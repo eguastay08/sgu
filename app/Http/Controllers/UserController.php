@@ -202,7 +202,7 @@ class UserController extends Controller
         return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $errors);
     }
 
-    public function ConfirmEmail(Request $request){
+    public function confirmEmail(Request $request){
         $user=$request->user();
          $code=Crypt::decryptString($request->token);
         if($user->email_verified_at==null&&$request->confirm_email==1){

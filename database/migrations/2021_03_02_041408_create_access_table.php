@@ -19,11 +19,11 @@ class CreateAccessTable extends Migration
             $table->string('endpoint')->comment('endpoint del api al que accedera');
             $table->enum('method',['GET','POST','PUT','DELETE','OPTIONS'])->comment('Acción que podra realizar en el endpoint');
             $table->text('detail')->nullable();
-            $table->unsignedBigInteger('cod_item_menu')->comment('Llave foranea que apunta al uri del fronent');
+            $table->unsignedBigInteger('cod_menu')->comment('Llave foranea que apunta al uri del fronent');
             $table->timestamps();
-            $table->foreign('cod_item_menu')
-                ->references('cod_item_menu')
-                ->on('item_menu')->cascadeOnUpdate();
+            $table->foreign('cod_menu')
+                ->references('cod_menu')
+                ->on('menu')->cascadeOnUpdate();
         });
     }
 
