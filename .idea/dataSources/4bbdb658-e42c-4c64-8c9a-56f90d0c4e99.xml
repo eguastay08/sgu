@@ -1319,1329 +1319,1345 @@
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <key id="404" parent="353" name="PRIMARY">
+    <column id="404" parent="353" name="cod_menu">
+      <Position>8</Position>
+      <Comment>Menu al que pertenece estas categorias</Comment>
+      <DataType>bigint(20) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="405" parent="353" name="categories_cod_menu_foreign">
+      <ColNames>cod_menu</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="406" parent="353" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_category</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="405" parent="354" name="cod_country">
+    <foreign-key id="407" parent="353" name="categories_cod_menu_foreign">
+      <ColNames>cod_menu</ColNames>
+      <RefTableName>menu</RefTableName>
+      <RefColNames>cod_menu</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="408" parent="354" name="cod_country">
       <Position>1</Position>
       <Comment>Código interno del pais</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="406" parent="354" name="name">
+    <column id="409" parent="354" name="name">
       <Position>2</Position>
       <Comment>Nombre del pais</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="407" parent="354" name="ISO2">
+    <column id="410" parent="354" name="ISO2">
       <Position>3</Position>
       <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="408" parent="354" name="created_at">
+    <column id="411" parent="354" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="409" parent="354" name="updated_at">
+    <column id="412" parent="354" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="410" parent="354" name="countries_iso2_unique">
+    <index id="413" parent="354" name="countries_iso2_unique">
       <ColNames>ISO2</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="411" parent="354" name="PRIMARY">
+    <key id="414" parent="354" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_country</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="412" parent="354" name="countries_iso2_unique">
+    <key id="415" parent="354" name="countries_iso2_unique">
       <ColNames>ISO2</ColNames>
       <UnderlyingIndexName>countries_iso2_unique</UnderlyingIndexName>
     </key>
-    <column id="413" parent="355" name="id">
+    <column id="416" parent="355" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="414" parent="355" name="uuid">
+    <column id="417" parent="355" name="uuid">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="415" parent="355" name="connection">
+    <column id="418" parent="355" name="connection">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="416" parent="355" name="queue">
+    <column id="419" parent="355" name="queue">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="417" parent="355" name="payload">
+    <column id="420" parent="355" name="payload">
       <Position>5</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="418" parent="355" name="exception">
+    <column id="421" parent="355" name="exception">
       <Position>6</Position>
       <DataType>longtext|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="419" parent="355" name="failed_at">
+    <column id="422" parent="355" name="failed_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>current_timestamp()</DefaultExpression>
     </column>
-    <index id="420" parent="355" name="failed_jobs_uuid_unique">
+    <index id="423" parent="355" name="failed_jobs_uuid_unique">
       <ColNames>uuid</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="421" parent="355" name="PRIMARY">
+    <key id="424" parent="355" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="422" parent="355" name="failed_jobs_uuid_unique">
+    <key id="425" parent="355" name="failed_jobs_uuid_unique">
       <ColNames>uuid</ColNames>
       <UnderlyingIndexName>failed_jobs_uuid_unique</UnderlyingIndexName>
     </key>
-    <column id="423" parent="356" name="id_file">
+    <column id="426" parent="356" name="id_file">
       <Position>1</Position>
       <Comment>Identificador del archivo</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="424" parent="356" name="path">
+    <column id="427" parent="356" name="path">
       <Position>2</Position>
       <Comment>Ruta local donde se encuentra el archivo</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="425" parent="356" name="name">
+    <column id="428" parent="356" name="name">
       <Position>3</Position>
       <Comment>nombre del archivo</Comment>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="426" parent="356" name="extension">
+    <column id="429" parent="356" name="extension">
       <Position>4</Position>
       <Comment>Extension del archivo</Comment>
       <DataType>varchar(5)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="427" parent="356" name="type">
+    <column id="430" parent="356" name="type">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="428" parent="356" name="id_user">
+    <column id="431" parent="356" name="id_user">
       <Position>6</Position>
       <Comment>Id del usuario que subio el archivo al sistema</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="429" parent="356" name="created_at">
+    <column id="432" parent="356" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="430" parent="356" name="updated_at">
+    <column id="433" parent="356" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="431" parent="356" name="files_id_user_foreign">
+    <index id="434" parent="356" name="files_id_user_foreign">
       <ColNames>id_user</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="432" parent="356" name="PRIMARY">
+    <key id="435" parent="356" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_file</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="433" parent="356" name="files_id_user_foreign">
+    <foreign-key id="436" parent="356" name="files_id_user_foreign">
       <ColNames>id_user</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="434" parent="357" name="id">
+    <column id="437" parent="357" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="435" parent="357" name="user_agent">
+    <column id="438" parent="357" name="user_agent">
       <Position>2</Position>
       <Comment>User Agent de la petición</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="436" parent="357" name="ip">
+    <column id="439" parent="357" name="ip">
       <Position>3</Position>
       <Comment>Direccón ip de la petición</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="437" parent="357" name="created_at">
+    <column id="440" parent="357" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="438" parent="357" name="updated_at">
+    <column id="441" parent="357" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="439" parent="357" name="id_user">
+    <column id="442" parent="357" name="id_user">
       <Position>6</Position>
       <Comment>Identificador del usuario</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="440" parent="357" name="cod_platform">
+    <column id="443" parent="357" name="cod_platform">
       <Position>7</Position>
       <Comment>Código de la plataforma</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="441" parent="357" name="log_user_access_platforms_id_user_foreign">
+    <index id="444" parent="357" name="log_user_access_platforms_id_user_foreign">
       <ColNames>id_user</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="442" parent="357" name="log_user_access_platforms_cod_platform_foreign">
+    <index id="445" parent="357" name="log_user_access_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="443" parent="357" name="PRIMARY">
+    <key id="446" parent="357" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="444" parent="357" name="log_user_access_platforms_id_user_foreign">
+    <foreign-key id="447" parent="357" name="log_user_access_platforms_id_user_foreign">
       <ColNames>id_user</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="445" parent="357" name="log_user_access_platforms_cod_platform_foreign">
+    <foreign-key id="448" parent="357" name="log_user_access_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <RefTableName>platforms</RefTableName>
       <RefColNames>cod_platform</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="446" parent="358" name="cod_log">
+    <column id="449" parent="358" name="cod_log">
       <Position>1</Position>
       <Comment>Código interno del log</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="447" parent="358" name="type">
+    <column id="450" parent="358" name="type">
       <Position>2</Position>
       <Comment>Tipo de error</Comment>
       <DataType>enum(&apos;alert&apos;, &apos;info&apos;, &apos;critical&apos;)|0e</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="448" parent="358" name="ip">
+    <column id="451" parent="358" name="ip">
       <Position>3</Position>
       <Comment>Direccón ip del clinte</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="449" parent="358" name="user_agent">
+    <column id="452" parent="358" name="user_agent">
       <Position>4</Position>
       <Comment>User Agent del cliente</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="450" parent="358" name="log">
+    <column id="453" parent="358" name="log">
       <Position>5</Position>
       <Comment>Detalle del log</Comment>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="451" parent="358" name="created_at">
+    <column id="454" parent="358" name="created_at">
       <Position>6</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="452" parent="358" name="updated_at">
+    <column id="455" parent="358" name="updated_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <key id="453" parent="358" name="PRIMARY">
+    <key id="456" parent="358" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_log</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="454" parent="359" name="cod_menu">
+    <column id="457" parent="359" name="cod_menu">
       <Position>1</Position>
       <Comment>Código interno del menu</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="455" parent="359" name="name">
+    <column id="458" parent="359" name="name">
       <Position>2</Position>
       <Comment>Nombre del menu</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="456" parent="359" name="order">
+    <column id="459" parent="359" name="order">
       <Position>3</Position>
       <Comment>Orden verifica el orden del menu</Comment>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="457" parent="359" name="icon">
+    <column id="460" parent="359" name="icon">
       <Position>4</Position>
       <Comment>Icono del menu de font awesome. Ejem: home</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="458" parent="359" name="path">
+    <column id="461" parent="359" name="path">
       <Position>5</Position>
       <Comment>Ruta en el fronent</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="459" parent="359" name="cod_menu_father">
+    <column id="462" parent="359" name="cod_menu_father">
       <Position>6</Position>
       <Comment>En el caso de ser un submenu</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
     </column>
-    <column id="460" parent="359" name="created_at">
+    <column id="463" parent="359" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="461" parent="359" name="updated_at">
+    <column id="464" parent="359" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="462" parent="359" name="menu_cod_menu_father_foreign">
+    <index id="465" parent="359" name="menu_cod_menu_father_foreign">
       <ColNames>cod_menu_father</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="463" parent="359" name="PRIMARY">
+    <key id="466" parent="359" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_menu</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="464" parent="359" name="menu_cod_menu_father_foreign">
+    <foreign-key id="467" parent="359" name="menu_cod_menu_father_foreign">
       <ColNames>cod_menu_father</ColNames>
       <RefTableName>menu</RefTableName>
       <RefColNames>cod_menu</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="465" parent="360" name="id">
+    <column id="468" parent="360" name="id">
       <Position>1</Position>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="466" parent="360" name="migration">
+    <column id="469" parent="360" name="migration">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="467" parent="360" name="batch">
+    <column id="470" parent="360" name="batch">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="468" parent="360" name="PRIMARY">
+    <key id="471" parent="360" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="469" parent="361" name="id">
+    <column id="472" parent="361" name="id">
       <Position>1</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="470" parent="361" name="user_id">
+    <column id="473" parent="361" name="user_id">
       <Position>2</Position>
       <DataType>varchar(10)|0s</DataType>
     </column>
-    <column id="471" parent="361" name="client_id">
+    <column id="474" parent="361" name="client_id">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="472" parent="361" name="name">
+    <column id="475" parent="361" name="name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="473" parent="361" name="scopes">
+    <column id="476" parent="361" name="scopes">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="474" parent="361" name="revoked">
+    <column id="477" parent="361" name="revoked">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="475" parent="361" name="created_at">
+    <column id="478" parent="361" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="476" parent="361" name="updated_at">
+    <column id="479" parent="361" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="477" parent="361" name="expires_at">
+    <column id="480" parent="361" name="expires_at">
       <Position>9</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <index id="478" parent="361" name="oauth_access_tokens_user_id_index">
+    <index id="481" parent="361" name="oauth_access_tokens_user_id_index">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="479" parent="361" name="PRIMARY">
+    <key id="482" parent="361" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="480" parent="362" name="id">
+    <column id="483" parent="362" name="id">
       <Position>1</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="481" parent="362" name="user_id">
+    <column id="484" parent="362" name="user_id">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="482" parent="362" name="client_id">
+    <column id="485" parent="362" name="client_id">
       <Position>3</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="483" parent="362" name="scopes">
+    <column id="486" parent="362" name="scopes">
       <Position>4</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="484" parent="362" name="revoked">
+    <column id="487" parent="362" name="revoked">
       <Position>5</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="485" parent="362" name="expires_at">
+    <column id="488" parent="362" name="expires_at">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <index id="486" parent="362" name="oauth_auth_codes_user_id_index">
+    <index id="489" parent="362" name="oauth_auth_codes_user_id_index">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="487" parent="362" name="PRIMARY">
+    <key id="490" parent="362" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="488" parent="363" name="id">
+    <column id="491" parent="363" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="489" parent="363" name="user_id">
+    <column id="492" parent="363" name="user_id">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
     </column>
-    <column id="490" parent="363" name="name">
+    <column id="493" parent="363" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="491" parent="363" name="secret">
+    <column id="494" parent="363" name="secret">
       <Position>4</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="492" parent="363" name="provider">
+    <column id="495" parent="363" name="provider">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="493" parent="363" name="redirect">
+    <column id="496" parent="363" name="redirect">
       <Position>6</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="494" parent="363" name="personal_access_client">
+    <column id="497" parent="363" name="personal_access_client">
       <Position>7</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="495" parent="363" name="password_client">
+    <column id="498" parent="363" name="password_client">
       <Position>8</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="496" parent="363" name="revoked">
+    <column id="499" parent="363" name="revoked">
       <Position>9</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="497" parent="363" name="created_at">
+    <column id="500" parent="363" name="created_at">
       <Position>10</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="498" parent="363" name="updated_at">
+    <column id="501" parent="363" name="updated_at">
       <Position>11</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="499" parent="363" name="oauth_clients_user_id_index">
+    <index id="502" parent="363" name="oauth_clients_user_id_index">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="500" parent="363" name="PRIMARY">
+    <key id="503" parent="363" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="501" parent="364" name="id">
+    <column id="504" parent="364" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="502" parent="364" name="client_id">
+    <column id="505" parent="364" name="client_id">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="503" parent="364" name="created_at">
+    <column id="506" parent="364" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="504" parent="364" name="updated_at">
+    <column id="507" parent="364" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <key id="505" parent="364" name="PRIMARY">
+    <key id="508" parent="364" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="506" parent="365" name="id">
+    <column id="509" parent="365" name="id">
       <Position>1</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="507" parent="365" name="access_token_id">
+    <column id="510" parent="365" name="access_token_id">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="508" parent="365" name="revoked">
+    <column id="511" parent="365" name="revoked">
       <Position>3</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="509" parent="365" name="expires_at">
+    <column id="512" parent="365" name="expires_at">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <index id="510" parent="365" name="oauth_refresh_tokens_access_token_id_index">
+    <index id="513" parent="365" name="oauth_refresh_tokens_access_token_id_index">
       <ColNames>access_token_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="511" parent="365" name="PRIMARY">
+    <key id="514" parent="365" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="512" parent="366" name="cod_parroquia">
+    <column id="515" parent="366" name="cod_parroquia">
       <Position>1</Position>
       <Comment>Código de la parroquia</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="513" parent="366" name="name">
+    <column id="516" parent="366" name="name">
       <Position>2</Position>
       <Comment>Nombre de la parroquia</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="514" parent="366" name="type">
+    <column id="517" parent="366" name="type">
       <Position>3</Position>
       <Comment>Tipo de parroquia, rural o urbana</Comment>
       <DataType>enum(&apos;rural&apos;, &apos;urbana&apos;)|0e</DataType>
     </column>
-    <column id="515" parent="366" name="created_at">
+    <column id="518" parent="366" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="516" parent="366" name="updated_at">
+    <column id="519" parent="366" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="517" parent="366" name="cod_canton">
+    <column id="520" parent="366" name="cod_canton">
       <Position>6</Position>
       <Comment>Código del canton al que pertenece la parroquia</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="518" parent="366" name="parroquias_cod_canton_foreign">
+    <index id="521" parent="366" name="parroquias_cod_canton_foreign">
       <ColNames>cod_canton</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="519" parent="366" name="PRIMARY">
+    <key id="522" parent="366" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_parroquia</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="520" parent="366" name="parroquias_cod_canton_foreign">
+    <foreign-key id="523" parent="366" name="parroquias_cod_canton_foreign">
       <ColNames>cod_canton</ColNames>
       <RefTableName>cantones</RefTableName>
       <RefColNames>cod_canton</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="521" parent="367" name="email_inst">
+    <column id="524" parent="367" name="email_inst">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="522" parent="367" name="token">
+    <column id="525" parent="367" name="token">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="523" parent="367" name="created_at">
+    <column id="526" parent="367" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="524" parent="367" name="password_resets_email_inst_index">
+    <index id="527" parent="367" name="password_resets_email_inst_index">
       <ColNames>email_inst</ColNames>
       <Type>btree</Type>
     </index>
-    <column id="525" parent="368" name="cod_platform">
+    <column id="528" parent="368" name="cod_platform">
       <Position>1</Position>
       <Comment>Código unico interno en la tabla</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="526" parent="368" name="name">
+    <column id="529" parent="368" name="name">
       <Position>2</Position>
       <Comment>Nombre de la plataforma</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="527" parent="368" name="image">
+    <column id="530" parent="368" name="image">
       <Position>3</Position>
       <Comment>Url de la imagen de la plataforma</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="528" parent="368" name="url">
+    <column id="531" parent="368" name="url">
       <Position>4</Position>
       <Comment>Url de ingreso a la plataforma</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="529" parent="368" name="session_required">
+    <column id="532" parent="368" name="session_required">
       <Position>5</Position>
       <Comment>Si la plataforma requiere que exista una session</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="530" parent="368" name="detail">
+    <column id="533" parent="368" name="detail">
       <Position>6</Position>
       <Comment>Detalle y/o comentario de la plataforma</Comment>
       <DataType>text|0s</DataType>
     </column>
-    <column id="531" parent="368" name="order">
+    <column id="534" parent="368" name="order">
       <Position>7</Position>
       <Comment>Orden en el el que se mostraran los datos</Comment>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="532" parent="368" name="deleted">
+    <column id="535" parent="368" name="deleted">
       <Position>8</Position>
       <Comment>En el caso de que se elimine el campo cambiara a true</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="533" parent="368" name="created_at">
+    <column id="536" parent="368" name="created_at">
       <Position>9</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="534" parent="368" name="updated_at">
+    <column id="537" parent="368" name="updated_at">
       <Position>10</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="535" parent="368" name="cod_category">
+    <column id="538" parent="368" name="cod_category">
       <Position>11</Position>
       <Comment>Código de la categoria a la que pertenece la plataforma</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="536" parent="368" name="platforms_url_unique">
+    <index id="539" parent="368" name="platforms_url_unique">
       <ColNames>url</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="537" parent="368" name="platforms_cod_category_foreign">
+    <index id="540" parent="368" name="platforms_cod_category_foreign">
       <ColNames>cod_category</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="538" parent="368" name="PRIMARY">
+    <key id="541" parent="368" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_platform</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="539" parent="368" name="platforms_url_unique">
+    <key id="542" parent="368" name="platforms_url_unique">
       <ColNames>url</ColNames>
       <UnderlyingIndexName>platforms_url_unique</UnderlyingIndexName>
     </key>
-    <foreign-key id="540" parent="368" name="platforms_cod_category_foreign">
+    <foreign-key id="543" parent="368" name="platforms_cod_category_foreign">
       <ColNames>cod_category</ColNames>
       <RefTableName>categories</RefTableName>
       <RefColNames>cod_category</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="541" parent="369" name="cod_province">
+    <column id="544" parent="369" name="cod_province">
       <Position>1</Position>
       <Comment>Código interno de la provincia</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="542" parent="369" name="name">
+    <column id="545" parent="369" name="name">
       <Position>2</Position>
       <Comment>Nombre de la provincia</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="543" parent="369" name="created_at">
+    <column id="546" parent="369" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="544" parent="369" name="updated_at">
+    <column id="547" parent="369" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="545" parent="369" name="cod_country">
+    <column id="548" parent="369" name="cod_country">
       <Position>5</Position>
       <Comment>Código del pais en iso2 al que pertenece la provincia</Comment>
       <DataType>varchar(2)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="546" parent="369" name="provinces_cod_country_foreign">
+    <index id="549" parent="369" name="provinces_cod_country_foreign">
       <ColNames>cod_country</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="547" parent="369" name="PRIMARY">
+    <key id="550" parent="369" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_province</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="548" parent="369" name="provinces_cod_country_foreign">
+    <foreign-key id="551" parent="369" name="provinces_cod_country_foreign">
       <ColNames>cod_country</ColNames>
       <RefTableName>countries</RefTableName>
       <RefColNames>ISO2</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="549" parent="370" name="created_at">
+    <column id="552" parent="370" name="created_at">
       <Position>1</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="550" parent="370" name="updated_at">
+    <column id="553" parent="370" name="updated_at">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="551" parent="370" name="cod_rol">
+    <column id="554" parent="370" name="cod_rol">
       <Position>3</Position>
       <Comment>Código del rol</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="552" parent="370" name="cod_access">
+    <column id="555" parent="370" name="cod_access">
       <Position>4</Position>
       <Comment>Código del acceso</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="553" parent="370" name="active">
+    <column id="556" parent="370" name="active">
       <Position>5</Position>
       <Comment>Verifica si se encuentra activo el permiso</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <index id="554" parent="370" name="role_access_cod_access_foreign">
+    <index id="557" parent="370" name="role_access_cod_access_foreign">
       <ColNames>cod_access</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="555" parent="370" name="PRIMARY">
+    <key id="558" parent="370" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_rol
 cod_access</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="556" parent="370" name="role_access_cod_rol_foreign">
+    <foreign-key id="559" parent="370" name="role_access_cod_rol_foreign">
       <ColNames>cod_rol</ColNames>
       <RefTableName>roles</RefTableName>
       <RefColNames>cod_rol</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="557" parent="370" name="role_access_cod_access_foreign">
+    <foreign-key id="560" parent="370" name="role_access_cod_access_foreign">
       <ColNames>cod_access</ColNames>
       <RefTableName>access</RefTableName>
       <RefColNames>cod_access</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="558" parent="371" name="cod_rol">
+    <column id="561" parent="371" name="cod_rol">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="559" parent="371" name="cod_platform">
+    <column id="562" parent="371" name="cod_platform">
       <Position>2</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="560" parent="371" name="created_at">
+    <column id="563" parent="371" name="created_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="561" parent="371" name="updated_at">
+    <column id="564" parent="371" name="updated_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="562" parent="371" name="role_platforms_cod_platform_foreign">
+    <index id="565" parent="371" name="role_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="563" parent="371" name="PRIMARY">
+    <key id="566" parent="371" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_rol
 cod_platform</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="564" parent="371" name="role_platforms_cod_rol_foreign">
+    <foreign-key id="567" parent="371" name="role_platforms_cod_rol_foreign">
       <ColNames>cod_rol</ColNames>
       <RefTableName>roles</RefTableName>
       <RefColNames>cod_rol</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="565" parent="371" name="role_platforms_cod_platform_foreign">
+    <foreign-key id="568" parent="371" name="role_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <RefTableName>platforms</RefTableName>
       <RefColNames>cod_platform</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="566" parent="372" name="cod_rol">
+    <column id="569" parent="372" name="cod_rol">
       <Position>1</Position>
       <Comment>Código del rol</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="567" parent="372" name="name">
+    <column id="570" parent="372" name="name">
       <Position>2</Position>
       <Comment>Nombre del rol</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="568" parent="372" name="detail">
+    <column id="571" parent="372" name="detail">
       <Position>3</Position>
       <Comment>Detalle del rol</Comment>
       <DataType>text|0s</DataType>
     </column>
-    <column id="569" parent="372" name="created_at">
+    <column id="572" parent="372" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="570" parent="372" name="updated_at">
+    <column id="573" parent="372" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="571" parent="372" name="roles_name_unique">
+    <index id="574" parent="372" name="roles_name_unique">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="572" parent="372" name="PRIMARY">
+    <key id="575" parent="372" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cod_rol</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="573" parent="372" name="roles_name_unique">
+    <key id="576" parent="372" name="roles_name_unique">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>roles_name_unique</UnderlyingIndexName>
     </key>
-    <column id="574" parent="373" name="id">
+    <column id="577" parent="373" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="575" parent="373" name="user_agent">
+    <column id="578" parent="373" name="user_agent">
       <Position>2</Position>
       <Comment>User Agent de la petición</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="576" parent="373" name="ip">
+    <column id="579" parent="373" name="ip">
       <Position>3</Position>
       <Comment>Direccón ip de la petición</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="577" parent="373" name="created_at">
+    <column id="580" parent="373" name="created_at">
       <Position>4</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="578" parent="373" name="updated_at">
+    <column id="581" parent="373" name="updated_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="579" parent="373" name="id_user">
+    <column id="582" parent="373" name="id_user">
       <Position>6</Position>
       <Comment>Identificador del usuario</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="580" parent="373" name="cod_platform">
+    <column id="583" parent="373" name="cod_platform">
       <Position>7</Position>
       <Comment>Código de la plataforma</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="581" parent="373" name="user_access_platforms_id_user_foreign">
+    <index id="584" parent="373" name="user_access_platforms_id_user_foreign">
       <ColNames>id_user</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="582" parent="373" name="user_access_platforms_cod_platform_foreign">
+    <index id="585" parent="373" name="user_access_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="583" parent="373" name="PRIMARY">
+    <key id="586" parent="373" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="584" parent="373" name="user_access_platforms_id_user_foreign">
+    <foreign-key id="587" parent="373" name="user_access_platforms_id_user_foreign">
       <ColNames>id_user</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="585" parent="373" name="user_access_platforms_cod_platform_foreign">
+    <foreign-key id="588" parent="373" name="user_access_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <RefTableName>platforms</RefTableName>
       <RefColNames>cod_platform</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="586" parent="374" name="orden">
+    <column id="589" parent="374" name="orden">
       <Position>1</Position>
       <Comment>Orden de las plataformas favoritas del usuario</Comment>
       <DataType>int(10) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="587" parent="374" name="created_at">
+    <column id="590" parent="374" name="created_at">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="588" parent="374" name="updated_at">
+    <column id="591" parent="374" name="updated_at">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="589" parent="374" name="id_user">
+    <column id="592" parent="374" name="id_user">
       <Position>4</Position>
       <Comment>Identificador del usuario</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="590" parent="374" name="cod_platform">
+    <column id="593" parent="374" name="cod_platform">
       <Position>5</Position>
       <Comment>Código de la plataforma</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="591" parent="374" name="user_favorite_platforms_cod_platform_foreign">
+    <index id="594" parent="374" name="user_favorite_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="592" parent="374" name="PRIMARY">
+    <key id="595" parent="374" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_user
 cod_platform</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="593" parent="374" name="user_favorite_platforms_id_user_foreign">
+    <foreign-key id="596" parent="374" name="user_favorite_platforms_id_user_foreign">
       <ColNames>id_user</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="594" parent="374" name="user_favorite_platforms_cod_platform_foreign">
+    <foreign-key id="597" parent="374" name="user_favorite_platforms_cod_platform_foreign">
       <ColNames>cod_platform</ColNames>
       <RefTableName>platforms</RefTableName>
       <RefColNames>cod_platform</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="595" parent="375" name="start_date">
+    <column id="598" parent="375" name="start_date">
       <Position>1</Position>
       <Comment>Inicio a vivir el el lugar</Comment>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="596" parent="375" name="end_date">
+    <column id="599" parent="375" name="end_date">
       <Position>2</Position>
       <Comment>Termino de vivir en el lugar</Comment>
       <DataType>date|0s</DataType>
     </column>
-    <column id="597" parent="375" name="references_place">
+    <column id="600" parent="375" name="references_place">
       <Position>3</Position>
       <Comment>Referencia del lugar donde vive</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="598" parent="375" name="main_street">
+    <column id="601" parent="375" name="main_street">
       <Position>4</Position>
       <Comment>Calle principal</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="599" parent="375" name="secondary_street">
+    <column id="602" parent="375" name="secondary_street">
       <Position>5</Position>
       <Comment>Calle secundaria, puede ir nulo</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="600" parent="375" name="house_number">
+    <column id="603" parent="375" name="house_number">
       <Position>6</Position>
       <Comment>Número de casa</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="601" parent="375" name="created_at">
+    <column id="604" parent="375" name="created_at">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="602" parent="375" name="updated_at">
+    <column id="605" parent="375" name="updated_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="603" parent="375" name="id_user">
+    <column id="606" parent="375" name="id_user">
       <Position>9</Position>
       <Comment>Identificador del usuario</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="604" parent="375" name="cod_parroquia">
+    <column id="607" parent="375" name="cod_parroquia">
       <Position>10</Position>
       <Comment>codigo de la parroquia</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="605" parent="375" name="user_live_parroquias_cod_parroquia_foreign">
+    <index id="608" parent="375" name="user_live_parroquias_cod_parroquia_foreign">
       <ColNames>cod_parroquia</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="606" parent="375" name="PRIMARY">
+    <key id="609" parent="375" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_user
 cod_parroquia
 start_date</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="607" parent="375" name="user_live_parroquias_id_user_foreign">
+    <foreign-key id="610" parent="375" name="user_live_parroquias_id_user_foreign">
       <ColNames>id_user</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="608" parent="375" name="user_live_parroquias_cod_parroquia_foreign">
+    <foreign-key id="611" parent="375" name="user_live_parroquias_cod_parroquia_foreign">
       <ColNames>cod_parroquia</ColNames>
       <RefTableName>parroquias</RefTableName>
       <RefColNames>cod_parroquia</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="609" parent="376" name="created_at">
+    <column id="612" parent="376" name="created_at">
       <Position>1</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="610" parent="376" name="updated_at">
+    <column id="613" parent="376" name="updated_at">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="611" parent="376" name="cod_rol">
+    <column id="614" parent="376" name="cod_rol">
       <Position>3</Position>
       <Comment>Código del rol</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="612" parent="376" name="id_user">
+    <column id="615" parent="376" name="id_user">
       <Position>4</Position>
       <Comment>Identificador del usuario</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="613" parent="376" name="user_roles_cod_rol_foreign">
+    <index id="616" parent="376" name="user_roles_cod_rol_foreign">
       <ColNames>cod_rol</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="614" parent="376" name="PRIMARY">
+    <key id="617" parent="376" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_user
 cod_rol</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="615" parent="376" name="user_roles_cod_rol_foreign">
+    <foreign-key id="618" parent="376" name="user_roles_cod_rol_foreign">
       <ColNames>cod_rol</ColNames>
       <RefTableName>roles</RefTableName>
       <RefColNames>cod_rol</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="616" parent="376" name="user_roles_id_user_foreign">
+    <foreign-key id="619" parent="376" name="user_roles_id_user_foreign">
       <ColNames>id_user</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="617" parent="377" name="id">
+    <column id="620" parent="377" name="id">
       <Position>1</Position>
       <Comment>Código unico del usuario</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="618" parent="377" name="cedula">
+    <column id="621" parent="377" name="cedula">
       <Position>2</Position>
       <Comment>Número de cédula del usuario</Comment>
       <DataType>varchar(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="619" parent="377" name="f_name">
+    <column id="622" parent="377" name="f_name">
       <Position>3</Position>
       <Comment>Primer nombre del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="620" parent="377" name="s_name">
+    <column id="623" parent="377" name="s_name">
       <Position>4</Position>
       <Comment>Segundo nombre del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="621" parent="377" name="f_surname">
+    <column id="624" parent="377" name="f_surname">
       <Position>5</Position>
       <Comment>Primer apellido del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="622" parent="377" name="s_surname">
+    <column id="625" parent="377" name="s_surname">
       <Position>6</Position>
       <Comment>Segundo apellido del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="623" parent="377" name="gender">
+    <column id="626" parent="377" name="gender">
       <Position>7</Position>
       <Comment>Genero del usuario</Comment>
       <DataType>enum(&apos;Masculino&apos;, &apos;Femenino&apos;, &apos;LGBT&apos;, &apos;Otro&apos;)|0e</DataType>
     </column>
-    <column id="624" parent="377" name="mobile">
+    <column id="627" parent="377" name="mobile">
       <Position>8</Position>
       <Comment>Número de celular del usuario</Comment>
       <DataType>varchar(10)|0s</DataType>
     </column>
-    <column id="625" parent="377" name="phone">
+    <column id="628" parent="377" name="phone">
       <Position>9</Position>
       <Comment>Número de telefono del usuario</Comment>
       <DataType>varchar(15)|0s</DataType>
     </column>
-    <column id="626" parent="377" name="photography">
+    <column id="629" parent="377" name="photography">
       <Position>10</Position>
       <Comment>Ruta de la fotografia del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="627" parent="377" name="date_of_birth">
+    <column id="630" parent="377" name="date_of_birth">
       <Position>11</Position>
       <Comment>Fecha de nacimiento del usuario</Comment>
       <DataType>date|0s</DataType>
     </column>
-    <column id="628" parent="377" name="ethnicity">
+    <column id="631" parent="377" name="ethnicity">
       <Position>12</Position>
       <Comment>Etnia del usuario</Comment>
       <DataType>enum(&apos;Afroecuatoriano/a&apos;, &apos;Blanco/a&apos;, &apos;Indigena&apos;, &apos;Mestizo/a&apos;, &apos;Montubio/a&apos;, &apos;Mulato/a&apos;, &apos;Negro/a&apos;, &apos;Otro&apos;)|0e</DataType>
     </column>
-    <column id="629" parent="377" name="type_of_disability">
+    <column id="632" parent="377" name="type_of_disability">
       <Position>13</Position>
       <Comment>Tipo de discapacidad del usuario</Comment>
       <DataType>enum(&apos;Discapacidad física&apos;, &apos;Discapacidad sensorial&apos;, &apos;Discapacidad intelectual&apos;, &apos;Discapacidad psíquica&apos;, &apos;Discapacidad visceral&apos;, &apos;Discapacidad múltiple&apos;)|0e</DataType>
     </column>
-    <column id="630" parent="377" name="percentage_of_disability">
+    <column id="633" parent="377" name="percentage_of_disability">
       <Position>14</Position>
       <Comment>Porcentaje de discapacidad del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="631" parent="377" name="cod_conadis">
+    <column id="634" parent="377" name="cod_conadis">
       <Position>15</Position>
       <Comment>Codigo de registro del conadis en el caso de ser una persona discapacitada</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="632" parent="377" name="civil_status">
+    <column id="635" parent="377" name="civil_status">
       <Position>16</Position>
       <Comment>Estado civil del usuario</Comment>
       <DataType>enum(&apos;Casado/a&apos;, &apos;Soltero/a&apos;, &apos;Divorciado/a&apos;, &apos;Viudo/a&apos;, &apos;Unión de Hecho&apos;)|0e</DataType>
     </column>
-    <column id="633" parent="377" name="type_auth">
+    <column id="636" parent="377" name="type_auth">
       <Position>17</Position>
       <Comment>Tipo de autenticación que utilizara el usuario, po defecto se utilizara open id connect (oidc)</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="634" parent="377" name="password">
+    <column id="637" parent="377" name="password">
       <Position>18</Position>
       <Comment>Password del usuario, en el caso de requerir ingreso manual</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="635" parent="377" name="email">
+    <column id="638" parent="377" name="email">
       <Position>19</Position>
       <Comment>Correo electronico personal del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="636" parent="377" name="email_inst">
+    <column id="639" parent="377" name="email_inst">
       <Position>20</Position>
       <Comment>Correo electronico institucional del usuario</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="637" parent="377" name="email_verified_at">
+    <column id="640" parent="377" name="email_verified_at">
       <Position>21</Position>
       <Comment>Fecha de verificacion email</Comment>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="638" parent="377" name="confirmation_code">
+    <column id="641" parent="377" name="confirmation_code">
       <Position>22</Position>
       <Comment>Codigo de confirmacion de email</Comment>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="639" parent="377" name="remember_token">
+    <column id="642" parent="377" name="remember_token">
       <Position>23</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="640" parent="377" name="remember_toke_valid_time">
+    <column id="643" parent="377" name="remember_toke_valid_time">
       <Position>24</Position>
       <Comment>Tiempo de validez del token para resetear password</Comment>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="641" parent="377" name="deleted">
+    <column id="644" parent="377" name="deleted">
       <Position>25</Position>
       <Comment>En el caso de que se elimine el campo cambiara a true</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="642" parent="377" name="update_password">
+    <column id="645" parent="377" name="update_password">
       <Position>26</Position>
       <Comment>Si el usuario esta obligado a actualizar el password</Comment>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>1</DefaultExpression>
     </column>
-    <column id="643" parent="377" name="created_at">
+    <column id="646" parent="377" name="created_at">
       <Position>27</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="644" parent="377" name="updated_at">
+    <column id="647" parent="377" name="updated_at">
       <Position>28</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="645" parent="377" name="id_father">
+    <column id="648" parent="377" name="id_father">
       <Position>29</Position>
       <Comment>Identificador del padre</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
     </column>
-    <column id="646" parent="377" name="id_mother">
+    <column id="649" parent="377" name="id_mother">
       <Position>30</Position>
       <Comment>Identificador de la madre</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
     </column>
-    <column id="647" parent="377" name="id_emergency_contact">
+    <column id="650" parent="377" name="id_emergency_contact">
       <Position>31</Position>
       <Comment>Identificador del contacto en caso de emergencia</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
     </column>
-    <column id="648" parent="377" name="cod_parroquia">
+    <column id="651" parent="377" name="cod_parroquia">
       <Position>32</Position>
       <Comment>Código de la parroquia en la que nacio el usuario</Comment>
       <DataType>bigint(20) unsigned|0s</DataType>
     </column>
-    <index id="649" parent="377" name="users_cedula_unique">
+    <index id="652" parent="377" name="users_cedula_unique">
       <ColNames>cedula</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="650" parent="377" name="users_email_unique">
+    <index id="653" parent="377" name="users_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="651" parent="377" name="users_email_inst_unique">
+    <index id="654" parent="377" name="users_email_inst_unique">
       <ColNames>email_inst</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="652" parent="377" name="users_id_father_foreign">
+    <index id="655" parent="377" name="users_id_father_foreign">
       <ColNames>id_father</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="653" parent="377" name="users_id_mother_foreign">
+    <index id="656" parent="377" name="users_id_mother_foreign">
       <ColNames>id_mother</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="654" parent="377" name="users_id_emergency_contact_foreign">
+    <index id="657" parent="377" name="users_id_emergency_contact_foreign">
       <ColNames>id_emergency_contact</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="655" parent="377" name="users_cod_parroquia_foreign">
+    <index id="658" parent="377" name="users_cod_parroquia_foreign">
       <ColNames>cod_parroquia</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="656" parent="377" name="PRIMARY">
+    <key id="659" parent="377" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="657" parent="377" name="users_cedula_unique">
+    <key id="660" parent="377" name="users_cedula_unique">
       <ColNames>cedula</ColNames>
       <UnderlyingIndexName>users_cedula_unique</UnderlyingIndexName>
     </key>
-    <key id="658" parent="377" name="users_email_unique">
+    <key id="661" parent="377" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>
-    <key id="659" parent="377" name="users_email_inst_unique">
+    <key id="662" parent="377" name="users_email_inst_unique">
       <ColNames>email_inst</ColNames>
       <UnderlyingIndexName>users_email_inst_unique</UnderlyingIndexName>
     </key>
-    <foreign-key id="660" parent="377" name="users_id_father_foreign">
+    <foreign-key id="663" parent="377" name="users_id_father_foreign">
       <ColNames>id_father</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="661" parent="377" name="users_id_mother_foreign">
+    <foreign-key id="664" parent="377" name="users_id_mother_foreign">
       <ColNames>id_mother</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="662" parent="377" name="users_id_emergency_contact_foreign">
+    <foreign-key id="665" parent="377" name="users_id_emergency_contact_foreign">
       <ColNames>id_emergency_contact</ColNames>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="663" parent="377" name="users_cod_parroquia_foreign">
+    <foreign-key id="666" parent="377" name="users_cod_parroquia_foreign">
       <ColNames>cod_parroquia</ColNames>
       <RefTableName>parroquias</RefTableName>
       <RefColNames>cod_parroquia</RefColNames>

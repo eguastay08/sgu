@@ -8,13 +8,13 @@ class DatabaseSeeder extends Seeder
 {
     /*
      INSERT INTO `user_live_parroquias` (`start_date`, `end_date`, `references_place`, `main_street`, `secondary_street`, `house_number`, `created_at`, `updated_at`, `id_user`, `cod_parroquia`) VALUES ('2021-04-06', NULL, 's/r', 'SOFIA PESANTEZ', 'CAMINO REAL', 's/n', NULL, NULL, '1', '20150');
-    INSERT INTO `categories` (`cod_category`, `name`, `detail`, `order`, `delete`, `created_at`, `updated_at`) VALUES
-(1, 'Entornos Virtuales de Enseñanza y Aprendizaje', NULL, 1, 0, NULL, NULL),
-(2, 'Sistema Académico en Red', NULL, 2, 0, NULL, NULL),
-(3, 'Bibliotecas Virtuales', NULL, 3, 0, NULL, NULL),
-(4, 'Servicios Institucionales', NULL, 4, 0, NULL, NULL),
-(5, 'Bibliotecas Virtuales Libres', NULL, 5, 0, NULL, NULL),
-(6, 'Repositorios', NULL, 6, 0, NULL, NULL);
+    INSERT INTO `categories` (`cod_category`, `name`, `detail`, `order`, `delete`, `created_at`, `updated_at`,`cod_menu`) VALUES
+(1, 'Entornos Virtuales de Enseñanza y Aprendizaje', NULL, 1, 0, NULL, NULL,3),
+(2, 'Sistema Académico en Red', NULL, 2, 0, NULL, NULL,3),
+(3, 'Bibliotecas Virtuales', NULL, 3, 0, NULL, NULL,3),
+(4, 'Servicios Institucionales', NULL, 4, 0, NULL, NULL,3),
+(5, 'Bibliotecas Virtuales Libres', NULL, 5, 0, NULL, NULL,3),
+(6, 'Repositorios', NULL, 6, 0, NULL, NULL,3);
 
     INSERT INTO `platforms` (`cod_platform`, `name`, `image`, `url`, `session_required`, `detail`, `order`, `deleted`, `created_at`, `updated_at`, `cod_category`) VALUES
 (1, 'EVEA | Pregrado 2020-2021', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_P.png', 'https://elearning.ueb.edu.ec/', 1, NULL, 1, 0, NULL, NULL, 1),
@@ -58,17 +58,28 @@ class DatabaseSeeder extends Seeder
 INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `created_at`, `updated_at`) VALUES (NULL, 'Administrador', NULL, NULL, NULL);
 
 
-INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ver Perfil', '/users/userinfo', 'GET', NULL, '1', NULL, NULL);
-INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`) VALUES (NULL, NULL, '1', '1');
+INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ver Perfil', '/users/userinfo', 'GET', NULL, '2', NULL, NULL);
+INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`) VALUES (NULL, NULL, '1', '1','1');
 
-INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Datos del Perfil', '/users/userinfo', 'PUT', NULL, '1', NULL, NULL);
+INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Datos del Perfil', '/users/userinfo', 'PUT', NULL, '2', NULL, NULL);
 INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '2', '1');
 
-INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_item_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Foto del Perfil', '/users/avatar', 'POST', NULL, '1', NULL, NULL);
+INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Foto del Perfil', '/users/avatar', 'POST', NULL, '2', NULL, NULL);
 INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '3', '1');
 
 
 INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALUES (NULL, NULL, '1', '1');
+
+    INSERT INTO `role_platforms` (`cod_rol`, `cod_platform`, `created_at`, `updated_at`) VALUES ('1', '1', NULL, NULL), ('1', '2', NULL, NULL), ('1', '3', NULL, NULL), ('1', '4', NULL, NULL), ('1', '5', NULL, NULL), ('1', '6', NULL, NULL), ('1', '7', NULL, NULL), ('1', '8', NULL, NULL), ('1', '9', NULL, NULL), ('1', '10', NULL, NULL), ('1', '11', NULL, NULL), ('1', '12', NULL, NULL), ('1', '13', NULL, NULL), ('1', '14', NULL, NULL), ('1', '15', NULL, NULL), ('1', '16', NULL, NULL), ('1', '17', NULL, NULL), ('1', '18', NULL, NULL), ('1', '19', NULL, NULL), ('1', '20', NULL, NULL), ('1', '21', NULL, NULL), ('1', '22', NULL, NULL), ('1', '23', NULL, NULL), ('1', '24', NULL, NULL), ('1', '38', NULL, NULL), ('1', '39', NULL, NULL), ('1', '40', NULL, NULL), ('1', '41', NULL, NULL), ('1', '42', NULL, NULL), ('1', '43', NULL, NULL), ('1', '44', NULL, NULL), ('1', '45', NULL, NULL), ('1', '46', NULL, NULL), ('1', '47', NULL, NULL), ('1', '48', NULL, NULL), ('1', '49', NULL, NULL), ('1', '50', NULL, NULL);
+
+
+    //Eliminar esto es temporal
+    INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Access home temporal', '/home', 'GET', NULL, '1', NULL, NULL);
+    INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '4', '0');
+
+    //=============================================================================
+    INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Acceder a los Sistemas Informaticos', '/systems', 'GET', NULL, '3', NULL, NULL);
+    INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '5', '1');
     */
     /**
      * Seed the application's database.
@@ -9322,31 +9333,32 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
         ]);
 
         /**DATOS DEL MENU DE NAVEGACIÓN**/
+        DB::table('menu')->insert([
+            'cod_menu'=>1,
+            'name'=>'Inicio',
+            'order'=>1,
+            'icon'=>'home',
+            'path'=>'/home'
+        ]);
 
         DB::table('menu')->insert([
+            'cod_menu'=>2,
             'name'=>'Mi Perfil',
-            'order'=>1,
+            'order'=>2,
             'icon'=>'user',
             'path'=>'/profile'
         ]);
-
         DB::table('menu')->insert([
-            'name'=>'Sistemas Virtuales',
+            'cod_menu'=>3,
+            'name'=>'Sistemas Informaticos',
             'order'=>2,
-            'icon'=>'home'
+            'icon'=>'server',
+            'path'=>null
         ]);
 
-        DB::table('menu')->insert([
-            'name'=>'Administración',
-            'order'=>3,
-            'icon'=>'home'
-        ]);
 
-        DB::table('menu')->insert([
-            'name'=>'Reportes',
-            'order'=>4,
-            'icon'=>'home'
-        ]);
+
+
 
         DB::table('users')->insert([
             'cedula'=>'0250366515',
@@ -9357,7 +9369,7 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
             'gender'=>'masculino',
             'mobile'=>'0980150689',
             'phone'=>'022777658',
-            'photography'=>'',
+            'photography'=>null,
             'date_of_birth'=>'1999-04-08',
             'ethnicity'=>'Mestizo/a',
             'civil_status'=>'Soltero/a',

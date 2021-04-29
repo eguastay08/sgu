@@ -28,12 +28,9 @@
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bbdb658-e42c-4c64-8c9a-56f90d0c4e99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bbdb658-e42c-4c64-8c9a-56f90d0c4e99.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041406_item_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041406_item_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041407_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041407_menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041408_create_access_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041408_create_access_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,7 +262,8 @@
       <workItem from="1619554702700" duration="17838000" />
       <workItem from="1619627005420" duration="3924000" />
       <workItem from="1619649427022" duration="4917000" />
-      <workItem from="1619667325055" duration="13816000" />
+      <workItem from="1619667325055" duration="14548000" />
+      <workItem from="1619716284110" duration="10377000" />
     </task>
     <servers />
   </component>
@@ -309,10 +307,10 @@
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1366.737@0.31.1366.737" timestamp="1619672891271" />
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619680673421">
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619733701036">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1619680673421" />
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1619733701036" />
     <state x="830" y="160" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.2726.737@0.31.2726.737" timestamp="1615213997940" />
     <state x="366" y="160" width="634" height="487" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1619464535803">
       <screen x="0" y="31" width="1366" height="737" />
@@ -323,22 +321,22 @@
     </state>
     <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl/0.31.1366.737@0.31.1366.737" timestamp="1619464479374" />
     <state x="466" y="160" width="434" height="487" key="FileChooserDialogImpl/0.31.2726.737@0.31.2726.737" timestamp="1615210612140" />
-    <state width="1147" height="165" key="GridCell.Tab.0.bottom" timestamp="1619678786016">
+    <state width="1147" height="178" key="GridCell.Tab.0.bottom" timestamp="1619731792175">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="165" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1619678786016" />
-    <state width="1147" height="165" key="GridCell.Tab.0.center" timestamp="1619678786013">
+    <state width="1147" height="178" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1619731792175" />
+    <state width="1147" height="178" key="GridCell.Tab.0.center" timestamp="1619731792173">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="165" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1619678786013" />
-    <state width="1147" height="165" key="GridCell.Tab.0.left" timestamp="1619678786011">
+    <state width="1147" height="178" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1619731792173" />
+    <state width="1147" height="178" key="GridCell.Tab.0.left" timestamp="1619731792172">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="165" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1619678786011" />
-    <state width="1147" height="165" key="GridCell.Tab.0.right" timestamp="1619678786014">
+    <state width="1147" height="178" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1619731792172" />
+    <state width="1147" height="178" key="GridCell.Tab.0.right" timestamp="1619731792174">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="165" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1619678786014" />
+    <state width="1147" height="178" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1619731792174" />
     <state width="257" height="520" key="HiddenNamespacesPopup" timestamp="1618354942338">
       <screen x="0" y="31" width="1366" height="737" />
     </state>

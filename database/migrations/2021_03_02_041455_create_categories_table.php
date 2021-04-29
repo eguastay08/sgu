@@ -20,6 +20,10 @@ class CreateCategoriesTable extends Migration
             $table->bigInteger('order')->comment('Orden con el que se mostrara');
             $table->boolean('delete')->default(false);
             $table->timestamps();
+            $table->unsignedBigInteger('cod_menu')->comment('Menu al que pertenece estas categorias');
+            $table->foreign('cod_menu')
+                ->references('cod_menu')
+                ->on('menu')->cascadeOnUpdate();
         });
     }
 
