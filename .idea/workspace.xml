@@ -26,11 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bbdb658-e42c-4c64-8c9a-56f90d0c4e99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bbdb658-e42c-4c64-8c9a-56f90d0c4e99.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MenuController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041455_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlatformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlatformController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +264,8 @@
       <workItem from="1619627005420" duration="3924000" />
       <workItem from="1619649427022" duration="4917000" />
       <workItem from="1619667325055" duration="14548000" />
-      <workItem from="1619716284110" duration="10377000" />
+      <workItem from="1619716284110" duration="17305000" />
+      <workItem from="1619759982284" duration="5284000" />
     </task>
     <servers />
   </component>
@@ -321,22 +323,22 @@
     </state>
     <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl/0.31.1366.737@0.31.1366.737" timestamp="1619464479374" />
     <state x="466" y="160" width="434" height="487" key="FileChooserDialogImpl/0.31.2726.737@0.31.2726.737" timestamp="1615210612140" />
-    <state width="1147" height="178" key="GridCell.Tab.0.bottom" timestamp="1619731792175">
+    <state width="1147" height="178" key="GridCell.Tab.0.bottom" timestamp="1619762515771">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="178" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1619731792175" />
-    <state width="1147" height="178" key="GridCell.Tab.0.center" timestamp="1619731792173">
+    <state width="1147" height="178" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1619762515771" />
+    <state width="1147" height="178" key="GridCell.Tab.0.center" timestamp="1619762515767">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="178" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1619731792173" />
-    <state width="1147" height="178" key="GridCell.Tab.0.left" timestamp="1619731792172">
+    <state width="1147" height="178" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1619762515767" />
+    <state width="1147" height="178" key="GridCell.Tab.0.left" timestamp="1619762515765">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="178" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1619731792172" />
-    <state width="1147" height="178" key="GridCell.Tab.0.right" timestamp="1619731792174">
+    <state width="1147" height="178" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1619762515765" />
+    <state width="1147" height="178" key="GridCell.Tab.0.right" timestamp="1619762515769">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="178" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1619731792174" />
+    <state width="1147" height="178" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1619762515769" />
     <state width="257" height="520" key="HiddenNamespacesPopup" timestamp="1618354942338">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
@@ -379,16 +381,5 @@
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1366.737@0.31.1366.737" timestamp="1618608899629" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/PlatformController.php</url>
-          <line>3</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

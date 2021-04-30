@@ -9351,7 +9351,7 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
         DB::table('menu')->insert([
             'cod_menu'=>3,
             'name'=>'Sistemas Informaticos',
-            'order'=>2,
+            'order'=>3,
             'icon'=>'server',
             'path'=>null
         ]);

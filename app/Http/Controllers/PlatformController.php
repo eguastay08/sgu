@@ -124,16 +124,38 @@ class PlatformController extends Controller
     }
 
     public function redirect(Request $request){
-        $id_user= $request->user()->id;
         $url=$request->url;
-        $plataform=Platform::where('url',$url)->where('deleted',0)->firstOrFail();
-        $log=[
+        $user=$request->user();
+        $id_user=$user->id;
+         $plataform_access=User::join('user_roles as ur','users.id','=','ur.id_user')
+            ->join('role_platforms as rp','ur.cod_rol','=','rp.cod_rol')
+            ->join('platforms as p','rp.cod_platform','=','p.cod_platform')
+            ->select('p.*')
+            ->where('users.id','=',$user->id)
+            ->where('p.url','=',$url)
+            ->where('p.deleted','=','0')
+            ->firstOrFail();
+         $log=[
             "user_agent"=>$_SERVER['HTTP_USER_AGENT'],
             "ip"=>$_SERVER['REMOTE_ADDR'],
             "id_user"=>$id_user,
-            "cod_platform"=>$plataform->cod_platform
+            "cod_platform"=>$plataform_access->cod_platform
         ];
-        Log_user_access_platform::create($log);
-        return redirect($plataform->url);
+         Log_user_access_platform::create($log);
+    }
+
+    public function getPlatformsUserAccess(Request $request){
+        $user=$request->user();
+        $plataforms=User::join('user_roles as ur','users.id','=','ur.id_user')
+            ->join('role_platforms as rp','ur.cod_rol','=','rp.cod_rol')
+            ->join('platforms as p','rp.cod_platform','=','p.cod_platform')
+            ->join('categories as c','p.cod_category','=','c.cod_category')
+            ->select('p.name','p.image','p.url','p.detail','p.session_required')
+            ->where('users.id','=',$user->id)
+            ->where('c.cod_category','=',$request->id)
+            ->where('p.deleted','=','0')
+            ->orderby('p.order')
+            ->get();
+        return $this->response('false',Response::HTTP_OK,'200 OK',$plataforms);
     }
 }

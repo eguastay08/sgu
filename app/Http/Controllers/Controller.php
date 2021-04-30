@@ -18,7 +18,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-   private $headers = [
+   public $headers = [
         'Content-Type'=>'application/json',
         'Access-Control-Allow-Origin'=>'*',
         'Access-Control-Allow-Methods'=>'GET, POST, PUT, DELETE, OPTIONS',

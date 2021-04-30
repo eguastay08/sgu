@@ -43,6 +43,8 @@ Route::prefix('v1')->group(function () {
         Route::get('/users/navigation',[MenuController::class,'getNavigation']);
 
         Route::get('/platforms/redirect', [PlatformController::class, 'redirect']);
+        Route::get('/platforms/{id}', [PlatformController::class, 'getPlatformsUserAccess']);
+
     });
 
 });

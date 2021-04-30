@@ -19,6 +19,7 @@ class MenuController extends Controller
         ->where('m.cod_menu','=',$cod_menu)
         ->where('c.delete','=','0')
         ->groupby('c.cod_category','c.name','c.detail','c.order','c.delete','c.created_at','c.updated_at','c.cod_menu')
+        ->orderby('c.order')
         ->get();
     return $categories;
     }
