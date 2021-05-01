@@ -24,15 +24,31 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::all()->where('deleted','!=','1');
-        return response()->json([
-            'errors' => false,
-            'code' => Response::HTTP_OK,
-            'status'=>'200 OK',
-            'data' => $data
-        ], Response::HTTP_OK, Controller::$headers);
+        $access_granted=Controller::validatePermissions($request->user()->id,'GET','/users');
+        if($access_granted) {
+            $users=array();
+            $data = User::all(
+                'cedula',
+                'f_name',
+                's_name',
+                'f_surname',
+                's_surname',
+                'gender',
+                'photography',
+                'email',
+                'email_inst'
+            )->where('deleted', '!=', '0');
+
+            foreach ($data as $d){
+                $this->generateAvatarUrl($d);
+            }
+
+            return $this->response('false', Response::HTTP_OK, '200 OK', $data);
+        }else{
+            return $this->response(true,Response::HTTP_FORBIDDEN,'403 Forbidden' );
+        }
     }
 
     /**
@@ -111,20 +127,23 @@ class UserController extends Controller
         //
     }
 
+    private function generateAvatarUrl(User $d){
+        if(isset($d->photography)){
+            $image=File::find($d->photography);
+            $uri='/api/v1/image';
+            $url=env('APP_URL').$uri."/".$image['name'];
+            $d->photography=$url;
+        }else{
+            $email = $d->email;
+            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) );
+            $d->photography=$grav_url;
+        }
+    }
 
     public function userLoggedIn(Request $request){
         $data_user=$request->user();
 
-        if(isset($data_user->photography)){
-            $image=File::find($data_user->photography);
-            $uri='/api/v1/image';
-            $url=env('APP_URL').$uri."/".$image['name'];
-            $data_user->photography=$url;
-        }else{
-            $email = $data_user->email;
-            $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) );
-            $data_user->photography=$grav_url;
-        }
+        $this->generateAvatarUrl($data_user);
 
         $userLoggedIn=[
             'cedula'=>$data_user->cedula,
@@ -141,23 +160,11 @@ class UserController extends Controller
 
     public function userInfo(Request $request)
     {
-        //return password_hash('Sistemas123.**',PASSWORD_DEFAULT);
-
         $access_granted=Controller::validatePermissions($request->user()->id,'GET','/users/userinfo');
 
       if($access_granted) {
           $userinfo = $request->user();
-
-          if(isset($userinfo->photography)){
-              $image=File::find($userinfo->photography);
-              $uri='/api/v1/image';
-              $url=env('APP_URL').$uri."/".$image['name'];
-              $userinfo->photography=$url;
-          }else{
-              $email = $userinfo->email;
-              $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) );
-              $userinfo->photography=$grav_url;
-          }
+          $this->generateAvatarUrl($userinfo);
 
           $userinfo['birth'] = $live = Parroquia::join('cantones', 'cantones.cod_canton', '=', 'parroquias.cod_canton')
               ->join('provinces', 'provinces.cod_province', '=', 'cantones.cod_province')

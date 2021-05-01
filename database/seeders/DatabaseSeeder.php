@@ -90,6 +90,10 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
         INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ingreso de Usuarios al Sistema', '/users', 'POST', NULL, '5', NULL, NULL);
         INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '6', '1');
         INSERT INTO `menu` (`cod_menu`, `name`, `order`, `icon`, `path`, `cod_menu_father`, `created_at`, `updated_at`) VALUES (NULL, 'Usuarios', '1', NULL, '/administrator/users', '4', NULL, NULL);
+        INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Obtener todos los usuarios', '/users', 'GET', NULL, '5', NULL, NULL);
+        INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '7', '1');
+    INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ingresar un Nuevo Usuario', '/users', 'POST', NULL, '5', NULL, NULL);
+    INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '8', '1');
     --====================================================================
     /**
      * Seed the application's database.

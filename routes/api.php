@@ -35,7 +35,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/image/{img}',[FileController::class,'viewImage']);
     //rutas que requieren estar autenticado
     Route::middleware('auth:api')->group(function () {
-        Route::post('/users',[UserController::class,'']);
+        Route::get('/users',[UserController::class,'index']);
         Route::get('/users/userinfo',[UserController::class,'userInfo']);
         Route::post('/users/avatar',[UserController::class,'uploadAvatar']);
         Route::put('/users/userinfo',[UserController::class,'userInfoUpdate']);

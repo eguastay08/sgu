@@ -1377,12 +1377,12 @@ true posix/WET
 false posix/Zulu
 true posixrules
 </TimeZones>
-      <StartupTime>1618323176</StartupTime>
+      <StartupTime>1619529915</StartupTime>
     </root>
     <database id="2" parent="1" name="sianet">
       <ObjectId>16400</ObjectId>
       <Owner>academico</Owner>
-      <IntrospectionStateNumber>1358633853</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1366205151</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|122444|122441|1
 sequence|table|122465|122462|1
@@ -1450,7 +1450,7 @@ sequence|table|123414|123411|1
       <Comment>standard public schema</Comment>
       <StateNumber>451274363</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1358633854</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1366205152</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="13" parent="2" name="btree">
@@ -1981,12 +1981,12 @@ sequence|table|123414|123411|1
     <table id="107" parent="12" name="combo16">
       <ObjectId>122850</ObjectId>
       <Owner>academico</Owner>
-      <StateNumber>1358633837</StateNumber>
+      <StateNumber>1366197537</StateNumber>
     </table>
     <table id="108" parent="12" name="combos">
       <ObjectId>122856</ObjectId>
       <Owner>academico</Owner>
-      <StateNumber>1358633840</StateNumber>
+      <StateNumber>1366197539</StateNumber>
     </table>
     <table id="109" parent="12" name="contenido">
       <ObjectId>122862</ObjectId>
@@ -2201,7 +2201,7 @@ sequence|table|123414|123411|1
     <table id="151" parent="12" name="est_caed">
       <ObjectId>123155</ObjectId>
       <Owner>academico</Owner>
-      <StateNumber>1357219762</StateNumber>
+      <StateNumber>1366188149</StateNumber>
     </table>
     <table id="152" parent="12" name="est_suficiencia">
       <ObjectId>123158</ObjectId>
@@ -2536,7 +2536,7 @@ sequence|table|123414|123411|1
     <table id="218" parent="12" name="sme_combos">
       <ObjectId>392025</ObjectId>
       <Owner>academico</Owner>
-      <StateNumber>1358633843</StateNumber>
+      <StateNumber>1366197542</StateNumber>
     </table>
     <table id="219" parent="12" name="sme_con_bienestar">
       <ObjectId>314876</ObjectId>
