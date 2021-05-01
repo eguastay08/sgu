@@ -9,6 +9,7 @@ class Menu extends Model
 {
     use HasFactory;
 
+    protected $table='menu';
     protected $primaryKey="cod_menu";
 
     protected $fillable=[
@@ -24,7 +25,12 @@ class Menu extends Model
         'create_at',
         'update_at'
     ];
-    public function menu(){
-        return $this->belongsTo('App\Model\Menu','cod_menu');
+    public function menufather(){
+        return $this->belongsTo('App\Model\Menu','cod_menu_father');
     }
+    public function submenu(){
+        return $this->hasMany('App\Model\Menu','cod_menu_father');
+    }
+
+
 }

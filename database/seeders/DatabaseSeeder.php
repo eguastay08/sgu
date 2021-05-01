@@ -55,11 +55,14 @@ class DatabaseSeeder extends Seeder
 (49, 'EVEA | Pregrado 2020-2020', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_P.png', 'https://evea2020.ueb.edu.ec/', 1, NULL, 2, 0, NULL, NULL, 6),
 (50, 'EVEA | Nivelación 2020-2020', 'https://nivelacion2020.ueb.edu.ec/', 'https://www.ueb.edu.ec/images/logo_externos/EVEA_N.png', 1, NULL, 3, 0, NULL, NULL, 6);
 
+
+
+
 INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `created_at`, `updated_at`) VALUES (NULL, 'Administrador', NULL, NULL, NULL);
 
 
 INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ver Perfil', '/users/userinfo', 'GET', NULL, '2', NULL, NULL);
-INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`) VALUES (NULL, NULL, '1', '1','1');
+INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`,`active`) VALUES (NULL, NULL, '1', '1','1');
 
 INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Modificar Datos del Perfil', '/users/userinfo', 'PUT', NULL, '2', NULL, NULL);
 INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '2', '1');
@@ -73,14 +76,21 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
     INSERT INTO `role_platforms` (`cod_rol`, `cod_platform`, `created_at`, `updated_at`) VALUES ('1', '1', NULL, NULL), ('1', '2', NULL, NULL), ('1', '3', NULL, NULL), ('1', '4', NULL, NULL), ('1', '5', NULL, NULL), ('1', '6', NULL, NULL), ('1', '7', NULL, NULL), ('1', '8', NULL, NULL), ('1', '9', NULL, NULL), ('1', '10', NULL, NULL), ('1', '11', NULL, NULL), ('1', '12', NULL, NULL), ('1', '13', NULL, NULL), ('1', '14', NULL, NULL), ('1', '15', NULL, NULL), ('1', '16', NULL, NULL), ('1', '17', NULL, NULL), ('1', '18', NULL, NULL), ('1', '19', NULL, NULL), ('1', '20', NULL, NULL), ('1', '21', NULL, NULL), ('1', '22', NULL, NULL), ('1', '23', NULL, NULL), ('1', '24', NULL, NULL), ('1', '38', NULL, NULL), ('1', '39', NULL, NULL), ('1', '40', NULL, NULL), ('1', '41', NULL, NULL), ('1', '42', NULL, NULL), ('1', '43', NULL, NULL), ('1', '44', NULL, NULL), ('1', '45', NULL, NULL), ('1', '46', NULL, NULL), ('1', '47', NULL, NULL), ('1', '48', NULL, NULL), ('1', '49', NULL, NULL), ('1', '50', NULL, NULL);
 
 
-    //Eliminar esto es temporal
+    --Eliminar esto es temporal
     INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Access home temporal', '/home', 'GET', NULL, '1', NULL, NULL);
     INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '4', '0');
 
-    //=============================================================================
+    --=============================================================================
     INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Acceder a los Sistemas Informaticos', '/systems', 'GET', NULL, '3', NULL, NULL);
     INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '5', '1');
-    */
+
+
+
+    --Accesos de administracion
+        INSERT INTO `access` (`cod_access`, `name`, `endpoint`, `method`, `detail`, `cod_menu`, `created_at`, `updated_at`) VALUES (NULL, 'Ingreso de Usuarios al Sistema', '/users', 'POST', NULL, '5', NULL, NULL);
+        INSERT INTO `role_access` (`created_at`, `updated_at`, `cod_rol`, `cod_access`, `active`) VALUES (NULL, NULL, '1', '6', '1');
+        INSERT INTO `menu` (`cod_menu`, `name`, `order`, `icon`, `path`, `cod_menu_father`, `created_at`, `updated_at`) VALUES (NULL, 'Usuarios', '1', NULL, '/administrator/users', '4', NULL, NULL);
+    --====================================================================
     /**
      * Seed the application's database.
      *
@@ -9355,6 +9365,14 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
             'icon'=>'server',
             'path'=>null
         ]);
+        DB::table('menu')->insert([
+            'cod_menu'=>4,
+            'name'=>'Administración',
+            'order'=>4,
+            'icon'=>'cog',
+            'path'=>null
+        ]);
+
 
 
 

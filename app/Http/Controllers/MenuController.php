@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Http\Response;
@@ -23,21 +24,45 @@ class MenuController extends Controller
         ->get();
     return $categories;
     }
+
     private function buildMenu($user,$cod_menu=null){
+        $new_menu=array();
         $menu=User::join('user_roles','users.id', '=', 'user_roles.id_user')
             ->join('role_access', 'user_roles.cod_rol', '=', 'role_access.cod_rol')
             ->join('access', 'role_access.cod_access', '=', 'access.cod_access')
             ->join('menu', 'access.cod_menu', '=', 'menu.cod_menu')
             ->select('menu.*')
             ->where('id','=',$user)
-            ->where('cod_menu_father','=',$cod_menu)
+            ->where('role_access.active','=','1')
             ->groupby('menu.cod_menu','menu.name','sgu.menu.order','sgu.menu.icon','sgu.menu.path','sgu.menu.cod_menu_father','sgu.menu.created_at','sgu.menu.updated_at')
             ->orderby('menu.order')
             ->get();
         foreach ($menu as $d){
-            $submenu=$this->buildMenu($user,$d->cod_menu);
-            if(!isset($submenu)){
-                $d['submenu']=$submenu;
+            if(isset($d->cod_menu_father)){
+                $cod_father=$d->cod_menu_father;
+                $menu_father=Menu::where('cod_menu','=',$cod_father)
+                    ->first();
+                $exist=false;
+                foreach ($new_menu as $nm){
+                    if($nm->cod_menu==$menu_father->cod_menu){
+                        $exist=true;
+                    }
+                }
+                if(!$exist){
+                    $item_menu=User::join('user_roles','users.id', '=', 'user_roles.id_user')
+                        ->join('role_access', 'user_roles.cod_rol', '=', 'role_access.cod_rol')
+                        ->join('access', 'role_access.cod_access', '=', 'access.cod_access')
+                        ->join('menu', 'access.cod_menu', '=', 'menu.cod_menu')
+                        ->select('menu.*')
+                        ->where('id','=',$user)
+                        ->where('menu.cod_menu_father','=',$menu_father->cod_menu)
+                        ->where('role_access.active','=','1')
+                        ->groupby('menu.cod_menu','menu.name','sgu.menu.order','sgu.menu.icon','sgu.menu.path','sgu.menu.cod_menu_father','sgu.menu.created_at','sgu.menu.updated_at')
+                        ->orderby('menu.order')
+                        ->get();
+                    $menu_father['submenu']=$item_menu;
+                    $new_menu[]=$menu_father;
+                }
             }else{
                 $categories=$this->getSystemsCategories($user,$d->cod_menu);
                 if($categories!=null){
@@ -46,9 +71,11 @@ class MenuController extends Controller
                     }
                     $d['submenu']=$categories;
                 }
+                $new_menu[]=$d;
             }
         }
-        return$menu;
+        GeneralFunctions::arraySort($new_menu, 'order', $order = SORT_ASC);
+        return $new_menu;
     }
     public function getNavigation(Request $request){
         $user=$request->user();
