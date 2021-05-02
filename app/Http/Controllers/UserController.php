@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\WorksSpaceController;
 use App\Mail\ConfirmMail;
+use App\Mail\SendPasswordAccess;
 use App\Mail\SendTokenResetPassword;
 use App\Models\File;
 use App\Models\Parroquia;
+use App\Models\Role;
 use App\Models\User;
+use App\Models\User_role;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Crypt;
@@ -59,26 +63,77 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $request['photography']="https://edteam-media.s3.amazonaws.com/users/thumbnail/3251b2ee-ae8d-48ce-8bfe-3d899caf366e.jpg";
-        $request['password']=password_hash($request->cedula,PASSWORD_DEFAULT);
-        $errors= User::verifyRequired($request);
-        if($errors==null) {
-            $user = User::create($request->all());
-           $token= $user->createToken('LaravelAuthApp')->accessToken;
-            return response()->json([
-                'errors' => false,
-                'code' => Response::HTTP_CREATED,
-                'status' => '201 Created',
-                'data' => $user,
-                'token'=>$token,
-            ], Response::HTTP_CREATED, Controller::$headers);
+        $access_granted=Controller::validatePermissions($request->user()->id,'POST','/users');
+        if($access_granted){
+            $errors= User::verifyRequired($request);
+            if($errors==null) {
+                $data=[];
+                $edit_permission=[
+                    'cedula',
+                    'f_name',
+                    's_name',
+                    'f_surname',
+                    's_surname',
+                    'gender',
+                    'mobile',
+                    'phone',
+                    'date_of_birth',
+                    'ethnicity',
+                    'type_of_disability',
+                    'percentage_of_disability',
+                    'cod_conadis',
+                    'civil_status',
+                    'type_auth',
+                    'email',
+                    'email_inst',
+                    'passoword',
+                    'group'
+                ];
+                foreach ($edit_permission as $d){
+                    if(isset($request->$d)){
+                        $data[$d]=$request->$d;
+                    }
+                }
+                $validate=\Validator::make($data,[
+                    'cedula'    => 'unique:users',
+                    'email'    => 'email|unique:users',
+                    'email_inst' => 'email|unique:users',
+                    "gender"=>"in:Masculino,Femenino,LGBT,Otro",
+                    "ethnicity"=>"in:Afroecuatoriano/a,Blanco/a,Indigena,Mestizo/a,Montubio/a,Mulato/a,Negro/a,Otro",
+                    "civil_status"=>"in:Casado/a,Soltero/a,Divorciado/a,Viudo/a,Unión de Hecho",
+              ]);
+                if ($validate->fails())
+                {
+                    return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $validate->errors());
+                }
+                if(!isset($data['type_auth'])){
+                    $data['type_auth']='oidc';
+                }
+                $role=Role::where('name','=',$data['group'])->first();
+                if(isset($role)){
+                    $user = User::create($data);
+                    $data_role=[
+                        'id_user'=>$user->id,
+                        'cod_rol'=>$role->cod_rol
+                    ];
+                    User_role::create($data_role);
+                    $user->createToken('LaravelAuthApp')->accessToken;
+                    if(!isset($data['email_inst'])){
+                         $this->generateEmail($user,$role);
+                    }
+                    if(!isset($data['password'])&&isset($data['email_inst'])){
+                        $this->generatePassword($user);
+                    }
+                     return $this->response(false, Response::HTTP_CREATED, '201 Created',$user);
+                }else{
+                    $errors=['El grupo es incorrecto'];
+                    return $this->response(true, Response::HTTP_BAD_REQUEST, '400 Bad Request',$errors);
+                }
+            }else {
+                return $this->response(true, Response::HTTP_BAD_REQUEST, '400 Bad Request',$errors);
+            }
         }else{
-            return response()->json([
-                'errors' => true,
-                'code' => Response::HTTP_BAD_REQUEST,
-                'status' => '400 Bad Request',
-                'data' => $errors
-            ], Response::HTTP_BAD_REQUEST, Controller::$headers);
+            return $this->response(true,Response::HTTP_FORBIDDEN,'403 Forbidden' );
         }
     }
 
@@ -101,7 +156,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+
     }
 
     /**
@@ -125,6 +180,89 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    protected function existEmail($nick,$domain){
+        $exist=false;
+        $user=User::where('email_inst','=',"$nick@$domain")->first();
+        if(!empty($user)){
+           $exist=true;
+       }else{
+            $exist_gsuite=WorksSpaceController::emailExist("$nick@$domain");
+            if($exist_gsuite){
+                $exist=true;
+            }
+       }
+        return $exist;
+    }
+
+    public function generatePassword(User $user){
+        $new_password=str::random(8);
+        $dat_mail = [
+            'name' => "$user->f_surname $user->s_surname $user->f_name $user->s_name",
+            'email' => $user->email,
+            'new_email'=>$user->email_inst,
+            'password'=>$new_password
+        ];
+        $for = [
+            ['name' => "$user->f_name $user->s_name $user->f_surname $user->s_surname",
+                'email' => $user->email]
+        ];
+        $data=[
+            'password'=>bcrypt($new_password)
+        ];
+        $user->update($data);
+        Mail::to($for)->send(new SendPasswordAccess($dat_mail));
+    }
+
+    public function generateEmail(User $user,Role $role){
+        $domain=$role->domain;
+        $possible_emails=[];
+        $aux=null;
+        $fname=str_split($user->f_name);
+        foreach ($fname as $l){
+            $aux.=$l;
+            $possible_email=strtolower("$aux$user->f_surname");
+            if(!$this->existEmail($possible_email,$domain)){
+                $new_email="$possible_email@$domain";
+                WorksSpaceController::createEmail($user,$new_email,$role->path_unit,$role->group_email);
+                $data=[
+                    'email_inst'=>"$new_email"
+                ];
+                $user->update($data);
+                return null;
+            }else{
+                $possible_emails[]=$possible_email;
+            }
+        }
+        $sname=str_split($user->s_name);
+        foreach ($sname as $l){
+            $aux.=$l;
+            $possible_email=strtolower("$aux$user->f_surname");
+            $exist=$this->existEmail($possible_email,$domain);
+            if(!$exist){
+                $new_email="$possible_email@$domain";
+                WorksSpaceController::createEmail($user,$new_email,$role->path_unit,$role->group_email);
+                $data=[
+                    'email_inst'=>"$new_email"
+                ];
+                $user->update($data);
+                return null;
+            }else{
+                $possible_emails[]=$possible_email;
+            }
+        }
+        $possible_email=$possible_emails[0].random_int(10,99);
+        while(!$this->existEmail($possible_email,$domain)){
+            $new_email="$possible_email@$domain";
+            WorksSpaceController::createEmail($user,$new_email,$role->path_unit,$role->group_email);
+            $data=[
+                'email_inst'=>"$new_email"
+            ];
+            $user->update($data);
+            return null;
+        }
+        throw new \Exception('Posibles correos existen');
     }
 
     private function generateAvatarUrl(User $d){

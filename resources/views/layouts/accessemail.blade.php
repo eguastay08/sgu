@@ -3,42 +3,36 @@
         <img style="width: 200px;height: 35px;margin: auto !important;border-style: none;" title="logoueb" alt="logoueb" src="https://sac.ueb.edu.ec/logo_white.svg">
     </div>
     <br>
-    <div id="content">
+    <div id="content" style="padding: 10px;">
         <div>
+            <div style="margin-top:5px!important;padding:6px;text-align:center!important">
+                <span style="font-size:18px"><b>Bienvenido</b></span><br><br>
+            </div>
+            <span>Estimado/a <b>{{$data['name']}}</b></span><br><br>
             <!-- <span style="font-size:13px; text-aling:left;">Fecha: jueves, 12 de noviembre de 2020 15:58</span><br><br>-->
-            <span style=" text-aling:left;">Estimado/a: <b>{{ $data['name']}}</b></span><br><br>
-            <span>Si solicitó un restablecimiento de contraseña para <b>eguastay@ueb.edu.ec</b>, haga clic en el botón a continuación. Si no hizo esta solicitud, ignore este correo electrónico.</span><br>
-
+            <span>La <b>Universidad Estatal de Bolívar</b> le da la bienvenida a formar parte de nuestra noble institución, la <b>Dirección de Tecnología de la Información y la Comunicación</b> tiene el honor de darte a conocer que has recibido una cuenta  <b>Google Workspace for Education.</b></span>
         </div><br>
-        <div><center><a style=" display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    text-decoration:none;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    color: #bf0811;
-    border-color: #bf0811 !important;"
-                        href="https://sac.ueb.edu.ec/password/reset/{{$data['token']}}?user={{$data['cedula']}}" class=" btn-outline-sac w-100">
-                    Restablecer contraseña</a></center>
-        </div><br>
-        <span>Respondemos todas tus preguntas, escríbenos a <a href="mailto:dtics@ueb.edu.ec?subject=Tengo dudas sobre los Sistemas Virtuales de la UEB" style="color:#058ecd" target="_blank">dtics@ueb.edu.ec</a></span>
+        <div>
+            <div style="margin-left: 45px;">
+                <b>Sus <span class="il">credenciales</span> de acceso son:</b>
+                <br>
+                <p><b>Usuario: </b><a href="mailto:{{$data['new_email']}}" target="_blank">{{$data['new_email']}}</a></p>
+                <p><b>Contraseña Temporal: </b>{{$data['password']}}</p>
+                <p><b>Para ingresar: </b><a href="https://accounts.google.com"><b>Aqui</b></a></p>
+                <div>
+                    <span><b>Conoce de todos los beneficios </b><a href="https://edu.google.com/intl/es-419/"><b>aqui</b></a></span>
+                    <img style="width: 150px;float: right;margin-right: 85px;position: relative;top: -85px;" src="https://www.saasten.com/wp-content/uploads/2021/02/google-workspace.png" alt="Google Workspace for Education"/>
+                </div>
+            </div>
+            <br>
 
-        <br><br><br><span   style="text-aling:left;">Gracias por utilizar nuestros servicios.</span><br><br>
+            <p>En el caso de necesitar asistencia técnica comunicate en nuestro grupo de <b><a href="https://chat.whatsapp.com/IMjN7na9GxCKYWnkU6QztQ" target="_blank">Whatsapp</a></b> o <b><a href="https://t.me/joinchat/aHxu0KNlmhdmNGFh" target="_blank">Telegram</a></b> con soporte para <b>200.000</b> miembros</p>
+        </div><br>
         <span   style="text-aling:left;"> Atentamente,</span><br><br>
         <span  style=" text-aling:left;"><b> Dirección de Tecnología de la Información y la Comunicación</b></span>
         <br><br>
-        <div style=" color: white; margin: 0; display: flex;flex-wrap: wrap; padding: .5rem !important; background-color: #0b283f;border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; ">
-            <center style="width: 100%;font-size: 10px;"><span>Copyright © 2021<br> Derechos Reservados Universidad Estatal de Bolívar<br> Dirección de TICs </span></center>
-        </div>
+    </div>
+    <div style=" color: white; margin: 0; display: flex;flex-wrap: wrap; padding: .5rem !important; background-color: #0b283f;border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; ">
+        <center style="width: 100%;font-size: 10px;"><span>Copyright © 2021<br> Derechos Reservados Universidad Estatal de Bolívar<br> Dirección de TICs </span></center>
     </div>
 </div>

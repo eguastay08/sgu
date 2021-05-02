@@ -42,7 +42,6 @@ class User extends Authenticatable
         'confirmation_code',
         'remember_token',
         'remember_toke_valid_time'
-
     ];
 
     protected $required=[
@@ -52,7 +51,8 @@ class User extends Authenticatable
         'f_surname',
         's_surname',
         'gender',
-        'email'
+        'email',
+        'group'
     ];
     public function parroquia(){
         return $this->belongsTo("App\Models\Parroquia");

@@ -41,7 +41,7 @@ class PlatformController extends Controller
      */
     public function store(Request $request)
     {
-        $errors= Plataform::verifyRequired($request);
+        return $errors= Platform::verifyRequired($request);
         if($errors==null) {
             $category = Plataform::create($request->all());
             return response()->json([

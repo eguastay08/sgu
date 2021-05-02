@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    private $fillable=[
-        "name"
+
+    protected $fillable=[
+        "name",
+        "domain",
+        "group_email"
     ];
 }

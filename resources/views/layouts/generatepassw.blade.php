@@ -10,19 +10,15 @@
             </div>
             <span>Estimado/a <b>{{$data['name']}}</b></span><br><br>
             <!-- <span style="font-size:13px; text-aling:left;">Fecha: jueves, 12 de noviembre de 2020 15:58</span><br><br>-->
-            <span>La <b>Universidad Estatal de Bolívar</b> le da la bienvenida a formar parte de nuestra noble institución, la <b>Dirección de Tecnología de la Información y la Comunicación</b> tiene el honor de darte a conocer que has recibido una cuenta  <b>Google Workspace for Education.</b></span>
+            <span>La <b>Universidad Estatal de Bolívar</b> le da la <span class="il">bienvenida</span> a formar parte de nuestra noble institución, la <b>Dirección de Tecnología de la Información y la Comunicación</b> tiene el honor de dar a conocer nuestros servicios en línea que están a disposición de todos los estudiantes:</span>
         </div><br>
         <div>
             <div style="margin-left: 45px;">
+                <b>Portal de Servicios Viruales:</b><a href="https://sac.ueb.edu.ec" target="_blank"> https://sac.ueb.edu.ec</a><br><br>
                 <b>Sus <span class="il">credenciales</span> de acceso son:</b>
                 <br>
                 <p><b>Usuario: </b><a href="mailto:{{$data['new_email']}}" target="_blank">{{$data['new_email']}}</a></p>
                 <p><b>Contraseña Temporal: </b>{{$data['password']}}</p>
-                <p><b>Para ingresar: </b><a href="https://accounts.google.com"><b>Aqui</b></a></p>
-                <div>
-                    <span><b>Conoce de todos los beneficios </b><a href="https://edu.google.com/intl/es-419/"><b>aqui</b></a></span>
-                    <img style="width: 150px;float: right;margin-right: 85px;position: relative;top: -85px;" src="https://www.saasten.com/wp-content/uploads/2021/02/google-workspace.png" alt="Google Workspace for Education"/>
-                </div>
             </div>
             <br>
 

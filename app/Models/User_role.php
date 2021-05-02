@@ -12,7 +12,7 @@ class User_role extends Model
 
     protected $fillable=[
         "cod_rol",
-        "id"
+        "id_user"
     ];
 
     protected $hidden=[

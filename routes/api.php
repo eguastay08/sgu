@@ -13,9 +13,11 @@ use \App\Http\Controllers\MenuController;
 
 Route::prefix('v1')->group(function () {
     //Rutas Libres
+    Route::post('/plataforms', [PlatformController::class, 'store']);
     Route::get('/countries', [CountryController::class, 'index']);
+    Route::get('/gsuite', [\App\Http\Controllers\WorksSpaceController::class, 'getUsers']);
     Route::get('/countries/{country}', [CountryController::class, 'search']);
-    Route::get('/demo', [UserController::class, 'generateVerifyEmail']);
+    Route::post('/demo', [UserController::class, 'demo']);
     //rutas con el prefijo /auth
     Route::group(['prefix' => 'auth'], function () {
         Route::post('/login', [AuthController::class, 'login']);
@@ -36,6 +38,7 @@ Route::prefix('v1')->group(function () {
     //rutas que requieren estar autenticado
     Route::middleware('auth:api')->group(function () {
         Route::get('/users',[UserController::class,'index']);
+        Route::post('/users',[UserController::class,'store']);
         Route::get('/users/userinfo',[UserController::class,'userInfo']);
         Route::post('/users/avatar',[UserController::class,'uploadAvatar']);
         Route::put('/users/userinfo',[UserController::class,'userInfoUpdate']);

@@ -20,7 +20,7 @@ class CreateUserRolesTable extends Migration
             $table->primary(['id_user','cod_rol']);
             $table->foreign('id_user')
                 ->references('id')
-                ->on('users')->cascadeOnUpdate();
+                ->on('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('cod_rol')
                 ->references('cod_rol')
                 ->on('roles')->cascadeOnUpdate();
