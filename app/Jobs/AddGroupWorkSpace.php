@@ -11,7 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class AddGroupWorkSpace extends Controller implements ShouldQueue
+class AddGroupWorkSpace implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -37,7 +37,8 @@ class AddGroupWorkSpace extends Controller implements ShouldQueue
     {
         $wsc=new WorksSpaceController();
         $log="The job to AddGroupWorkSpace for email '".$this->email_membre."' is dispatched.";
-        $this->log('info',"$log",'cli');
+        $cr =new Controller();
+        $cr->log('info',"$log",'cli');
         $wsc->addMemberGroup($this->email_membre,$this->id_group);
     }
 }

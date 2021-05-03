@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Log_general extends Model
 {
     //use HasFactory;
-
+    protected $table="logs_generals";
     protected $primaryKey='cod_log';
     protected $fillable=[
         'cod_log',
@@ -20,8 +20,5 @@ class Log_general extends Model
         'id_user'
     ];
 
-    public function User(){
-        return $this->belongsTo("App\Models\User","id");
-    }
 
 }

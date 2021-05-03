@@ -13,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 
-class SendPasswordEmail extends Controller implements ShouldQueue
+class SendPasswordEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -27,8 +27,8 @@ class SendPasswordEmail extends Controller implements ShouldQueue
      */
     public function __construct($for, $dat_email)
     {
-        $this->user=$for;
-        $dat_email['password']=Crypt::decryptString($dat_email['password']);
+        $this->for=$for;
+        $dat_email['password']=$dat_email['password'];
         $this->dat_email=$dat_email;
     }
 
@@ -39,8 +39,9 @@ class SendPasswordEmail extends Controller implements ShouldQueue
      */
     public function handle()
     {
-        $log="The job SendPasswordEmail for email '".$this->for['email']."' is dispatched.";
-        $this->log('info',"$log",'cli');
+        $log="The job SendPasswordEmail for email '".$this->dat_email['email']."' is dispatched.";
+        $cr =new Controller();
+        $cr->log('info',"$log",'cli');
         Mail::to($this->for)->send(new SendEmailAccess($this->dat_email));
     }
 }

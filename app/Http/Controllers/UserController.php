@@ -123,15 +123,15 @@ class UserController extends Controller
                         $data['password']=bcrypt($data['password']);
                     }
                     $user = User::create($data);
-                    $log="The user '$user_act' create user $user->id";
-                    $this->log('info',"$log",'api',$request->user());
+                    $log="The user '$user_act' create user '$user->id'";
+                    $this->log('info',$log,'api',$request->user());
                     $data_role=[
                         'id_user'=>$user->id,
                         'cod_rol'=>$role->cod_rol
                     ];
                     User_role::create($data_role);
                     $log="The user '$user_act' added '$user->id' to the '$role->cod_rol' role";
-                    $this->log('info',"$log",'api',$request->user());
+                    $this->log('info',$log,'api',$request->user());
                     $user->createToken('LaravelAuthApp')->accessToken;
                     if(!isset($data['email_inst'])){
                         $log="The email generation job was created for user $user->id";
@@ -144,10 +144,9 @@ class UserController extends Controller
                         GeneratePassword::dispatch($user);
                     }
                     if($passw!=null&&isset($data['email_inst'])){
-                        $password=Crypt::encryptString($passw);
                         $log="The job was created to add the user '$user->id' to ldap ";
                         $this->log('info',"$log",'cli',$request->user());
-                        CreateAccountLdap::dispatch($user,$password,$role);
+                        CreateAccountLdap::dispatch($user,$passw,$role);
                     }
                     return $this->response(false, Response::HTTP_CREATED, '201 Created',$user);
                 }else{
@@ -227,7 +226,7 @@ class UserController extends Controller
             'name' => "$user->f_surname $user->s_surname $user->f_name $user->s_name",
             'email' => $user->email,
             'new_email'=>$user->email_inst,
-            'password'=>Crypt::encryptString($new_password)
+            'password'=>$new_password
         ];
         $for = [
             ['name' => "$user->f_name $user->s_name $user->f_surname $user->s_surname",
@@ -252,6 +251,8 @@ class UserController extends Controller
             if(!$this->existEmail($possible_email,$domain)){
                 $new_email="$possible_email@$domain";
                 CreateEmail::dispatch($user,$new_email,$role);
+                $log="The CreateEmail '$new_email' job is created for user '".$user->id."'";
+                $this->log('info',"$log",'cli');
                 $data=[
                     'email_inst'=>"$new_email"
                 ];
@@ -269,6 +270,8 @@ class UserController extends Controller
             if(!$exist){
                 $new_email="$possible_email@$domain";
                 CreateEmail::dispatch($user,$new_email,$role);
+                $log="The CreateEmail '$new_email' job is created for user '".$user->id."'";
+                $this->log('info',"$log",'cli');
                 $data=[
                     'email_inst'=>"$new_email"
                 ];
@@ -282,6 +285,8 @@ class UserController extends Controller
         while(!$this->existEmail($possible_email,$domain)){
             $new_email="$possible_email@$domain";
             CreateEmail::dispatch($user,$new_email,$role);
+            $log="The CreateEmail '$new_email' job is created for user '".$user->id."'";
+            $this->log('info',"$log",'cli');
             $data=[
                 'email_inst'=>"$new_email"
             ];
@@ -617,5 +622,8 @@ class UserController extends Controller
             $errors['incorrect_token']="Token Incorrecto";
         }
         return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $errors);
+    }
+    public function demo(){
+        return true;
     }
 }

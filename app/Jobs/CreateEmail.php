@@ -12,7 +12,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class CreateEmail extends Controller implements ShouldQueue
+class CreateEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -41,7 +41,8 @@ class CreateEmail extends Controller implements ShouldQueue
     {
         $wsc=new WorksSpaceController();
         $log="The job to CreateEmail for user '".$this->user->id."' is dispatched.";
-        $this->log('info',"$log",'cli');
+        $cr =new Controller();
+        $cr->log('info',"$log",'cli');
         $wsc->createEmail($this->user,$this->new_email,$this->role);
     }
 }

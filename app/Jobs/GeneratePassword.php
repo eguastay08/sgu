@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -34,7 +35,8 @@ class GeneratePassword implements ShouldQueue
     public function handle()
     {
         $log="The job GeneratePassword for user '".$this->user->id."' is dispatched.";
-        $this->log('info',"$log",'cli');
+        $cr =new Controller();
+        $cr->log('info',"$log",'cli');
         $userc=new UserController();
         $userc->generatePassword($this->user);
     }

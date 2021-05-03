@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Jobs\CreateAccountLdap;
 use App\Jobs\GeneratePassword;
 use App\Jobs\SendPasswordEmail;
-use App\Mail\SendEmailAccess;
 use App\Models\Role;
 use Google\Exception;
 use Google_Client;
@@ -13,7 +12,6 @@ use Google_Service_Directory;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Jobs\AddGroupWorkSpace;
 
@@ -173,26 +171,35 @@ class WorksSpaceController extends Controller
         $httpClient = $client->authorize();
         $response = $httpClient->post('https://www.googleapis.com/admin/directory/v1/users',[RequestOptions::JSON=>$data]);
         $result= (string)$response->getBody();
-        $data_result = json_decode($result, true);
-        print_r($data_result);
-        if(isset($data_result['error'])){
+        if($response->getStatusCode()==200) {
+            $log = "The email $new_email is created from WorkSpace for the user '" . $user->id . "'";
+            $this->log('info', "$log", 'cli');
+            $dat_mail = [
+                'name' => "$user->f_surname $user->s_surname $user->f_name $user->s_name",
+                'email' => $user->email,
+                'new_email' => $new_email,
+                'password' => $new_password
+            ];
+            $for = [
+                ['name' => "$user->f_name $user->s_name $user->f_surname $user->s_surname",
+                    'email' => $user->email]
+            ];
+            SendPasswordEmail::dispatch($for, $dat_mail);
+            $log = "The SendPasswordEmail  job is created from WorkSpace for user '" . $user->id . "'";
+            $this->log('info', "$log", 'cli');
+            GeneratePassword::dispatch($user);
+            $log = "The GeneratePassword job is created from WorkSpace for user '" . $user->id . "'";
+            $this->log('info', "$log", 'cli');
+            CreateAccountLdap::dispatch($user, $new_password, $role);
+            $log = "The CreateAccountLdap job is created from WorkSpace for user '" . $user->id . "'";
+            $this->log('info', "$log", 'cli');
+            AddGroupWorkSpace::dispatch($new_email, $role->group_email);
+            $log = "The AddGroupWorkSpace job is created from WorkSpace for user '" . $user->id . "'";
+            $this->log('info', "$log", 'cli');
+        }else{
+            $this->log('critical',"$result",'cli');
             throw new Exception('Error al general la solicitud');
         }
-        $dat_mail = [
-            'name' => "$user->f_surname $user->s_surname $user->f_name $user->s_name",
-            'email' => $user->email,
-            'new_email'=>$new_email,
-            'password'=>$new_password
-        ];
-        $for = [
-            ['name' => "$user->f_name $user->s_name $user->f_surname $user->s_surname",
-                'email' => $user->email]
-        ];
-        SendPasswordEmail::dispatch($for,$dat_mail);
-        GeneratePassword::dispatch($user);
-        CreateAccountLdap::dispatch($user,$new_password,$role);
-        AddGroupWorkSpace::dispatch($new_email,$role->group_email);
-        return null;
     }
 }
 

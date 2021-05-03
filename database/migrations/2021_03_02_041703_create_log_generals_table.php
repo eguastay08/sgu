@@ -16,14 +16,11 @@ class CreateLogGeneralsTable extends Migration
         Schema::create('logs_generals', function (Blueprint $table) {
             $table->bigIncrements('cod_log')->comment('Código interno del log');
             $table->enum('type',['alert','info','critical'])->comment('Tipo de error');
-            $table->string('ip')->comment('Direccón ip del clinte');
-            $table->string('user_agent')->comment('User Agent del cliente');
+            $table->string('ip')->nullable()->comment('Direccón ip del clinte');
+            $table->string('user_agent')->nullable()->comment('User Agent del cliente');
             $table->text('log')->comment('Detalle del log');
             $table->text('origin')->nullable()->comment('Lugar donde se origina el log');
             $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
-            $table->foreign('id_user')
-                ->references('id')
-                ->on('users')->cascadeOnUpdate();
             $table->timestamps();
         });
     }

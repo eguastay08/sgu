@@ -26,17 +26,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogGeneralController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogGeneralController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorksSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorksSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/AddGroupWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AddGroupWorkSpace.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateAccountLdap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateAccountLdap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateEmail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/GeneratePassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/GeneratePassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendNewPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendNewPassword.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/SendPasswordEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendPasswordEmail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Log_general.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Log_user_access_platform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_user_access_platform.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/generatepassw.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/generatepassw.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_051524_create_log_user_access_platforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_051524_create_log_user_access_platforms_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -285,7 +289,7 @@
       <workItem from="1619822363000" duration="29692000" />
       <workItem from="1619862412090" duration="3195000" />
       <workItem from="1619884338842" duration="2844000" />
-      <workItem from="1619892459777" duration="84659000" />
+      <workItem from="1619892459777" duration="96283000" />
     </task>
     <servers />
   </component>
@@ -329,10 +333,10 @@
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1366.737@0.31.1366.737" timestamp="1620006004965" />
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620005596941">
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620014661751">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1620005596941" />
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1620014661751" />
     <state x="830" y="160" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.2726.737@0.31.2726.737" timestamp="1615213997940" />
     <state x="366" y="160" width="634" height="487" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1619464535803">
       <screen x="0" y="31" width="1366" height="737" />

@@ -13,7 +13,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class GenerateEmail extends Controller implements ShouldQueue
+class GenerateEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -40,7 +40,9 @@ class GenerateEmail extends Controller implements ShouldQueue
     {
         $userc=new UserController();
         $log="The job GenerateEmail for user '".$this->user->id."' is dispatched.";
-        $this->log('info',"$log",'cli',$this->user->id);
+        $cr =new Controller();
+        $cr->log('info',"$log",'cli');
+
         $userc->generateEmail($this->user, $this->role);
     }
 }

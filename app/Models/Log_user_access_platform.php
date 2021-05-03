@@ -18,7 +18,4 @@ class Log_user_access_platform extends Model
         return $this->belongsTo("App\Models\User","id");
     }
 
-    public function Platform(){
-        return $this->belongsTo("App\Models\Platform","id_platform");
-    }
 }

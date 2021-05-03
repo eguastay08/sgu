@@ -14,7 +14,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Crypt;
 
-class CreateAccountLdap extends Controller implements ShouldQueue
+class CreateAccountLdap implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -29,7 +29,7 @@ class CreateAccountLdap extends Controller implements ShouldQueue
     public function __construct(User $user, $password, Role $role)
     {
         $this->user=$user;
-        $this->password=Crypt::decryptString($password);
+        $this->password=$password;
         $this->role=$role;
     }
 
@@ -42,7 +42,8 @@ class CreateAccountLdap extends Controller implements ShouldQueue
     {
         $userc=new LdapController();
         $log="The job to CreateAccountLdap for user '".$this->user->id."' is dispatched.";
-        $this->log('info',"$log",'cli');
+        $cr =new Controller();
+        $cr->log('info',"$log",'cli');
         $userc->createAccount($this->user,$this->password,$this->role);
     }
 }

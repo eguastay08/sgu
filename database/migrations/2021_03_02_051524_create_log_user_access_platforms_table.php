@@ -20,12 +20,6 @@ class CreateLogUserAccessPlatformsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
             $table->unsignedBigInteger('cod_platform')->comment('Código de la plataforma');
-            $table->foreign('id_user')
-                ->references('id')
-                ->on('users')->cascadeOnUpdate();
-            $table->foreign('cod_platform')
-                ->references('cod_platform')
-                ->on('platforms')->cascadeOnUpdate();
         });
     }
 
