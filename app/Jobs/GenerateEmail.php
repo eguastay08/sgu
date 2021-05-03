@@ -19,7 +19,6 @@ class GenerateEmail implements ShouldQueue
 
     private $user;
     private $role;
-
     /**
      * Create a new job instance.
      *

@@ -19,13 +19,12 @@ class CreateEmail implements ShouldQueue
     protected $user;
     protected $new_email;
     protected $role;
-
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user,$new_email,$role )
+    public function __construct(User $user,$new_email,$role)
     {
         $this->user=$user;
         $this->new_email=$new_email;

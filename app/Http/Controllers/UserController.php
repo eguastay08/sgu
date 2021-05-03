@@ -141,7 +141,7 @@ class UserController extends Controller
                     if(!isset($data['password'])&&isset($data['email_inst'])){
                         $log="The password generation job was created for user $user->id";
                         $this->log('info',"$log",'cli',$request->user());
-                        GeneratePassword::dispatch($user);
+                        GeneratePassword::dispatch($user,$role);
                     }
                     if($passw!=null&&isset($data['email_inst'])){
                         $log="The job was created to add the user '$user->id' to ldap ";
@@ -220,7 +220,7 @@ class UserController extends Controller
         return $exist;
     }
 
-    public function generatePassword(User $user){
+    public function generatePassword(User $user,Role $role){
         $new_password=str::random(8);
         $dat_mail = [
             'name' => "$user->f_surname $user->s_surname $user->f_name $user->s_name",
@@ -237,6 +237,9 @@ class UserController extends Controller
         ];
         $user->update($data);
         SendNewPassword::dispatch($for,$dat_mail);
+        $log="The job was created to add the user '$user->id' to ldap ";
+        $this->log('info',"$log",'cli');
+        CreateAccountLdap::dispatch($user,$new_password,$role);
         return null;
     }
 

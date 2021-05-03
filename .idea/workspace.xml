@@ -27,21 +27,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorksSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorksSpaceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/AddGroupWorkSpace.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/AddGroupWorkSpace.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/CreateAccountLdap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateAccountLdap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/CreateEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/CreateEmail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jobs/GeneratePassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/GeneratePassword.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendNewPassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendNewPassword.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendPasswordEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/SendPasswordEmail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Log_general.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Log_user_access_platform.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_user_access_platform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_051524_create_log_user_access_platforms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_051524_create_log_user_access_platforms_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +279,7 @@
       <workItem from="1619822363000" duration="29692000" />
       <workItem from="1619862412090" duration="3195000" />
       <workItem from="1619884338842" duration="2844000" />
-      <workItem from="1619892459777" duration="96283000" />
+      <workItem from="1619892459777" duration="100867000" />
     </task>
     <servers />
   </component>

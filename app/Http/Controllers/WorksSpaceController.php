@@ -131,6 +131,7 @@ class WorksSpaceController extends Controller
         $client = (new static)->getClient();
         $httpClient = $client->authorize();
         $response= $httpClient->post("https://admin.googleapis.com/admin/directory/v1/groups/$id_group/members",[RequestOptions::JSON=>$data]);
+        //$response= $httpClient->post("http://127.0.0.1:8000/api/v1/demo",[RequestOptions::JSON=>$data]);
         $result= (string)$response->getBody();
         $data = json_decode($result, true);
         if(isset($data['error'])){
@@ -170,6 +171,7 @@ class WorksSpaceController extends Controller
         $client = (new static)->getClient();
         $httpClient = $client->authorize();
         $response = $httpClient->post('https://www.googleapis.com/admin/directory/v1/users',[RequestOptions::JSON=>$data]);
+        //$response = $httpClient->post('http://127.0.0.1:8000/api/v1/demo',[RequestOptions::JSON=>$data]);
         $result= (string)$response->getBody();
         if($response->getStatusCode()==200) {
             $log = "The email $new_email is created from WorkSpace for the user '" . $user->id . "'";
@@ -187,14 +189,11 @@ class WorksSpaceController extends Controller
             SendPasswordEmail::dispatch($for, $dat_mail);
             $log = "The SendPasswordEmail  job is created from WorkSpace for user '" . $user->id . "'";
             $this->log('info', "$log", 'cli');
-            GeneratePassword::dispatch($user);
-            $log = "The GeneratePassword job is created from WorkSpace for user '" . $user->id . "'";
-            $this->log('info', "$log", 'cli');
-            CreateAccountLdap::dispatch($user, $new_password, $role);
-            $log = "The CreateAccountLdap job is created from WorkSpace for user '" . $user->id . "'";
-            $this->log('info', "$log", 'cli');
             AddGroupWorkSpace::dispatch($new_email, $role->group_email);
             $log = "The AddGroupWorkSpace job is created from WorkSpace for user '" . $user->id . "'";
+            $this->log('info', "$log", 'cli');
+            GeneratePassword::dispatch($user,$role);
+            $log = "The GeneratePassword job is created from WorkSpace for user '" . $user->id . "'";
             $this->log('info', "$log", 'cli');
         }else{
             $this->log('critical',"$result",'cli');
