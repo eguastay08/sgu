@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\WorksSpaceController;
+use App\Jobs\CreateAccountLdap;
+use App\Jobs\CreateEmail;
+use App\Jobs\GenerateEmail;
+use App\Jobs\GeneratePassword;
+use App\Jobs\SendNewPassword;
 use App\Mail\ConfirmMail;
 use App\Mail\SendPasswordAccess;
 use App\Mail\SendTokenResetPassword;
@@ -63,7 +68,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $access_granted=Controller::validatePermissions($request->user()->id,'POST','/users');
+        $user_act=$request->user()->id;
+        $access_granted=Controller::validatePermissions($user_act,'POST','/users');
         if($access_granted){
             $errors= User::verifyRequired($request);
             if($errors==null) {
@@ -86,7 +92,7 @@ class UserController extends Controller
                     'type_auth',
                     'email',
                     'email_inst',
-                    'passoword',
+                    'password',
                     'group'
                 ];
                 foreach ($edit_permission as $d){
@@ -111,20 +117,39 @@ class UserController extends Controller
                 }
                 $role=Role::where('name','=',$data['group'])->first();
                 if(isset($role)){
+                    $passw=null;
+                    if(isset($data['password'])) {
+                        $passw = $data['password'];
+                        $data['password']=bcrypt($data['password']);
+                    }
                     $user = User::create($data);
+                    $log="The user '$user_act' create user $user->id";
+                    $this->log('info',"$log",'api',$request->user());
                     $data_role=[
                         'id_user'=>$user->id,
                         'cod_rol'=>$role->cod_rol
                     ];
                     User_role::create($data_role);
+                    $log="The user '$user_act' added '$user->id' to the '$role->cod_rol' role";
+                    $this->log('info',"$log",'api',$request->user());
                     $user->createToken('LaravelAuthApp')->accessToken;
                     if(!isset($data['email_inst'])){
-                         $this->generateEmail($user,$role);
+                        $log="The email generation job was created for user $user->id";
+                        $this->log('info',"$log",'cli',$request->user());
+                        GenerateEmail::dispatch($user,$role);
                     }
                     if(!isset($data['password'])&&isset($data['email_inst'])){
-                        $this->generatePassword($user);
+                        $log="The password generation job was created for user $user->id";
+                        $this->log('info',"$log",'cli',$request->user());
+                        GeneratePassword::dispatch($user);
                     }
-                     return $this->response(false, Response::HTTP_CREATED, '201 Created',$user);
+                    if($passw!=null&&isset($data['email_inst'])){
+                        $password=Crypt::encryptString($passw);
+                        $log="The job was created to add the user '$user->id' to ldap ";
+                        $this->log('info',"$log",'cli',$request->user());
+                        CreateAccountLdap::dispatch($user,$password,$role);
+                    }
+                    return $this->response(false, Response::HTTP_CREATED, '201 Created',$user);
                 }else{
                     $errors=['El grupo es incorrecto'];
                     return $this->response(true, Response::HTTP_BAD_REQUEST, '400 Bad Request',$errors);
@@ -202,7 +227,7 @@ class UserController extends Controller
             'name' => "$user->f_surname $user->s_surname $user->f_name $user->s_name",
             'email' => $user->email,
             'new_email'=>$user->email_inst,
-            'password'=>$new_password
+            'password'=>Crypt::encryptString($new_password)
         ];
         $for = [
             ['name' => "$user->f_name $user->s_name $user->f_surname $user->s_surname",
@@ -212,7 +237,8 @@ class UserController extends Controller
             'password'=>bcrypt($new_password)
         ];
         $user->update($data);
-        Mail::to($for)->send(new SendPasswordAccess($dat_mail));
+        SendNewPassword::dispatch($for,$dat_mail);
+        return null;
     }
 
     public function generateEmail(User $user,Role $role){
@@ -225,7 +251,7 @@ class UserController extends Controller
             $possible_email=strtolower("$aux$user->f_surname");
             if(!$this->existEmail($possible_email,$domain)){
                 $new_email="$possible_email@$domain";
-                WorksSpaceController::createEmail($user,$new_email,$role->path_unit,$role->group_email);
+                CreateEmail::dispatch($user,$new_email,$role);
                 $data=[
                     'email_inst'=>"$new_email"
                 ];
@@ -242,7 +268,7 @@ class UserController extends Controller
             $exist=$this->existEmail($possible_email,$domain);
             if(!$exist){
                 $new_email="$possible_email@$domain";
-                WorksSpaceController::createEmail($user,$new_email,$role->path_unit,$role->group_email);
+                CreateEmail::dispatch($user,$new_email,$role);
                 $data=[
                     'email_inst'=>"$new_email"
                 ];
@@ -255,7 +281,7 @@ class UserController extends Controller
         $possible_email=$possible_emails[0].random_int(10,99);
         while(!$this->existEmail($possible_email,$domain)){
             $new_email="$possible_email@$domain";
-            WorksSpaceController::createEmail($user,$new_email,$role->path_unit,$role->group_email);
+            CreateEmail::dispatch($user,$new_email,$role);
             $data=[
                 'email_inst'=>"$new_email"
             ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Access;
+use App\Models\Log_general;
 use App\Models\Role_access;
 use App\Models\User;
 use App\Models\User_role;
@@ -87,6 +88,22 @@ class Controller extends BaseController
             return true;
         }
        return false;
+    }
+
+    public function log($type,$logt,$origin,User $user){
+        $log=[];
+        if(isset($_SERVER)){
+            $log['user_agent']=$_SERVER['HTTP_USER_AGENT'];
+            $log['ip']=$_SERVER['REMOTE_ADDR'];
+        }
+        $log['type']=$type;
+        $log['log']=$logt;
+        $log['id_user']=$user->id;
+        $log['origin']=$origin;
+        if(isset($user)){
+            $log['id_user']=$user->id;
+        }
+        Log_general::create($log);
     }
 
 }

@@ -82,4 +82,6 @@ class LogGeneralController extends Controller
     {
         //
     }
+
+
 }

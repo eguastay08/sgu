@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserController;
-use App\Models\Role;
+use App\Mail\SendPasswordAccess;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -12,23 +12,25 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Mail;
 
-class GenerateEmail extends Controller implements ShouldQueue
+class SendNewPassword extends Controller implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $user;
-    private $role;
-
+    private $for;
+    private $dat_email;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user,Role $role)
+    public function __construct($for, $dat_email)
     {
-        $this->user=$user;
-        $this->role=$role;
+        $this->for=$for;
+        $dat_email['password']=Crypt::decryptString($dat_email['password']);
+        $this->dat_email=$dat_email;
     }
 
     /**
@@ -38,9 +40,8 @@ class GenerateEmail extends Controller implements ShouldQueue
      */
     public function handle()
     {
-        $userc=new UserController();
-        $log="The job GenerateEmail for user '".$this->user->id."' is dispatched.";
-        $this->log('info',"$log",'cli',$this->user->id);
-        $userc->generateEmail($this->user, $this->role);
+        $log="The job SendNewPassword for email '".$this->for['email']."' is dispatched.";
+        $this->log('info',"$log",'cli');
+        Mail::to($this->for)->send(new SendPasswordAccess($this->dat_email));
     }
 }

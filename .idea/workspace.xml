@@ -26,26 +26,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/storage/tokens/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/apiueb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/apiueb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GeneralFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GeneralFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlatformController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlatformController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LogGeneralController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LogGeneralController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WorksSpaceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WorksSpaceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Log_general.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Log_general.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User_role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User_role.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041558_create_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041558_create_roles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041755_create_user_roles_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041755_create_user_roles_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/demo.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/demo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/accessemail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/accessemail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/generatepassw.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/generatepassw.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
@@ -295,7 +285,7 @@
       <workItem from="1619822363000" duration="29692000" />
       <workItem from="1619862412090" duration="3195000" />
       <workItem from="1619884338842" duration="2844000" />
-      <workItem from="1619892459777" duration="62688000" />
+      <workItem from="1619892459777" duration="84659000" />
     </task>
     <servers />
   </component>
@@ -335,14 +325,14 @@
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="278" y="63" width="810" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.1366.737@0.31.1366.737" timestamp="1619464433930" />
-    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1619954023156">
+    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1620006004966">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1366.737@0.31.1366.737" timestamp="1619954023156" />
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619954183003">
+    <state x="0" y="31" width="504" height="473" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.31.1366.737@0.31.1366.737" timestamp="1620006004965" />
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1620005596941">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1619954183003" />
+    <state x="416" y="160" width="534" height="487" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.1366.737@0.31.1366.737" timestamp="1620005596941" />
     <state x="830" y="160" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.31.2726.737@0.31.2726.737" timestamp="1615213997940" />
     <state x="366" y="160" width="634" height="487" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1619464535803">
       <screen x="0" y="31" width="1366" height="737" />
@@ -411,20 +401,5 @@
       <screen x="0" y="31" width="1366" height="737" />
     </state>
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.31.1366.737@0.31.1366.737" timestamp="1619900510024" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/UserController.php</url>
-          <line>63</line>
-          <properties>
-            <option name="className" value="\App\Http\Controllers\UserController" />
-            <option name="methodName" value="store" />
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

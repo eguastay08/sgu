@@ -17,7 +17,7 @@ Route::prefix('v1')->group(function () {
     Route::get('/countries', [CountryController::class, 'index']);
     Route::get('/gsuite', [\App\Http\Controllers\WorksSpaceController::class, 'getUsers']);
     Route::get('/countries/{country}', [CountryController::class, 'search']);
-    Route::post('/demo', [UserController::class, 'demo']);
+    Route::get('/demo', [\App\Http\Controllers\LdapController::class, 'createAccount']);
     //rutas con el prefijo /auth
     Route::group(['prefix' => 'auth'], function () {
         Route::post('/login', [AuthController::class, 'login']);

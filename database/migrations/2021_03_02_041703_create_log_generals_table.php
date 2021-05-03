@@ -19,6 +19,11 @@ class CreateLogGeneralsTable extends Migration
             $table->string('ip')->comment('Direccón ip del clinte');
             $table->string('user_agent')->comment('User Agent del cliente');
             $table->text('log')->comment('Detalle del log');
+            $table->text('origin')->nullable()->comment('Lugar donde se origina el log');
+            $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
+            $table->foreign('id_user')
+                ->references('id')
+                ->on('users')->cascadeOnUpdate();
             $table->timestamps();
         });
     }

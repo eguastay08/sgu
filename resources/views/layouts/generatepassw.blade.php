@@ -14,7 +14,7 @@
         </div><br>
         <div>
             <div style="margin-left: 45px;">
-                <b>Portal de Servicios Viruales:</b><a href="https://sac.ueb.edu.ec" target="_blank"> https://sac.ueb.edu.ec</a><br><br>
+                <b>Portal de Servicios Virtuales:</b><a href="https://sac.ueb.edu.ec" target="_blank"> https://sac.ueb.edu.ec</a><br><br>
                 <b>Sus <span class="il">credenciales</span> de acceso son:</b>
                 <br>
                 <p><b>Usuario: </b><a href="mailto:{{$data['new_email']}}" target="_blank">{{$data['new_email']}}</a></p>

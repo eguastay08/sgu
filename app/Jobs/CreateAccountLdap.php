@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\LdapController;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -12,22 +12,24 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Crypt;
 
-class GenerateEmail extends Controller implements ShouldQueue
+class CreateAccountLdap extends Controller implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private $user;
+    private $password;
     private $role;
-
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user,Role $role)
+    public function __construct(User $user, $password, Role $role)
     {
         $this->user=$user;
+        $this->password=Crypt::decryptString($password);
         $this->role=$role;
     }
 
@@ -38,9 +40,9 @@ class GenerateEmail extends Controller implements ShouldQueue
      */
     public function handle()
     {
-        $userc=new UserController();
-        $log="The job GenerateEmail for user '".$this->user->id."' is dispatched.";
-        $this->log('info',"$log",'cli',$this->user->id);
-        $userc->generateEmail($this->user, $this->role);
+        $userc=new LdapController();
+        $log="The job to CreateAccountLdap for user '".$this->user->id."' is dispatched.";
+        $this->log('info',"$log",'cli');
+        $userc->createAccount($this->user,$this->password,$this->role);
     }
 }

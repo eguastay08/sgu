@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CreateAccountLdap;
+use App\Jobs\GeneratePassword;
+use App\Jobs\SendPasswordEmail;
 use App\Mail\SendEmailAccess;
+use App\Models\Role;
 use Google\Exception;
 use Google_Client;
 use Google_Service_Directory;
@@ -11,6 +15,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Jobs\AddGroupWorkSpace;
 
 
 class WorksSpaceController extends Controller
@@ -133,9 +138,10 @@ class WorksSpaceController extends Controller
         if(isset($data['error'])){
             throw new Exception('Error al general la solicitud');
         }
+        return null;
     }
 
-    public static function createEmail(User $user,$new_email,$uni_orga, $group ){
+    public function createEmail(User $user,$new_email,Role $role){
         $new_password=str::random(8);
 
         $data=array (
@@ -160,18 +166,18 @@ class WorksSpaceController extends Controller
                             'primary' => true,
                         ),
                 ),
-            'orgUnitPath' => $uni_orga,
+            'orgUnitPath' => $role->path_unit,
             'includeInGlobalAddressList' => true,
         );
         $client = (new static)->getClient();
         $httpClient = $client->authorize();
         $response = $httpClient->post('https://www.googleapis.com/admin/directory/v1/users',[RequestOptions::JSON=>$data]);
         $result= (string)$response->getBody();
-        $data = json_decode($result, true);
-        if(isset($data['error'])){
+        $data_result = json_decode($result, true);
+        print_r($data_result);
+        if(isset($data_result['error'])){
             throw new Exception('Error al general la solicitud');
         }
-        (new static)->addMemberGroup($new_email,$group);
         $dat_mail = [
             'name' => "$user->f_surname $user->s_surname $user->f_name $user->s_name",
             'email' => $user->email,
@@ -182,9 +188,11 @@ class WorksSpaceController extends Controller
             ['name' => "$user->f_name $user->s_name $user->f_surname $user->s_surname",
                 'email' => $user->email]
         ];
-        Mail::to($for)->send(new SendEmailAccess($dat_mail));
-
-        //(new static)->\App\Controllers\UserController::generatePassword($user);
+        SendPasswordEmail::dispatch($for,$dat_mail);
+        GeneratePassword::dispatch($user);
+        CreateAccountLdap::dispatch($user,$new_password,$role);
+        AddGroupWorkSpace::dispatch($new_email,$role->group_email);
+        return null;
     }
 }
 

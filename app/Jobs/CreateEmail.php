@@ -3,8 +3,7 @@
 namespace App\Jobs;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\UserController;
-use App\Models\Role;
+use App\Http\Controllers\WorksSpaceController;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -13,21 +12,23 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class GenerateEmail extends Controller implements ShouldQueue
+class CreateEmail extends Controller implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $user;
-    private $role;
+    protected $user;
+    protected $new_email;
+    protected $role;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user,Role $role)
+    public function __construct(User $user,$new_email,$role )
     {
         $this->user=$user;
+        $this->new_email=$new_email;
         $this->role=$role;
     }
 
@@ -38,9 +39,9 @@ class GenerateEmail extends Controller implements ShouldQueue
      */
     public function handle()
     {
-        $userc=new UserController();
-        $log="The job GenerateEmail for user '".$this->user->id."' is dispatched.";
-        $this->log('info',"$log",'cli',$this->user->id);
-        $userc->generateEmail($this->user, $this->role);
+        $wsc=new WorksSpaceController();
+        $log="The job to CreateEmail for user '".$this->user->id."' is dispatched.";
+        $this->log('info',"$log",'cli');
+        $wsc->createEmail($this->user,$this->new_email,$this->role);
     }
 }
