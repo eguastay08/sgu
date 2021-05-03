@@ -40,8 +40,7 @@ class GenerateEmail implements ShouldQueue
         $userc=new UserController();
         $log="The job GenerateEmail for user '".$this->user->id."' is dispatched.";
         $cr =new Controller();
-        $cr->log('info',"$log",'cli');
-
+        $cr->log('info',"$log",'cli',null);
         $userc->generateEmail($this->user, $this->role);
     }
 }

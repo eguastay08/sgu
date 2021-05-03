@@ -117,38 +117,7 @@ class UserController extends Controller
                 }
                 $role=Role::where('name','=',$data['group'])->first();
                 if(isset($role)){
-                    $passw=null;
-                    if(isset($data['password'])) {
-                        $passw = $data['password'];
-                        $data['password']=bcrypt($data['password']);
-                    }
-                    $user = User::create($data);
-                    $log="The user '$user_act' create user '$user->id'";
-                    $this->log('info',$log,'api',$request->user());
-                    $data_role=[
-                        'id_user'=>$user->id,
-                        'cod_rol'=>$role->cod_rol
-                    ];
-                    User_role::create($data_role);
-                    $log="The user '$user_act' added '$user->id' to the '$role->cod_rol' role";
-                    $this->log('info',$log,'api',$request->user());
-                    $user->createToken('LaravelAuthApp')->accessToken;
-                    if(!isset($data['email_inst'])){
-                        $log="The email generation job was created for user $user->id";
-                        $this->log('info',"$log",'cli',$request->user());
-                        GenerateEmail::dispatch($user,$role);
-                    }
-                    if(!isset($data['password'])&&isset($data['email_inst'])){
-                        $log="The password generation job was created for user $user->id";
-                        $this->log('info',"$log",'cli',$request->user());
-                        GeneratePassword::dispatch($user,$role);
-                    }
-                    if($passw!=null&&isset($data['email_inst'])){
-                        $log="The job was created to add the user '$user->id' to ldap ";
-                        $this->log('info',"$log",'cli',$request->user());
-                        CreateAccountLdap::dispatch($user,$passw,$role);
-                    }
-                    return $this->response(false, Response::HTTP_CREATED, '201 Created',$user);
+                    return $this->save($data,$role,$request);
                 }else{
                     $errors=['El grupo es incorrecto'];
                     return $this->response(true, Response::HTTP_BAD_REQUEST, '400 Bad Request',$errors);
@@ -161,6 +130,170 @@ class UserController extends Controller
         }
     }
 
+    private function save($data,Role $role,Request $request){
+        $passw=null;
+        if(isset($data['password'])) {
+            $passw = $data['password'];
+            $data['password']=bcrypt($data['password']);
+        }
+        $user = User::create($data);
+        $log="The user '".$request->user()->id."' create user '$user->id'";
+        $this->log('info',$log,'api',$request->user());
+        $data_role=[
+            'id_user'=>$user->id,
+            'cod_rol'=>$role->cod_rol
+        ];
+        User_role::create($data_role);
+        $log="The user '".$request->user()->id."' added '$user->id' to the '$role->cod_rol' role";
+        $this->log('info',$log,'api',$request->user());
+        $user->createToken('LaravelAuthApp')->accessToken;
+        if(!isset($data['email_inst'])){
+            $log="The email generation job was created for user $user->id";
+            $this->log('info',"$log",'cli',$request->user());
+            GenerateEmail::dispatch($user,$role);
+        }
+        if(!isset($data['password'])&&isset($data['email_inst'])){
+            $log="The password generation job was created for user $user->id";
+            $this->log('info',"$log",'cli',$request->user());
+            GeneratePassword::dispatch($user,$role);
+        }
+        if($passw!=null&&isset($data['email_inst'])){
+            $log="The job was created to add the user '$user->id' to ldap ";
+            $this->log('info',"$log",'cli',$request->user());
+            CreateAccountLdap::dispatch($user,$passw,$role);
+        }
+        return $this->response(false, Response::HTTP_CREATED, '201 Created',$user);
+    }
+
+    public function import(Request $request){
+            $user_act = $request->user()->id;
+            $access_granted = Controller::validatePermissions($user_act, 'POST', '/users/import');
+            if($access_granted){
+                $errors=[];
+                if($request->hasFile('file')) {
+                    $file = $request->file('file');
+                    $validate = \Validator::make(
+                        array(
+                            'file' => $file,
+                        ),
+                        array(
+                            'file' => 'mimeType:text/plain'
+                        )
+                    );
+                    //!$validate->fails()
+                    if (true) {
+                        $delimit=$request->delimit?$request->delimit:',';
+                        $data=GeneralFunctions::csvToJson($file,$delimit);
+                        $gender=[
+                            'Masculino',
+                            'Femeninos',
+                            'LGBT',
+                            'Otro'
+                        ];
+                        $ethnicity=[
+                            'Afrodecendiente',
+                            'Blanco/a',
+                            'Indigena',
+                            'Mestizo/a',
+                            'Montubio/a',
+                            'Mulato/a',
+                            'Negro/a',
+                            'Otro/a'
+                        ];
+                        $return=[];
+                        foreach ($data as $key=> $d){
+                            foreach ($d  as $key=>  $min){
+                                $aux=strtolower($min);
+                                $aux2=explode(" ",$aux);
+                                $na='';
+                                foreach ($aux2 as $n){
+                                    $na.=ucfirst($n)." ";
+                                }
+                                $d[$key]=trim($na);
+                            }
+
+                            $new_user= [
+                                'cedula'=>isset($d['cedula'])?$d['cedula']:null,
+                                'surname'=>isset($d['surname'])?$d['surname']:null,
+                                'name'=>isset($d['name'])?$d['name']:null,
+                                'email'=>isset($d['email'])?strtolower($d['email']):null,
+                                'birthday'=>isset($d['birthday'])?$d['birthday']:null,
+                                'nationality'=>isset($d['nationality'])?$d['nationality']:null,
+                                'gender'=>isset($d['gender'])?$d['gender']:null,
+                                'province'=>isset($d['province'])?$d['province']:null,
+                                'canton'=>isset($d['canton'])?$d['canton']:null,
+                                'parroquia'=>isset($d['parroquia'])?$d['parroquia']:null,
+                                'email_inst'=>isset($d['email_inst'])?strtolower($d['email_inst']):null,
+                                'password'=>isset($d['password'])?$d['password']:null,
+                                'phone'=>isset($d['phone'])?$d['phone']:null,
+                                'mobile'=>isset($d['mobile'])?$d['mobile']:null,
+                                'ethnicity'=>isset($d['ethnicity'])?$d['ethnicity']:null,
+                                'disability'=>isset($d['disability'])?$d['disability']:null,
+                            ];
+
+                            if($new_user['email_inst']==null){
+                                unset($new_user['email_inst']);
+                            }
+                            $new_user['group']=$request->group;
+                            $validate=\Validator::make($new_user,[
+                                'cedula'    => 'required|unique:users',
+                                'email'    => 'required|email|unique:users',
+                                'email_inst'    => 'email|unique:users',
+                                'surname'    => 'required',
+                                'name'    => 'required',
+                                'group'=>'required'
+                            ]);
+
+                            if(!$validate->fails()){
+                                $name=explode(' ',$new_user['name']);
+                                $new_user['f_name']=$name[0];
+                                unset($name[0]);
+                                $new_user['s_name']='';
+                                foreach ($name as $n) {
+                                    $new_user['s_name'].="$n ";
+                                }
+                                $new_user['s_name']=trim($new_user['s_name']);
+                                $surname=explode(' ',$new_user['surname']);
+                                $new_user['s_surname']=end($surname);
+                                array_pop($surname);
+                                $new_user['f_surname']='';
+                                foreach ($surname as $n) {
+                                    $new_user['f_surname'].="$n ";
+                                }
+                                $new_user['f_surname']=trim($new_user['f_surname']);
+                                $role=Role::where('name','=',$new_user['group'])->first();
+                                if(isset($role)) {//
+                                    if(!GeneralFunctions::inArray($ethnicity,$new_user['ethnicity'])){
+                                        unset($new_user['ethnicity']);
+                                    }
+                                    if(!GeneralFunctions::inArray($gender,$new_user['gender'])){
+                                        unset($new_user['gender']);
+                                    }
+                                     $this->save($new_user,$role,$request);
+
+                                    $new_user['status']="Se registro";
+                                    return $new_user;
+                                }else{
+                                    $new_user['status']="El grupo es incorrecto";
+                                }
+                            }else{
+                                $new_user['status']=$validate->errors();
+                            }
+                            $return[]=$new_user;
+                        }
+                        return $return;
+                    }else{
+                        $errors[]='El archivo es incorrecto';
+                        return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $errors);
+                    }
+                }else{
+                    $errors[]='El archivo es incorrecto';
+                    return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $errors);
+                }
+            }else{
+                return $this->response(true,Response::HTTP_FORBIDDEN,'403 Forbidden' );
+            }
+    }
     /**
      * Display the specified resource.
      *
@@ -247,10 +380,14 @@ class UserController extends Controller
         $domain=$role->domain;
         $possible_emails=[];
         $aux=null;
-        $fname=str_split($user->f_name);
+        $f_name=GeneralFunctions::cleanString($user->f_name);
+        $s_name=GeneralFunctions::cleanString($user->s_name);
+        $f_surname=GeneralFunctions::cleanString($user->f_surname);
+        $fname=str_split($f_name);
+        $fsurname=str_replace(" ", "", $f_surname);
         foreach ($fname as $l){
             $aux.=$l;
-            $possible_email=strtolower("$aux$user->f_surname");
+            $possible_email=strtolower("$aux$fsurname");
             if(!$this->existEmail($possible_email,$domain)){
                 $new_email="$possible_email@$domain";
                 CreateEmail::dispatch($user,$new_email,$role);
@@ -265,10 +402,10 @@ class UserController extends Controller
                 $possible_emails[]=$possible_email;
             }
         }
-        $sname=str_split($user->s_name);
+        $sname=str_split($s_name);
         foreach ($sname as $l){
             $aux.=$l;
-            $possible_email=strtolower("$aux$user->f_surname");
+            $possible_email=strtolower("$aux$fsurname");
             $exist=$this->existEmail($possible_email,$domain);
             if(!$exist){
                 $new_email="$possible_email@$domain";
@@ -626,7 +763,7 @@ class UserController extends Controller
         }
         return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $errors);
     }
-    public function demo(){
-        return true;
+    public function demo(Request $request){
+        return $request;
     }
 }

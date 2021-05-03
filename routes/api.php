@@ -11,6 +11,7 @@ use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\MenuController;
 
+
 Route::prefix('v1')->group(function () {
     //Rutas Libres
     Route::post('/plataforms', [PlatformController::class, 'store']);
@@ -39,6 +40,7 @@ Route::prefix('v1')->group(function () {
     Route::middleware('auth:api')->group(function () {
         Route::get('/users',[UserController::class,'index']);
         Route::post('/users',[UserController::class,'store']);
+        Route::post('/users/import',[UserController::class,'import']);
         Route::get('/users/userinfo',[UserController::class,'userInfo']);
         Route::post('/users/avatar',[UserController::class,'uploadAvatar']);
         Route::put('/users/userinfo',[UserController::class,'userInfoUpdate']);

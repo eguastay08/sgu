@@ -20,7 +20,7 @@ class CreateLogGeneralsTable extends Migration
             $table->string('user_agent')->nullable()->comment('User Agent del cliente');
             $table->text('log')->comment('Detalle del log');
             $table->text('origin')->nullable()->comment('Lugar donde se origina el log');
-            $table->unsignedBigInteger('id_user')->comment('Identificador del usuario');
+            $table->unsignedBigInteger('id_user')->nullable()->comment('Identificador del usuario');
             $table->timestamps();
         });
     }

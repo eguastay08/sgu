@@ -21,12 +21,13 @@ class CreateUsersTable extends Migration
             $table->string('f_surname')->comment('Primer apellido del usuario');
             $table->string('s_surname')->nullable()->comment('Segundo apellido del usuario');
             $table->enum('gender',['Masculino','Femenino','LGBT','Otro'])->nullable()->comment('Genero del usuario');
+            $table->string('nationality')->nullable()->comment('Nacionalidad del Usuario');
             $table->string('mobile',10)->nullable()->comment('Número de celular del usuario');
             $table->string('phone',15)->nullable()->comment('Número de telefono del usuario');
             $table->string('photography')->nullable()->comment('Ruta de la fotografia del usuario');
             $table->date('date_of_birth')->nullable()->comment('Fecha de nacimiento del usuario');
-            $table->enum('ethnicity',['Afroecuatoriano/a','Blanco/a','Indigena','Mestizo/a','Montubio/a','Mulato/a','Negro/a','Otro'])->nullable()->comment('Etnia del usuario');
-            $table->enum('type_of_disability',['Discapacidad física','Discapacidad sensorial','Discapacidad intelectual','Discapacidad psíquica','Discapacidad visceral','Discapacidad múltiple'])->nullable()->comment('Tipo de discapacidad del usuario');
+            $table->enum('ethnicity',['Afrodecendiente','Blanco/a','Indigena','Mestizo/a','Montubio/a','Mulato/a','Negro/a','Otro/a'])->nullable()->comment('Etnia del usuario');
+            $table->enum('type_of_disability',['Discapacidad física','Discapacidad sensorial','Discapacidad intelectual','Discapacidad psíquica','Discapacidad visceral','Discapacidad múltiple','Otra'])->nullable()->comment('Tipo de discapacidad del usuario');
             $table->string('percentage_of_disability')->nullable()->comment('Porcentaje de discapacidad del usuario');
             $table->string('cod_conadis')->nullable()->comment('Codigo de registro del conadis en el caso de ser una persona discapacitada');
             $table->enum('civil_status',['Casado/a', 'Soltero/a', 'Divorciado/a', 'Viudo/a','Unión de Hecho'])->nullable()->comment('Estado civil del usuario');

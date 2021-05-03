@@ -26,6 +26,7 @@ class User extends Authenticatable
         'photography',
         'date_of_birth',
         'ethnicity',
+        'nacionalidad',
         'type_of_disability',
         'percentage_of_disability',
         'cod_conadis',
