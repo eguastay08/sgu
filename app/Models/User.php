@@ -36,6 +36,7 @@ class User extends Authenticatable
         'email',
         'email_inst',
         'email_verified_at',
+        'update_password ',
         'cedula_father',
         'cedula_mother',
         'cedula_emergency_contact',

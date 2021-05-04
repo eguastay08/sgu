@@ -26,16 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4bbdb658-e42c-4c64-8c9a-56f90d0c4e99.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4bbdb658-e42c-4c64-8c9a-56f90d0c4e99.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GeneralFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GeneralFunctions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jobs/GenerateEmail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041703_create_log_generals_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_02_041753_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_02_041753_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +276,9 @@
       <workItem from="1619822363000" duration="29692000" />
       <workItem from="1619862412090" duration="3195000" />
       <workItem from="1619884338842" duration="2844000" />
-      <workItem from="1619892459777" duration="129607000" />
+      <workItem from="1619892459777" duration="131795000" />
+      <workItem from="1620061407222" duration="671000" />
+      <workItem from="1620107202118" duration="1328000" />
     </task>
     <servers />
   </component>
@@ -341,22 +336,22 @@
     </state>
     <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl/0.31.1366.737@0.31.1366.737" timestamp="1619922367839" />
     <state x="466" y="160" width="434" height="487" key="FileChooserDialogImpl/0.31.2726.737@0.31.2726.737" timestamp="1615210612140" />
-    <state width="1147" height="254" key="GridCell.Tab.0.bottom" timestamp="1620026559216">
+    <state width="1147" height="254" key="GridCell.Tab.0.bottom" timestamp="1620059425339">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="254" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1620026559216" />
-    <state width="1147" height="254" key="GridCell.Tab.0.center" timestamp="1620026559213">
+    <state width="1147" height="254" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1620059425339" />
+    <state width="1147" height="254" key="GridCell.Tab.0.center" timestamp="1620059425335">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="254" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1620026559213" />
-    <state width="1147" height="254" key="GridCell.Tab.0.left" timestamp="1620026559211">
+    <state width="1147" height="254" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1620059425335" />
+    <state width="1147" height="254" key="GridCell.Tab.0.left" timestamp="1620059425332">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="254" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1620026559211" />
-    <state width="1147" height="254" key="GridCell.Tab.0.right" timestamp="1620026559214">
+    <state width="1147" height="254" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1620059425332" />
+    <state width="1147" height="254" key="GridCell.Tab.0.right" timestamp="1620059425337">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="254" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1620026559214" />
+    <state width="1147" height="254" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1620059425337" />
     <state width="257" height="520" key="HiddenNamespacesPopup" timestamp="1618354942338">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
