@@ -20,7 +20,8 @@
         "laraveles/spanish": "^1.5",
         "nesbot/carbon": "^2.46",
         "socialiteproviders/google": "^4.1",
-        "socialiteproviders/keycloak": "^4.1"
+        "socialiteproviders/keycloak": "^4.1",
+      "ext-ldap": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

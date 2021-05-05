@@ -15,7 +15,7 @@ class LdapController extends Controller
             throw new \ErrorException('not connect');
         }
             ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
-            $r = ldap_bind($ds,env('LDAP_BIND_RDN'),env('LDAP_BIND_PASSWORD'));
+            ldap_bind($ds,env('LDAP_BIND_RDN'),env('LDAP_BIND_PASSWORD'));
             $dn_user="cn=$user->cedula, ou=users,".env('LDAP_DC');
             $ldaprecord['uid']=$user->cedula;
             $ldaprecord['givenName']="$user->f_name $user->s_name";
@@ -29,11 +29,27 @@ class LdapController extends Controller
             $ldaprecord['objectclass'][1]='person';
             $ldaprecord['objectclass'][2]='organizationalPerson';
             $ldaprecord['objectclass'][3]='inetOrgPerson';
-            if($r = ldap_add($ds, $dn_user, $ldaprecord)){
+            if(ldap_add($ds, $dn_user, $ldaprecord)){
                 $dn_group="cn=$role->name,ou=groups,".env('LDAP_DC');
                 $ldaprecordGroup['memberUid']=$user->cedula;
                 ldap_mod_add($ds, $dn_group, $ldaprecordGroup);
             }
             ldap_close($ds);
+    }
+
+    public static function updatePassword($cedula,$password){
+        try {
+            $ldap = ldap_connect(env('LDAP_SERVER'));
+            ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
+            ldap_bind($ldap, env('LDAP_BIND_RDN'), env('LDAP_BIND_PASSWORD'));
+            $basedn = "ou=users," . env('LDAP_DC');
+            $searchResults = ldap_search($ldap, $basedn, "uid=$cedula");
+            $entry = ldap_first_entry($ldap, $searchResults);
+            $userdata['userPassword'] = $password;
+            ldap_mod_replace($ldap, ldap_get_dn($ldap, $entry), $userdata);
+            ldap_close($ldap);
+        }catch (\Exception $e){
+
+        }
     }
 }

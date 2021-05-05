@@ -71,19 +71,7 @@ class AuthController extends Controller
             $tokenResult = $data_user->createToken('Personal Access Token');
             $token = $tokenResult->token;
             $token->save();
-            $data=[
-                'user'=>$data_user,
-                'access_token'=>[
-                    "token"=>$tokenResult->accessToken,
-                    "type"=>'Bearer',
-                    'expires_at' => Carbon::parse(
-                        $tokenResult->token->expires_at)
-                        ->toDateTimeString()
-                ]
-            ];
-
-            return $this->response('false',Response::HTTP_OK,'200 OK',$data);
-
+            return redirect("https://sac.ueb.edu.ec/login?access_token=$tokenResult->accessToken");
         }else{
             return response()->json([
                 'message' => 'Unauthorized'], 401);
