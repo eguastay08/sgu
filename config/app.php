@@ -166,6 +166,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         Laravel\Passport\PassportServiceProvider::class,
+        \SocialiteProviders\Manager\ServiceProvider::class,
 
         Laraveles\Spanish\SpanishServiceProvider::class,
         /*

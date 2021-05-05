@@ -10,7 +10,7 @@ use \App\Http\Controllers\FileController;
 use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\MenuController;
-
+use \Laravel\Socialite\Facades\Socialite;
 
 Route::prefix('v1')->group(function () {
     //Rutas Libres
@@ -19,9 +19,11 @@ Route::prefix('v1')->group(function () {
     Route::get('/gsuite', [\App\Http\Controllers\WorksSpaceController::class, 'getUsers']);
     Route::get('/countries/{country}', [CountryController::class, 'search']);
     Route::post('/demo', [\App\Http\Controllers\UserController::class, 'demo']);
+
     //rutas con el prefijo /auth
     Route::group(['prefix' => 'auth'], function () {
         Route::post('/login', [AuthController::class, 'login']);
+
         //Rutas que requieren estar autenticado
         Route::middleware('auth:api')->group(function () {
             Route::get('userloggedin', [UserController::class, 'userLoggedIn']);
