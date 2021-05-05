@@ -463,7 +463,7 @@ class UserController extends Controller
             'photography'=>$data_user->photography,
             'email'=>$data_user->email,
             'email_inst'=>$data_user->email_inst,
-            'update_password'=>$data_user->update_passwor
+            'update_password'=>$data_user->update_password
         ];
         return $this->response('false',Response::HTTP_OK,'200 OK',$userLoggedIn);
     }
