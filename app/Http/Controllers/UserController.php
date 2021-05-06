@@ -203,7 +203,7 @@ class UserController extends Controller
                         $return=[];
                         foreach ($data as $key=> $d){
                             foreach ($d  as $key=>  $min){
-                                $aux=strtolower($min);
+                                $aux=mb_strtolower($min);
                                 $aux2=explode(" ",$aux);
                                 $na='';
                                 foreach ($aux2 as $n){

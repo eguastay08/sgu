@@ -34,7 +34,7 @@ class MenuController extends Controller
             ->select('menu.*')
             ->where('id','=',$user)
             ->where('role_access.active','=','1')
-            ->groupby('menu.cod_menu','menu.name','sgu.menu.order','sgu.menu.icon','sgu.menu.path','sgu.menu.cod_menu_father','sgu.menu.created_at','sgu.menu.updated_at')
+            ->groupby('menu.cod_menu','menu.name','menu.order','menu.icon','menu.path','menu.cod_menu_father','menu.created_at','menu.updated_at')
             ->orderby('menu.order')
             ->get();
         foreach ($menu as $d){
@@ -57,7 +57,7 @@ class MenuController extends Controller
                         ->where('id','=',$user)
                         ->where('menu.cod_menu_father','=',$menu_father->cod_menu)
                         ->where('role_access.active','=','1')
-                        ->groupby('menu.cod_menu','menu.name','sgu.menu.order','sgu.menu.icon','sgu.menu.path','sgu.menu.cod_menu_father','sgu.menu.created_at','sgu.menu.updated_at')
+                        ->groupby('menu.cod_menu','menu.name','menu.order','menu.icon','menu.path','menu.cod_menu_father','menu.created_at','menu.updated_at')
                         ->orderby('menu.order')
                         ->get();
                     $menu_father['submenu']=$item_menu;
