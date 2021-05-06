@@ -234,10 +234,13 @@ class UserController extends Controller
                             if($new_user['email_inst']==null){
                                 unset($new_user['email_inst']);
                             }
+                            if(isset($new_user['email'])&&empty($new_user['email'])){
+                                unset($new_user['email']);
+                            }
                             $new_user['group']=$request->group;
                             $validate=\Validator::make($new_user,[
                                 'cedula'    => 'required|unique:users',
-                                'email'    => 'required|email|unique:users',
+                                'email'    => 'email|unique:users',
                                 'email_inst'    => 'email|unique:users',
                                 'surname'    => 'required',
                                 'name'    => 'required',
@@ -269,10 +272,8 @@ class UserController extends Controller
                                     if(!GeneralFunctions::inArray($gender,$new_user['gender'])){
                                         unset($new_user['gender']);
                                     }
-                                     $this->save($new_user,$role,$request);
-
-                                    $new_user['status']="Se registro";
-                                    return $new_user;
+                                        $this->save($new_user,$role,$request);
+                                        $new_user['status']="Se registro";
                                 }else{
                                     $new_user['status']="El grupo es incorrecto";
                                 }
