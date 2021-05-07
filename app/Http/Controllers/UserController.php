@@ -591,7 +591,7 @@ class UserController extends Controller
                 $role=Role::join('user_roles as ur','ur.cod_rol','=','roles.cod_rol')
                     ->where('id_user','=',$user->id)
                     ->get();
-                LdapController::updatePassword($user->cedula,$data['new_password'],$role);
+                LdapController::updatePassword($user,$data['new_password'],$role);
             }
             if(isset($data['email'])){
                 $data['email_verified_at']=null;
