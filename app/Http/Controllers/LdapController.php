@@ -59,7 +59,7 @@ class LdapController extends Controller
                 ldap_mod_replace($ldap, ldap_get_dn($ldap, $entry), $userdata);
                 ldap_close($ldap);
             }else{
-                (new static) -> self::createAccount($user, $password,$role);
+                (new static) ->createAccount($user, $password,$role);
             }
 
         }catch (\Exception $e){
