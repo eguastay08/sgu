@@ -92,7 +92,7 @@ class Controller extends BaseController
 
     public function log($type,$logt,$origin,User $user=null){
         $log=[];
-        if(!isset($_SERVER)){
+        if(isset($_SERVER['HTTP_USER_AGENT'])){
             $log['user_agent']=$_SERVER['HTTP_USER_AGENT'];
             $log['ip']=$_SERVER['REMOTE_ADDR'];
         }
