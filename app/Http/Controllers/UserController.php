@@ -370,7 +370,6 @@ class UserController extends Controller
             'password'=>bcrypt($new_password)
         ];
         $user->update($data);
-        LdapController::updatePassword($user->cedula,$new_password);
         SendNewPassword::dispatch($for,$dat_mail);
         $log="The job was created to add the user '$user->id' to ldap ";
         $this->log('info',"$log",'cli');
@@ -589,7 +588,10 @@ class UserController extends Controller
             $user=$request->user();
             if(isset($data['new_password'])){
                 $data['password']=bcrypt($data['new_password']);
-                LdapController::updatePassword($user->cedula,$data['new_password']);
+                $role=Role::join('user_roles ur','ur.cod_rol','=','roles.cod_rol')
+                    ->where('id_user','=',$user->id)
+                    ->get();
+                LdapController::updatePassword($user->cedula,$data['new_password'],$role);
             }
             if(isset($data['email'])){
                 $data['email_verified_at']=null;
