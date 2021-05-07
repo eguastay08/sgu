@@ -591,7 +591,7 @@ class UserController extends Controller
                 $role=Role::join('user_roles as ur','ur.cod_rol','=','roles.cod_rol')
                     ->select('roles.*')
                     ->where('id_user','=',$user->id)
-                    ->get();
+                    ->first();
 
                 LdapController::updatePassword($user,$data['new_password'],$role);
             }
