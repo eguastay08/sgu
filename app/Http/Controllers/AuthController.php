@@ -76,8 +76,8 @@ class AuthController extends Controller
             $token->save();
             $redirect_auth=env('KEYCLOAK_REDIRECT_AUTH');
             $msj['change_success']='Se actualizo el password correctamente';
-            $log="The user '".$user->id."' logged in using keycloak.";
-            $this->log('info',$log,'web',$user);
+            $log="The user '".$data_user->id."' logged in using keycloak.";
+            $this->log('info',$log,'web',$data_user);
             return redirect("$redirect_auth?access_token=$tokenResult->accessToken");
         }else{
             return response()->json([
