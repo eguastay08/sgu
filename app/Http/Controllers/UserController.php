@@ -466,6 +466,8 @@ class UserController extends Controller
             'email_inst'=>$data_user->email_inst,
             'update_password'=>$data_user->update_password
         ];
+        $log="The user '".$data_user->id."' consulted his information LoggendIn.";
+        $this->log('info',$log,'web',$data_user);
         return $this->response('false',Response::HTTP_OK,'200 OK',$userLoggedIn);
     }
 
@@ -491,6 +493,8 @@ class UserController extends Controller
               ->select("references_place", "main_street", "secondary_street", "house_number", "parroquias.name as Parroquia","parroquias.cod_parroquia", "cantones.name as Canton","cantones.cod_canton", "provinces.name as Provincia","provinces.cod_province", "countries.name as Country", "countries.ISO2 as ISO2")
               ->where('end_date', '=', null)
               ->get()->first();
+          $log="The user '".$userinfo->id."' consulted his information personal.";
+          $this->log('info',$log,'web',$userinfo);
           return $this->response('false', Response::HTTP_OK, '200 OK', $request->user());
       }
         return $this->response(true,Response::HTTP_FORBIDDEN,'403 Forbidden' );
@@ -529,6 +533,8 @@ class UserController extends Controller
             $user->confirmation_code = '';
             $user->save();
             $msj[]="Correo confirmado";
+            $log="The user '".$user->id."' confirm your email.";
+            $this->log('info',$log,'web',$user);
             return $this->response('false', Response::HTTP_OK, '200 OK', $msj);
             }else if($code==$user->confirmation_code){
                 $errors[]='Código Incorrecto';
@@ -612,6 +618,8 @@ class UserController extends Controller
                      ];
                       Mail::to($for)->send(new ConfirmMail($dat_mail));
                  }
+                 $log="The user '".$user->id."' update your information personal.";
+                 $this->log('info',$log,'web',$user);
                  return $this->response('false', Response::HTTP_OK, '200 OK', $user);
              }else{
                  return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $errors);
@@ -656,6 +664,8 @@ class UserController extends Controller
                             'photography'=>$created->id_file
                         ];
                         $request->user()->update($data);
+                        $log="The user '".$request->user()->id."' update your profile image.";
+                        $this->log('info',$log,'web',$request->user());
                         return $this->response('false', Response::HTTP_CREATED, '201 CREATED', '');
                     }
 
@@ -704,6 +714,8 @@ class UserController extends Controller
                 $mjs=[
                     'to'=>GeneralFunctions::hiddenEmail($user->email_inst)
                 ];
+                $log="The user '".$user->id."' requested to recover their password.";
+                $this->log('info',$log,'web',$user);
                 return $this->response('false', Response::HTTP_OK, '200 OK',$mjs);
 
             }
@@ -745,6 +757,8 @@ class UserController extends Controller
                     }
                     if($user->update($data)){
                         $msj['change_success']='Se actualizo el password correctamente';
+                        $log="The user '".$user->id."' requested updated their password.";
+                        $this->log('info',$log,'web',$user);
                         return $this->response('false', Response::HTTP_OK, '200 OK', $msj);
                     }else{
                         $errors['internal_error']='Ocurrio un error interno';

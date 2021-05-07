@@ -46,13 +46,16 @@ class AuthController extends Controller
                     ->toDateTimeString()
              ]
         ];
-
+        $log="The user '".$user->id."' logged in using manual auth.";
+        $this->log('info',$log,'web',$user);
         return $this->response('false',Response::HTTP_OK,'200 OK',$data);
     }
 
     public function logout(Request $request)
     {
         $request->user()->token()->revoke();
+        $log="The user '".$request->user()->id."' logged out.";
+        $this->log('info',$log,'web',$request->user());
         return $this->response('false',Response::HTTP_OK,'200 OK',['message' =>
             'Successfully logged out']);
     }
@@ -71,7 +74,11 @@ class AuthController extends Controller
             $tokenResult = $data_user->createToken('Personal Access Token');
             $token = $tokenResult->token;
             $token->save();
-            return redirect("https://sac.ueb.edu.ec/login?access_token=$tokenResult->accessToken");
+            $redirect_auth=env('KEYCLOAK_REDIRECT_AUTH');
+            $msj['change_success']='Se actualizo el password correctamente';
+            $log="The user '".$user->id."' logged in using keycloak.";
+            $this->log('info',$log,'web',$user);
+            return redirect("$redirect_auth?access_token=$tokenResult->accessToken");
         }else{
             return response()->json([
                 'message' => 'Unauthorized'], 401);
