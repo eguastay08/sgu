@@ -7,7 +7,7 @@
         <div>
             <!-- <span style="font-size:13px; text-aling:left;">Fecha: jueves, 12 de noviembre de 2020 15:58</span><br><br>-->
             <span style=" text-aling:left;">Estimado/a: <b>{{ $data['name']}}</b></span><br><br>
-            <span>Si solicitó un restablecimiento de contraseña para <b>eguastay@ueb.edu.ec</b>, haga clic en el botón a continuación. Si no hizo esta solicitud, ignore este correo electrónico.</span><br>
+            <span>Si solicitó un restablecimiento de contraseña para <b>{{ $data['email']}}</b>, haga clic en el botón a continuación. Si no hizo esta solicitud, ignore este correo electrónico.</span><br>
 
         </div><br>
         <div><center><a style=" display: inline-block;

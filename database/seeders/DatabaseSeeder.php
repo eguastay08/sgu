@@ -106,7 +106,7 @@ INSERT INTO `user_roles` (`created_at`, `updated_at`, `cod_rol`, `id_user`) VALU
 
 
 
-    INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `domain`, `group_email`, `path_unit`, `created_at`, `updated_at`) VALUES (NULL, 'Estudiantes Nivelación', NULL, 'mailes.ueb.edu.ec', 'estudiantes@ueb.edu.ec', '/EstudiatesNivelacion', NULL, NULL);
+    INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `domain`, `group_email`, `path_unit`, `created_at`, `updated_at`) VALUES (NULL, 'Estudiantes Nivelación', NULL, 'mailes.ueb.edu.ec', 'estudiantes@mailes.ueb.edu.ec', '/EstudiantesNivelacion', NULL, NULL);
     INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `domain`, `group_email`, `path_unit`, `created_at`, `updated_at`) VALUES (NULL, 'Estudiantes', NULL, 'mailes.ueb.edu.ec', 'estudiantes@mailes.ueb.edu.ec', '/Estudiantes', NULL, NULL);
 
     INSERT INTO `roles` (`cod_rol`, `name`, `detail`, `domain`, `group_email`, `path_unit`, `created_at`, `updated_at`) VALUES (NULL, 'DocentesTitulares', NULL, 'ueb.edu.ec', 'docentes@ueb.edu.ec', '/DocentesTitulares', NULL, NULL);
