@@ -589,8 +589,10 @@ class UserController extends Controller
             if(isset($data['new_password'])){
                 $data['password']=bcrypt($data['new_password']);
                 $role=Role::join('user_roles as ur','ur.cod_rol','=','roles.cod_rol')
+                    ->select('roles.*')
                     ->where('id_user','=',$user->id)
                     ->get();
+
                 LdapController::updatePassword($user,$data['new_password'],$role);
             }
             if(isset($data['email'])){
