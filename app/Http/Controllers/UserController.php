@@ -588,7 +588,7 @@ class UserController extends Controller
             $user=$request->user();
             if(isset($data['new_password'])){
                 $data['password']=bcrypt($data['new_password']);
-                $role=Role::join('user_roles ur','ur.cod_rol','=','roles.cod_rol')
+                $role=Role::join('user_roles as ur','ur.cod_rol','=','roles.cod_rol')
                     ->where('id_user','=',$user->id)
                     ->get();
                 LdapController::updatePassword($user->cedula,$data['new_password'],$role);
