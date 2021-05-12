@@ -756,6 +756,11 @@ class UserController extends Controller
                         $data['password']=bcrypt($data['new_password']);
                     }
                     if($user->update($data)){
+                        $role=Role::join('user_roles as ur','ur.cod_rol','=','roles.cod_rol')
+                            ->select('roles.*')
+                            ->where('id_user','=',$user->id)
+                            ->first();
+                        LdapController::updatePassword($user,$data['new_password'],$role);
                         $msj['change_success']='Se actualizo el password correctamente';
                         $log="The user '".$user->id."' requested updated their password.";
                         $this->log('info',$log,'web',$user);
