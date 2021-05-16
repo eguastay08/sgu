@@ -19,5 +19,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/sianet</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="api.ueb.edu.ec" uuid="ec980cd3-7853-4d39-b796-e5e7fe9b8730">
+      <driver-ref>mariadb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://api.ueb.edu.ec:3306/api_ueb</jdbc-url>
+    </data-source>
   </component>
 </project>
