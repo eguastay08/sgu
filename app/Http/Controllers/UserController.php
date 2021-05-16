@@ -585,7 +585,7 @@ class UserController extends Controller
                  "cod_conadis",
                  "password"=>'password:api',
                  "confirm_password",
-                 "new_password"=>'same:confirm_password|regex:/^(?=.*[0-9])(?=.*[A-Za-z])/|regex:/^(?=.*[a-z])(?=.*[A-Z])/|regex:/(?=.*[$@$!%*?&.-])[A-Za-z$@$!%*?&.-]/|regex:/^([A-Za-z0-9$@$!%*?&.-]){8,16}$/',
+                 "new_password"=>'same:confirm_password|regex:/^.{8,}$/|regex:/^(?=.*[0-9])(?=.*[A-Za-z])/|regex:/^(?=.*[a-z])(?=.*[A-Z])/|regex:~(?=.*[-_*?!@/#$()}{=.,;:])[-_*?!@/#$()}{=.,;:]~',
             ]);
             if ($validate->fails())
             {
@@ -746,7 +746,7 @@ class UserController extends Controller
                     ];
                     $validate=\Validator::make($data,[
                         "confirm_password",
-                        "new_password"=>'same:confirm_password|regex:/^(?=.*[0-9])(?=.*[A-Za-z])/|regex:/^(?=.*[a-z])(?=.*[A-Z])/|regex:/(?=.*[$@$!%*?&.-])[A-Za-z$@$!%*?&.-]/|regex:/^([A-Za-z0-9$@$!%*?&.-]){8,16}$/',
+                        "new_password"=>'same:confirm_password|regex:/^.{8,}$/|regex:/^(?=.*[0-9])(?=.*[A-Za-z])/|regex:/^(?=.*[a-z])(?=.*[A-Z])/|regex:~(?=.*[-_*?!@/#$()}{=.,;:])[-_*?!@/#$()}{=.,;:]~',
                     ]);
                     if ($validate->fails())
                     {

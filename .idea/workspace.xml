@@ -27,12 +27,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e46b877b-839a-456d-9969-7fe0fc5fe43b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/82ce8f13-059f-4f9a-8aae-7500811d12e8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/82ce8f13-059f-4f9a-8aae-7500811d12e8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/82ce8f13-059f-4f9a-8aae-7500811d12e8/storage_v2/_src_/database/sianet.8rQyyg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/82ce8f13-059f-4f9a-8aae-7500811d12e8/storage_v2/_src_/database/sianet.8rQyyg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GeneralFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GeneralFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/demo.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/demo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,7 +302,7 @@
       <workItem from="1620907630055" duration="6748000" />
       <workItem from="1620944182683" duration="1247000" />
       <workItem from="1621094852346" duration="22516000" />
-      <workItem from="1621177122056" duration="5102000" />
+      <workItem from="1621177122056" duration="17600000" />
     </task>
     <servers />
   </component>
@@ -360,22 +360,22 @@
     </state>
     <state x="234" y="160" width="367" height="487" key="FileChooserDialogImpl/0.31.1366.737@0.31.1366.737" timestamp="1621099472349" />
     <state x="466" y="160" width="434" height="487" key="FileChooserDialogImpl/0.31.2726.737@0.31.2726.737" timestamp="1615210612140" />
-    <state width="1147" height="402" key="GridCell.Tab.0.bottom" timestamp="1621186159679">
+    <state width="1147" height="402" key="GridCell.Tab.0.bottom" timestamp="1621191247518">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="402" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1621186159679" />
-    <state width="1147" height="402" key="GridCell.Tab.0.center" timestamp="1621186159676">
+    <state width="1147" height="402" key="GridCell.Tab.0.bottom/0.31.1366.737@0.31.1366.737" timestamp="1621191247518" />
+    <state width="1147" height="402" key="GridCell.Tab.0.center" timestamp="1621191247517">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="402" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1621186159676" />
-    <state width="1147" height="402" key="GridCell.Tab.0.left" timestamp="1621186159674">
+    <state width="1147" height="402" key="GridCell.Tab.0.center/0.31.1366.737@0.31.1366.737" timestamp="1621191247517" />
+    <state width="1147" height="402" key="GridCell.Tab.0.left" timestamp="1621191247516">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="402" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1621186159674" />
-    <state width="1147" height="402" key="GridCell.Tab.0.right" timestamp="1621186159678">
+    <state width="1147" height="402" key="GridCell.Tab.0.left/0.31.1366.737@0.31.1366.737" timestamp="1621191247516" />
+    <state width="1147" height="402" key="GridCell.Tab.0.right" timestamp="1621191247517">
       <screen x="0" y="31" width="1366" height="737" />
     </state>
-    <state width="1147" height="402" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1621186159678" />
+    <state width="1147" height="402" key="GridCell.Tab.0.right/0.31.1366.737@0.31.1366.737" timestamp="1621191247517" />
     <state width="257" height="520" key="HiddenNamespacesPopup" timestamp="1618354942338">
       <screen x="0" y="31" width="1366" height="737" />
     </state>

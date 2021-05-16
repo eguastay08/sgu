@@ -65,23 +65,28 @@ class AuthController extends Controller
     }
 
     public function loginWithKeycloak(){
-         $user = Socialite::driver('keycloak')->user();
-        $data_user=User::where('type_auth','=','oidc')
-         ->where('email_inst','=',$user->getEmail())
-         ->where('deleted','=',false)
-         ->first();
-        if($data_user!=null){
-            $tokenResult = $data_user->createToken('Personal Access Token');
-            $token = $tokenResult->token;
-            $token->save();
-            $redirect_auth=env('KEYCLOAK_REDIRECT_AUTH');
-            $msj['change_success']='Se actualizo el password correctamente';
-            $log="The user '".$data_user->id."' logged in using keycloak.";
-            $this->log('info',$log,'web',$data_user);
-            return redirect("$redirect_auth?access_token=$tokenResult->accessToken");
-        }else{
+        try {
+            $user = Socialite::driver('keycloak')->user();
+            $data_user = User::where('type_auth', '=', 'oidc')
+                ->where('email_inst', '=', $user->getEmail())
+                ->where('deleted', '=', false)
+                ->first();
+            if ($data_user != null) {
+                $tokenResult = $data_user->createToken('Personal Access Token');
+                $token = $tokenResult->token;
+                $token->save();
+                $redirect_auth = env('KEYCLOAK_REDIRECT_AUTH');
+                $msj['change_success'] = 'Se actualizo el password correctamente';
+                $log = "The user '" . $data_user->id . "' logged in using keycloak.";
+                $this->log('info', $log, 'web', $data_user);
+                return redirect("$redirect_auth?access_token=$tokenResult->accessToken");
+            } else {
+                return response()->json([
+                    'message' => 'Unauthorized'], 401);
+            }
+        }catch(\Exception $e){
             return response()->json([
-                'message' => 'Unauthorized'], 401);
+                'message' => 'Not Found'], 404);
         }
 
     }
