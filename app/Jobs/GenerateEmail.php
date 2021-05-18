@@ -19,15 +19,17 @@ class GenerateEmail implements ShouldQueue
 
     private $user;
     private $role;
+    private $type_email;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user,Role $role)
+    public function __construct(User $user,Role $role, $type_email)
     {
         $this->user=$user;
         $this->role=$role;
+        $this->type_email=$type_email;
     }
 
     /**
@@ -41,6 +43,6 @@ class GenerateEmail implements ShouldQueue
         $log="The job GenerateEmail for user '".$this->user->id."' is dispatched.";
         $cr =new Controller();
         $cr->log('info',"$log",'cli',null);
-        $userc->generateEmail($this->user, $this->role);
+        $userc->generateEmail($this->user, $this->role,$this->type_email);
     }
 }

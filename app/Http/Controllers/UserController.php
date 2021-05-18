@@ -150,7 +150,8 @@ class UserController extends Controller
         if(!isset($data['email_inst'])){
             $log="The email generation job was created for user $user->id";
             $this->log('info',"$log",'cli',$request->user());
-            GenerateEmail::dispatch($user,$role);
+            $request->type_email= isset($request->type_email)&&$request->type_email==2?2:1;
+            GenerateEmail::dispatch($user,$role,$request->type_email);
         }
         if(!isset($data['password'])&&isset($data['email_inst'])){
             $log="The password generation job was created for user $user->id";
@@ -170,6 +171,8 @@ class UserController extends Controller
             $access_granted = Controller::validatePermissions($user_act, 'POST', '/users/import');
             if($access_granted){
                 $errors=[];
+                $created=0;
+                $withmistakes=0;
                 if($request->hasFile('file')) {
                     $file = $request->file('file');
                     $validate = \Validator::make(
@@ -186,7 +189,7 @@ class UserController extends Controller
                         $data=GeneralFunctions::csvToJson($file,$delimit);
                         $gender=[
                             'Masculino',
-                            'Femeninos',
+                            'Femenino',
                             'LGBT',
                             'Otro'
                         ];
@@ -274,15 +277,23 @@ class UserController extends Controller
                                     }
                                         $this->save($new_user,$role,$request);
                                         $new_user['status']="Se registro";
+                                        $created++;
                                 }else{
+                                    $withmistakes++;
                                     $new_user['status']="El grupo es incorrecto";
                                 }
                             }else{
+                                $withmistakes++;
                                 $new_user['status']=$validate->errors();
                             }
                             $return[]=$new_user;
                         }
-                        return $return;
+                        $response=[
+                            'created'=>$created,
+                            'withmistakes'=>$withmistakes,
+                            'users'=>$return
+                        ];
+                        return $this->response('false', Response::HTTP_OK, '200 OK', $response);
                     }else{
                         $errors[]='El archivo es incorrecto';
                         return $this->response('true', Response::HTTP_BAD_REQUEST, '400 BAD REQUEST', $errors);
@@ -377,64 +388,110 @@ class UserController extends Controller
         return null;
     }
 
-    public function generateEmail(User $user,Role $role){
+    public function generateEmail(User $user,Role $role, $format=1){
         $domain=$role->domain;
         $possible_emails=[];
         $aux=null;
         $f_name=GeneralFunctions::cleanString($user->f_name);
         $s_name=GeneralFunctions::cleanString($user->s_name);
         $f_surname=GeneralFunctions::cleanString($user->f_surname);
-        $fname=str_split($f_name);
+        $sname=str_replace(" ", "", $s_name);
         $fsurname=str_replace(" ", "", $f_surname);
-        foreach ($fname as $l){
-            $aux.=$l;
-            $possible_email=strtolower("$aux$fsurname");
-            if(!$this->existEmail($possible_email,$domain)){
-                $new_email="$possible_email@$domain";
-                CreateEmail::dispatch($user,$new_email,$role);
-                $log="The CreateEmail '$new_email' job is created for user '".$user->id."'";
-                $this->log('info',"$log",'cli');
-                $data=[
-                    'email_inst'=>"$new_email"
+        if($format==1) {
+            $fname=str_split($f_name);
+            foreach ($fname as $l) {
+                $aux .= $l;
+                $possible_email = strtolower("$aux$fsurname");
+                if (!$this->existEmail($possible_email, $domain)) {
+                    $new_email = "$possible_email@$domain";
+                    CreateEmail::dispatch($user, $new_email, $role);
+                    $log = "The CreateEmail '$new_email' job is created for user '" . $user->id . "'";
+                    $this->log('info', "$log", 'cli');
+                    $data = [
+                        'email_inst' => "$new_email"
+                    ];
+                    $user->update($data);
+                    return null;
+                } else {
+                    $possible_emails[] = $possible_email;
+                }
+            }
+            $sname = str_split($s_name);
+            foreach ($sname as $l) {
+                $aux .= $l;
+                $possible_email = strtolower("$aux$fsurname");
+                $exist = $this->existEmail($possible_email, $domain);
+                if (!$exist) {
+                    $new_email = "$possible_email@$domain";
+                    CreateEmail::dispatch($user, $new_email, $role);
+                    $log = "The CreateEmail '$new_email' job is created for user '" . $user->id . "'";
+                    $this->log('info', "$log", 'cli');
+                    $data = [
+                        'email_inst' => "$new_email"
+                    ];
+                    $user->update($data);
+                    return null;
+                } else {
+                    $possible_emails[] = $possible_email;
+                }
+            }
+            $possible_email = $possible_emails[0] . random_int(10, 99);
+            while (!$this->existEmail($possible_email, $domain)) {
+                $new_email = "$possible_email@$domain";
+                CreateEmail::dispatch($user, $new_email, $role);
+                $log = "The CreateEmail '$new_email' job is created for user '" . $user->id . "'";
+                $this->log('info', "$log", 'cli');
+                $data = [
+                    'email_inst' => "$new_email"
+                ];
+                $user->update($data);
+                return null;
+            }
+            throw new \Exception('Posibles correos existen');
+        }
+        if($format==2){
+            $possible_email=strtolower("$f_name.$fsurname");
+            if (!$this->existEmail($possible_email, $domain)) {
+                $new_email = "$possible_email@$domain";
+                CreateEmail::dispatch($user, $new_email, $role);
+                $log = "The CreateEmail '$new_email' job is created for user '" . $user->id . "'";
+                $this->log('info', "$log", 'cli');
+                $data = [
+                    'email_inst' => "$new_email"
                 ];
                 $user->update($data);
                 return null;
             }else{
-                $possible_emails[]=$possible_email;
+                $possible_email=strtolower("$sname.$fsurname");
+                if ($sname!=null&&!$this->existEmail($possible_email, $domain)) {
+                    $new_email = "$possible_email@$domain";
+                    CreateEmail::dispatch($user, $new_email, $role);
+                    $log = "The CreateEmail '$new_email' job is created for user '" . $user->id . "'";
+                    $this->log('info', "$log", 'cli');
+                    $data = [
+                        'email_inst' => "$new_email"
+                    ];
+                    $user->update($data);
+                    return null;
+                }else{
+                    $possible_email=strtolower("$f_name.$fsurname");
+                    do {
+                        $possible_email .= "." . random_int(10, 99);
+                        if (!$this->existEmail($possible_email, $domain)) {
+                            $new_email = "$possible_email@$domain";
+                            CreateEmail::dispatch($user, $new_email, $role);
+                            $log = "The CreateEmail '$new_email' job is created for user '" . $user->id . "'";
+                            $this->log('info', "$log", 'cli');
+                            $data = [
+                               'email_inst' => "$new_email"
+                            ];
+                            $user->update($data);
+                            return null;
+                        }
+                    }while(true);
+                }
             }
         }
-        $sname=str_split($s_name);
-        foreach ($sname as $l){
-            $aux.=$l;
-            $possible_email=strtolower("$aux$fsurname");
-            $exist=$this->existEmail($possible_email,$domain);
-            if(!$exist){
-                $new_email="$possible_email@$domain";
-                CreateEmail::dispatch($user,$new_email,$role);
-                $log="The CreateEmail '$new_email' job is created for user '".$user->id."'";
-                $this->log('info',"$log",'cli');
-                $data=[
-                    'email_inst'=>"$new_email"
-                ];
-                $user->update($data);
-                return null;
-            }else{
-                $possible_emails[]=$possible_email;
-            }
-        }
-        $possible_email=$possible_emails[0].random_int(10,99);
-        while(!$this->existEmail($possible_email,$domain)){
-            $new_email="$possible_email@$domain";
-            CreateEmail::dispatch($user,$new_email,$role);
-            $log="The CreateEmail '$new_email' job is created for user '".$user->id."'";
-            $this->log('info',"$log",'cli');
-            $data=[
-                'email_inst'=>"$new_email"
-            ];
-            $user->update($data);
-            return null;
-        }
-        throw new \Exception('Posibles correos existen');
     }
 
     private function generateAvatarUrl(User $d){

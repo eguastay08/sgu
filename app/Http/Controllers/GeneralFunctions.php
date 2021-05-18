@@ -29,7 +29,7 @@ class GeneralFunctions
         if ($resultJson->score <= 0.5) {
           return true;
         } else {
-            return false;
+            return false;;
         }
     }
 

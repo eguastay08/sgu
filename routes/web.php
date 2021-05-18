@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('api/v1/auth/sac/redirect', [AuthController::class,'keycloakRedirect']);
 
 Route::get('api/v1/auth/sac/callback', [AuthController::class,'loginWithKeycloak']);
+
